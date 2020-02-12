@@ -51,7 +51,7 @@ Rails 5.2.4.1
 |lastname_kana|string|null:false|
 |firstname_kana|string|null:false|
 |birthday|date|null:false|
-|user|references|null: false, foreign_key: true|
+|user|references|foreign_key: true|
 ### Association
 - belongs_to : user
 
@@ -64,8 +64,9 @@ Rails 5.2.4.1
 |block_number|string|null: false|
 |phone_number|string||
 |building|string||
+|user|references|foreign_key: true|
 ### Association
-- belongs_to :users
+- belongs_to :user
 
 ## credits テーブル
 |Column|Type|Options|
@@ -74,6 +75,7 @@ Rails 5.2.4.1
 |expiration_date|date|null:false|
 |name|string|null:false|
 |security|string|null:false|
+|user|references|foreign_key: true|
 ### Association
 - belongs_to : user
 
@@ -86,6 +88,7 @@ Rails 5.2.4.1
 |delivery_payer|integer|null: false|
 |from|integer|null: false|
 |prep_days|integer|null: false|
+|user|references|foreign_key: true|
 ### Association
 - has_many :images
 - has_many :categories, source: category

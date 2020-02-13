@@ -1,4 +1,35 @@
-- @children.each do |child|
-  = link_to child.name, category_path(child.id)
-
-= @parent.present? ? "#{@category.name}(#{@parent.name})" : @category.name
+.category-page
+  .container
+    - @children.each do |child|
+      = link_to child.name, category_path(child.id)
+    .item-container
+      .iten-container__header
+        = "#{@category.name}の商品一覧"
+      .items
+        .item
+          = image_tag 'item_sample.jpg',size: '188x188', class: 'item__image'
+          .image__body
+            コスプレ制服
+          .image__price
+            ¥30,000
+        .item
+          = image_tag 'item_sample.jpg',size: '188x188', class: 'item__image'
+          .image__body
+            コスプレ制服
+          .image__price
+            ¥30,000
+        .item
+          = image_tag 'item_sample.jpg',size: '188x188', class: 'item__image'
+          .image__body
+            コスプレ制服
+          .image__price
+            ¥30,000
+        .item
+          = image_tag 'item_sample.jpg',size: '188x188', class: 'item__image'
+          .image__body
+            コスプレ制服
+          .image__price
+            ¥30,000
+    %hr/
+    .category-label
+      = @parent.present? ? "#{@category.name}(#{@parent.name})" : @category.name

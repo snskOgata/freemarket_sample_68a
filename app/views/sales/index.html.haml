@@ -56,6 +56,7 @@
         %a.gBtn{href: "#"}
           -# = image_tag 'src', alt: '', class: ''
     .picture
+
   %section.topIntroduction
     %h2.subtitle
       "
@@ -102,30 +103,178 @@
             業界最安          
         %p.list__descroptioin
           最大3%でお得に出品&購入!
+
   %section.topMiddleDL
     .topMiddleDL__inner
       %h2.subtitle
+        会員数日本一位
       %p.text
+        "
+        FURIMAは、フリマアプリで最も人気
+        "
+        %br/
+        "
+        出品・購入回数も業界最多です!
+        "
+        %br/
+        "
+        ほしかったあの商品に出会えるかもしれません。
+        "
+        %br/
       .btn
+        %a{href: ""}
+          -# = image_tag 'src', alt: '', class: 'aBtn'
+        %a{href: ""}
+          -# = image_tag 'src', alt: '', class: 'gBtn'
+
   %section.topKeyFeatures
     %h2.head
       "FURIMAの特徴"
     .items
       %section.item
+        %figure.ite__img
+        %h3.item__subtitle
+          簡単に売り買いできる
+        %p.item__detail
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能!
+
       %section.item
+        %figure.ite__img
+        %h3.item__subtitle
+          売上金は即日振込みに対応
+        %p.item__detail
+          午前9時までに振込をご依頼いただければ、翌日に指定の口座に入金いたします!
+
       %section.item
+        %figure.ite__img
+        %h3.item__subtitle
+          様々な支払いに対応
+        %p.item__detail
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
   %section.pickupContainer
     %h2.head
       ピックアップカテゴリー
     .productBox
       .productHead
+        %a{href: "#"}
+          %h3.title
+            新規投稿商品
       .productLists
+        .productList
+          %a{href: "/products/3"}
+            %figure.productList--img
+              -# = image_tag 'src', alt: '', class: 'gBtn'
+            .productList--body
+              %h3.name
+                product3
+              .details
+                %ul
+                  %li
+                    30000円
+                  %li
+                    %i.fa.fa-star.LikeIcon
+                      " 0
+                      "
+                %p
+                  (税込)
+        .productList
+          %a{href: "/products/2"}
+            %figure.productList--img
+              -# = image_tag 'src', alt: '', class: 'gBtn'
+            .productList--body
+              %h3.name
+                product2
+              .details
+                %ul
+                  %li
+                    20000円
+                  %li
+                    %i.fa.fa-star.LikeIcon
+                      " 0
+                      "
+                %p
+                  (税込)
+                  
+        .productList
+          %a{href: "/products/1"}
+            %figure.productList--img
+              -# = image_tag 'src', alt: '', class: 'gBtn'
+            .productList--body
+              %h3.name
+                product1
+              .details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    %i.fa.fa-star.LikeIcon
+                      " 0
+                      "
+                %p
+                  (税込)
+
   %section.pickupContainer
     %h2.head
-      ピックアップブランド
+      ピックアップカテゴリー
     .productBox
       .productHead
+        %a{href: "#"}
+          %h3.title
+            アーカイバ
       .productLists
+        .productList
+          %a{href: "/products/3"}
+            %figure.productList--img
+              -# = image_tag 'src', alt: '', class: 'gBtn'
+            .productList--body
+              %h3.name
+                product3
+              .details
+                %ul
+                  %li
+                    30000円
+                  %li
+                    %i.fa.fa-star.LikeIcon
+                      " 0
+                      "
+                %p
+                  (税込)
+        .productList
+          %a{href: "/products/2"}
+            %figure.productList--img
+              -# = image_tag 'src', alt: '', class: 'gBtn'
+            .productList--body
+              %h3.name
+                product2
+              .details
+                %ul
+                  %li
+                    20000円
+                  %li
+                    %i.fa.fa-star.LikeIcon
+                      " 0
+                      "
+                %p
+                  (税込)
+        .productList
+          %a{href: "/products/1"}
+            %figure.productList--img
+              -# = image_tag 'src', alt: '', class: 'gBtn'
+            .productList--body
+              %h3.name
+                product1
+              .details
+                %ul
+                  %li
+                    10000円
+                  %li
+                    %i.fa.fa-star.LikeIcon
+                      " 0
+                      "
+                %p
+                  (税込)
+
 
 %aside.appBanner
   .inner
@@ -135,9 +284,9 @@
       今すぐ無料ダウンロード
     .inner__icon
       %a{href: "#"}
-        -# = image_tag 'src', alt: 'App Store', class: 'app-store'
+        -# = image_tag '/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', alt: 'App Store', class: 'app-store'
       %a{href: "#"}
-        -# = image_tag 'src', alt: 'Google Play', class: 'google-play'
+        -# = image_tag '/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg', alt: 'Google Play', class: 'google-play'
 .footer
   %ul.contents
     %li.content

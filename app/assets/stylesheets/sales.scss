@@ -305,12 +305,33 @@ a {
       max-width: 1040px;
       width: 100%;
       margin: 0 auto;
+      .subtitle {
+        font-size: 27px;
+        font-weight: bold;
+        line-height: 1.4;
+      }
+      .text {
+        font-size: 18px;
+        margin: 20px 0 30px;
+        line-height: 1.5;
+      }
+      .btn {
+        display: flex;
+        a {
+          margin-right: 10px;
+          img {
+            width: 180px;
+          }
+        }
+      }
     }
   }
+
 
   .topKeyFeatures {
     padding: 60px 100px;
     background-color: #fff;
+    
     .head {
       font-size: 27px;
       text-align: center;
@@ -326,6 +347,12 @@ a {
       margin: 0 auto;
       display: flex;
       flex-wrap: wrap;
+      .item {
+        &__img {
+          // background-image: url(images/icon/icon-01.png);
+        }
+        
+      }
     }
   }
 
@@ -339,10 +366,47 @@ a {
       line-height: 1.4;
       font-weight: bold;
     }
+    .productBox {
+      .productHead {
+        text-align: center;
+        a .title{
+            font-weight: bold;
+        }
+      }
+      .productLists {
+        width: 780px;
+        margin: 26px auto;
+        display: flex;
+        justify-content: space-around;
+        .productList {
+          width: 220px;
+          display: inline-block;
+          float: left;
+          a {
+            background-color: #fff;
+            display: inline-block;
+          }
+          &--img {
+            width: 220px;
+            height: 150px;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            z-index: auto;
+          }
+          &--body {
+            .name {
+              font-size: 100%;
+              font-weight: normal;
+            }
+          }
+        }
+      }
+    }
   }
 
   .pickupContainer {
-    padding-bottom: 80px;
+
     .head {
       text-align: center;
       font-size: 28px;
@@ -354,12 +418,12 @@ a {
 
 
 
-.addBanner {
+.appBanner {
   padding: 100px 40px;
   position: relative;
   background-size: cover;
   background-position: center;
-  // background-image: url(pict/bg-appBanner-pict.jpg);
+  background-image: url(pict/bg-appBanner-pict.jpg);
   .inner {
     color: #fff;
     text-align: center;
@@ -435,7 +499,7 @@ a {
       }
     }
   }
-  
+
   &__logo {
     max-width: 160px;
     width: 100%;

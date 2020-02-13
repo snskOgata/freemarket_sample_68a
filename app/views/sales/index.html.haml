@@ -38,9 +38,106 @@
             新規会員登録
 
 .main
+  %section.mainVisual
+    .content
+      %h2.content__subtitle
+        %br/
+        "
+        人生を変えるフリマアプリ
+        "
+      %p.content__text
+        "
+        FURIMAはだれでもかんたんに出品・購入できる
+        "
+        %br/
+      .content__btn
+        %a.aBtn{href: "#"}
+          -# = image_tag 'src', alt: '', class: ''
+        %a.gBtn{href: "#"}
+          -# = image_tag 'src', alt: '', class: ''
+    .picture
+  %section.topIntroduction
+    %h2.subtitle
+      "
+      FURIMAが選ばれる理由
+      "
+    %ul.lists
+      %li.list
+        .list__pict
+          %span.number
+            1
+          -# = image_tag 'src', alt: '', class: ''
+        %h3.list__text
+          %span
+            3分
+          "
+          ですぐに出品
+          "
+        %p.list__descroptioin
+          スマホで入力するだけで簡単に出品できる
+      %li.list
+        .list__pict
+          %span.number
+            2
+          -# = image_tag 'src', alt: '', class: ''
+        %h3.list__text
+          %span
+            シンプル
+          "
+          で使いやすい
+          "
+        %p.list__descroptioin
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
 
-.appBanner
+      %li.list.list--last
+        .list__pict
+          %span.number
+            3
+          -# = image_tag 'src', alt: '', class: ''
+        %h3.list__text
+          "
+          手数料
+          "
+          %span
+            業界最安          
+        %p.list__descroptioin
+          最大3%でお得に出品&購入!
+  %section.topMiddleDL
+    .topMiddleDL__inner
+      %h2.subtitle
+      %p.text
+      .btn
+  %section.topKeyFeatures
+    %h2.head
+      "FURIMAの特徴"
+    .items
+      %section.item
+      %section.item
+      %section.item
+  %section.pickupContainer
+    %h2.head
+      ピックアップカテゴリー
+    .productBox
+      .productHead
+      .productLists
+  %section.pickupContainer
+    %h2.head
+      ピックアップブランド
+    .productBox
+      .productHead
+      .productLists
 
+%aside.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード
+    .inner__icon
+      %a{href: "#"}
+        -# = image_tag 'src', alt: 'App Store', class: 'app-store'
+      %a{href: "#"}
+        -# = image_tag 'src', alt: 'Google Play', class: 'google-play'
 .footer
   %ul.contents
     %li.content

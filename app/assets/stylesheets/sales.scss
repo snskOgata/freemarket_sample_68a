@@ -181,7 +181,7 @@ a {
     max-width: 840px;
     margin: 0 auto;
     display: flex;
-    content {
+    .content {
       display: flex;
       flex-direction: column;
       width: calc(1 / 3 * 100%);
@@ -196,6 +196,10 @@ a {
         text-decoration: none;
         font-size: 12px;
         line-height: 32px;
+        a {
+          color: #000;
+          text-decoration: none;
+        }
       }
     }
   }

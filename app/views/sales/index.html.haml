@@ -2,39 +2,38 @@
   .haderInner
     .mainHeader
       %h1.icon
-        %a{href="#"}
+        = link_to "#" do
+          %img{src: ""}/
       .searchBox
-        %form(action="")
-          %input{name="utf8" type="hidden"}/
-          %input.searchBox--input{id="searchInput" name="key"}/
-          %button
-            .searchBox__icon
-              %img{src="" alt=""}/
-          %input{type=""}/
+        %form{action: ""}
+          %input{name: "utf8", type: "hidden"}/
+          %input.searchBox--input{id: "searchInput", name: "key", placeholder: "キーワードから探す"}/
+          %button{type: "submit"}/
+          .searchBox__icon
+            %img{src: ""}/
+          %input{type: "hidden", name: "authenticity_token", value: ""}/
       %ul.resultLists
 
 
     .nav
       %ul.listLeft
         %li.listLeft__item.listLeft__item--first
-          %a{id="" href="#"}
+          %a{id: "", href: "#"}
           .tree.displayNone
           -# ここからの階層はあとで記述
         %li.listLeft__item
-          %a{id="" href="#"}
+          %a{id: "", href: "#"}
           %ul.brandsPuldawn.displayNone
           -# ここからの階層はあとで記述
 
       %ul.listright
         %li.listRight__item.listRight__item--login
-          %a{href="#"}
+          %a{href: "#"}
         %li.listRight__item.listRight__item--new
-          %a{href="#"}
+          %a{href: "#"}
 
 .main
 
 .appBanner
 
 .footer
-
-

@@ -1,4 +1,8 @@
 class CategoriesController < ApplicationController
+  def index
+    @categories = Category.all
+    @main_categories = Category.where(id: 1..13)
+  end
   def show
     @category = Category.find(params[:id])
     @children = @category.children

@@ -1,36 +1,41 @@
 .pcHeader
-  .haderInner
+  .headerInner
     .mainHeader
       %h1.icon
         = link_to "#" do
-          %img{src: ""}/
+          = image_tag 'logo.png', alt: 'logo',  class: 'logo'
       .searchBox
         %form{action: ""}
           %input{name: "utf8", type: "hidden"}/
           %input.searchBox--input{id: "searchInput", name: "key", placeholder: "キーワードから探す"}/
           %button{type: "submit"}/
           .searchBox__icon
-            %img{src: ""}/
-          %input{type: "hidden", name: "authenticity_token", value: ""}/
+            %i.fas.fa-search
+            -# = image_tag 'icon-search.png', alt: 'icon-search', class: 'icon-search'
+        %input{type: "hidden", name: "authenticity_token", value: ""}/
       %ul.resultLists
 
 
     .nav
-      %ul.listLeft
-        %li.listLeft__item.listLeft__item--first
-          %a{id: "", href: "#"}
+      %ul.listsLeft
+        %li.listsLeft__item.listsLeft__item--first
+          %a{id: "catBtn", href: "#"}
+            カテゴリー
           .tree.displayNone
           -# ここからの階層はあとで記述
-        %li.listLeft__item
-          %a{id: "", href: "#"}
+        %li.listsLeft__item
+          %a{id: "brandBtn", href: "#"}
+            ブランド
           %ul.brandsPuldawn.displayNone
           -# ここからの階層はあとで記述
 
-      %ul.listright
-        %li.listRight__item.listRight__item--login
+      %ul.listsRight
+        %li.listsRight__item.listsRight__item--login
           %a{href: "#"}
-        %li.listRight__item.listRight__item--new
+            ログイン
+        %li.listsRight__item.listsRight__item--new
           %a{href: "#"}
+            新規会員登録
 
 .main
 

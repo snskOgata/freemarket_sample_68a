@@ -1,2 +1,4 @@
 - @children.each do |child|
   = link_to child.name, category_path(child.id)
+
+= @parent.present? ? "#{@category.name}(#{@parent.name})" : @category.name

@@ -59,3 +59,11 @@ h1 {
 header {
   display: block;
 }
+
+.pcHeader .headerInner .mainHeader .resultLists {
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 36px;
+  z-index: 2;
+}

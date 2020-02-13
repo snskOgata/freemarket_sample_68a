@@ -64,6 +64,55 @@ header {
   padding: 0 60px;
 }
 
+.pcHeader .headerInner {
+  max-width: 1040px;
+  width: 100%;
+  min-height: 82px;
+  margin: 0 auto;
+  padding: 15px 0 0;
+}
+
+.pcHeader .headerInner .mainHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.pcHeader .headerInner .mainHeader .icon {
+  padding-bottom: 10px;
+  margin-right: 30px;
+  border-radius: 4px;
+}
+
+.pcHeader .headerInner .mainHeader .searchBox {
+  margin-left: auto;
+  width: 100%;
+}
+.pcHeader .headerInner .mainHeader .searchBox form {
+  width: 100%;
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.pcHeader .headerInner .mainHeader .searchBox form input {
+  width: calc(100% - 26px);
+  height: 36px;
+  padding: 0 0 0 5px;
+}
+
+.pcHeader .headerInner .mainHeader .searchBox form button {
+  width: 36px;
+  border: 0;
+  cursor: pointer;
+  background-color: #3CCACE;
+  padding: 8px;
+}
+
+img {
+  width: 100%;
+  vertical-align: bottom;
+}
+
 .pcHeader .headerInner .mainHeader .resultLists {
   display: flex;
   position: absolute;

@@ -1,3 +1,34 @@
+// カテゴリ一覧ページ
+.categories-index{
+  background-color: #eeeeee;
+  .container {
+    width: 700px;
+    margin: 0 auto;
+    padding: 40px 0;
+    .category-links {
+      display: flex;
+      flex-wrap: wrap;
+      .category-link {
+        border-radius: 4px;
+        min-width: 80px;
+        height: 40px;
+        -webkit-box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
+        box-shadow: 1px 1px 1px 1px rgba(14,14,14,0.0580392);
+        padding: 0 30px;
+        margin: 5px;
+        color: #333;
+        font-size: 16px;
+        line-height: 40px;
+        text-decoration: none;
+         &:hover {
+          color: white;
+          background-color: red;
+        }
+      }
+    }
+  }
+}
+// カテゴリページ
 .category-page {
   background-color: #eeeeee;
   .container {

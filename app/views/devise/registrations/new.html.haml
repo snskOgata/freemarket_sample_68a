@@ -1,8 +1,5 @@
 .account-page
-  .account-page__header
-    %h1
-      = link_to '#' do
-        = image_tag 'logo.png', alt: 'logo', class: 'logo'
+  = render "shared/user-header"
   .account-page__contents
     .account-page__contents__title
       会員情報入力
@@ -122,15 +119,7 @@
             = f.text_field :nickname, autofocus: true
         .actions
           = f.submit "登録する", class: 'btn'
-
-  .account-page__footer
-    .nav
-      %span.policy プライバシーポリシー
-      %span.rule メルカリ利用規約
-      %span.notation 特定商取引に関する表記
-    %h1
-      = link_to '#' do
-        = image_tag 'logo-white.png', alt: 'logo', class: 'logo'
-
+  = render "shared/user-footer"
+  
 
  

@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'homes#show'
 
   resources :category, controller: :categories, only: [:index, :show]
+  resources :users, only: :show
 end

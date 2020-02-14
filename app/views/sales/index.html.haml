@@ -1,5 +1,7 @@
 .pcHeader
   .headerInner
+
+    -# メインヘッダー
     .mainHeader
       %h1.icon
         = link_to "#" do
@@ -10,13 +12,11 @@
           %input.searchBox--input{id: "searchInput", name: "key", placeholder: "キーワードから探す"}/
           %button{type: "submit"}/
           .searchBox__icon
-            %i.fas.fa-search
-            -# = link_to "#" do
-            -#   = image_tag 'icon-search.png', alt: 'icon-search', class: 'icon-search'
+            = image_tag 'icon/icon-search.png', alt: 'icon-search', size: "20x20", class: 'icon-search'
         %input{type: "hidden", name: "authenticity_token", value: ""}/
       %ul.resultLists
 
-
+    -# ナビゲーションバー
     .nav
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
@@ -78,6 +78,8 @@
           = link_to "#" do
             新規会員登録
 
+
+-# メイン
 .main
   %section.mainVisual
     .content
@@ -89,10 +91,10 @@
         %br/
         フリマアプリです
       .content__btn
-        -# = link_to {"#", name: "aBtn"} do
-        -#   = image_tag '', alt: 'App Store', class: 'app-store'
-        -# = link_to {"#", name: "gBtn"} do
-        -#   = image_tag '', alt: 'Google Play', class: 'google-play'
+        .aBtn
+        .gBtn
+          = link_to "#" do
+            = image_tag 'GooglePlayBadge.png', alt: 'GooglePlay', class: 'google-play'
     .picture
 
   .topIntroduction
@@ -376,7 +378,8 @@
   %p 
     © FURIMA
 
-  .purchaseBtn
-    %span.purchaseBtn__text
-      出品する
-    -# = image_tag 'icon-camera.png', alt: 'icon-camera', class: 'icon-camera'
+  = link_to "#" do
+    .purchaseBtn
+      = link_to "#", class: 'purchaseBtn__text' do
+        %span
+        =  image_tag 'icon/icon_camera.png', alt: 'camera', class: 'purchase__icon'

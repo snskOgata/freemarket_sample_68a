@@ -43,39 +43,39 @@
                 = link_to "#", id: 6 do
                   おもちゃ・ホビー・グッズ
               %li.categoryTree--item
-                = link_to "#", id:  do
+                = link_to "#", id: 7 do
                   コスメ・香水・美容
               %li.categoryTree--item
-                = link_to "#", id: 7 do
+                = link_to "#", id: 8 do
                   家電・スマホ・カメラ
               %li.categoryTree--item
-                = link_to "#", id: 8 do
+                = link_to "#", id: 9 do
                   スポーツ・レジャー
               %li.categoryTree--item
-                = link_to "#", id: 9 do
+                = link_to "#", id: 10 do
                   ハンドメイド
               %li.categoryTree--item
-                = link_to "#", id: 10 do
+                = link_to "#", id: 11 do
                   チケット
               %li.categoryTree--item
-                = link_to "#", id: 11 do
+                = link_to "#", id: 12 do
                   自転車・オートバイ
               %li.categoryTree--item
-                = link_to "#", id: 12 do
+                = link_to "#", id: 13 do
                   その他
 
         %li.listsLeft__item
-          =id: "brandBtn", href: "#"}
+          = link_to "#", id: "brandBtn" do
             ブランド
           %ul.brandsPuldawn.displayNone
-          -# ここからの階層はあとで記述
+           
 
       %ul.listsRight
         %li.listsRight__item.listsRight__item--login
-          %a{href: "#"}
+          = link_to "#" do
             ログイン
         %li.listsRight__item.listsRight__item--new
-          %a{href: "#"}
+          = link_to "#" do
             新規会員登録
 
 .main
@@ -83,14 +83,11 @@
     .content
       %h2.content__subtitle
         %br/
-        "
         人生を変えるフリマアプリ
-        "
       %p.content__text
-        "
         FURIMAはだれでもかんたんに出品・購入できる
-        "
         %br/
+        フリマアプリです
       .content__btn
         -# = link_to {"#", name: "aBtn"} do
         -#   = image_tag '', alt: 'App Store', class: 'app-store'

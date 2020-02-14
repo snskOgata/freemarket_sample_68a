@@ -141,9 +141,38 @@ header {
           text-decoration: none;
           padding: 0;
           display: flex;
+          a {
+            background-image: url(icon_category.svg);
+          }
+          .tree.displayNone {
+            display: none;
+            .categoryTree {
+              background-color: #fff;
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              &--item {
+                position: relative;
+                a {
+                  color: #333;
+                  text-decoration: none;
+                  line-height: 32px;
+                  background-position: center right;
+                  background-repeat: no-repeat;
+                  background-size: 18px;
+                  padding-right: 30px;
+                  display: block;
+                  width: 240px;
+                  padding: 3px 8px 3px 5px;
+                  border-bottom: 1px solid #f8f8f8;
+                }
+              }
+            }
+          }
         }
       }
     }
+
     .listsRight {
       margin-left: auto;
       display: flex;
@@ -201,9 +230,10 @@ a {
       }
       &__text {
         text-shadow: 0 0 5px rgba(0,0,0,0.4);
-        font-size: 60px;
-        line-height: 1.2;
+        font-size: 18px;
         color: #fff;
+        line-height: 1.77778;
+        margin: 16px 0 0 0;
       }
       &__btn {
         display: flex;

@@ -56,6 +56,9 @@ h1 {
   // margin-inline-end: 0px;
 }
 
+
+// ヘッダー
+
 header {
   display: block;
 }
@@ -168,12 +171,16 @@ a {
   text-decoration: none;
 }
 
+
+// メイン
 .main {
   background: #f8f8f8;
+
+  // メインヴィジュアル
   .mainVisual {
     width: 100%;
     height: 560px;
-    background-image: url(/assets/bg-mainVisual-pict_pc-a1a4be0….jpg);
+    background-image: url(pict/bg-mainVisual-pict_pc.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top center;
@@ -224,16 +231,27 @@ a {
     }
   }
 
+  // トップイントロダクション
   .topIntroduction {
     padding: 60px 20px;
     .subtitle {
       text-align: center;
-    font-size: 26px;
-    line-height: 1.4;
-    font-weight: bold;
-    margin-bottom: 25px;
-    padding-bottom: 15px;
-    position: relative;
+      font-size: 26px;
+      line-height: 1.4;
+      font-weight: bold;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      position: relative;
+    }
+    .subtitle::after {
+      content: "";
+      width: 70px;
+      height: 4px;
+      background-color: #3CCACE;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
     }
     .lists {
       text-align: center;
@@ -248,10 +266,12 @@ a {
         display: flex;
         flex-direction: column;
         align-items: center;
+        
         &__pict {
           position: relative;
           margin-bottom: 20px;
-          .namber {
+          // background-image: url(pict/pict-reason-01.jpg);
+          .number {
             display: inline-block;
             position: absolute;
             top: 0;
@@ -291,8 +311,9 @@ a {
     }
   }
 
+  // トップミドルDL
   .topMiddleDL {
-    background-image: url(/assets/bg-topMiddleDl-pict-5042a3a….jpg);
+    background-image: url(pict/bg-topMiddleDl-pict.jpg);
     background-position: bottom right;
     height: 400px;
     background-size: cover;
@@ -327,7 +348,7 @@ a {
     }
   }
 
-
+  // トップキーフィーチャーズ
   .topKeyFeatures {
     padding: 60px 100px;
     background-color: #fff;
@@ -351,11 +372,23 @@ a {
         &__img {
           // background-image: url(images/icon/icon-01.png);
         }
-        
+        &__subtitle {
+          margin: 38px 0 10px;
+          font-size: 19px;
+          font-weight: bold;
+        }
+        p {
+          display: block;
+          margin-block-start: 1em;
+          margin-block-end: 1em;
+          margin-inline-start: 0px;
+          margin-inline-end: 0px;
+        }
       }
     }
   }
 
+  // ピックアップコンテインナー
   .pickupContainer {
     padding: 80px 0 0;
     background-color: #f8f8f8;
@@ -417,7 +450,7 @@ a {
 }
 
 
-
+// アプリバナー
 .appBanner {
   padding: 100px 40px;
   position: relative;
@@ -458,12 +491,12 @@ a {
           bottom: 0;
         }
       }
-      
     }
   }
 }
 
 
+// フッター
 .footer {
   padding: 60px 0;
   color: #fff;

@@ -11,7 +11,8 @@
           %button{type: "submit"}/
           .searchBox__icon
             %i.fas.fa-search
-            -# = image_tag 'icon-search.png', alt: 'icon-search', class: 'icon-search'
+            -# = link_to "#" do
+            -#   = image_tag 'icon-search.png', alt: 'icon-search', class: 'icon-search'
         %input{type: "hidden", name: "authenticity_token", value: ""}/
       %ul.resultLists
 
@@ -19,12 +20,52 @@
     .nav
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
-          %a{id: "catBtn", href: "#"}
+          = link_to "#", id: "catBtn" do
             カテゴリー
           .tree.displayNone
-          -# ここからの階層はあとで記述
+            %ul.categoryTree
+              %li.categoryTree--item
+                = link_to "#", id: 1  do
+                  レディース
+              %li.categoryTree--item
+                = link_to "#", id: 2 do
+                  メンズ
+              %li.categoryTree--item
+                = link_to "#", id: 3 do
+                  ベビー・キッズ
+              %li.categoryTree--item
+                = link_to "#", id: 4 do
+                  インテリア・住まい・小物
+              %li.categoryTree--item
+                = link_to "#", id: 5 do
+                  本・音楽・ゲーム
+              %li.categoryTree--item
+                = link_to "#", id: 6 do
+                  おもちゃ・ホビー・グッズ
+              %li.categoryTree--item
+                = link_to "#", id:  do
+                  コスメ・香水・美容
+              %li.categoryTree--item
+                = link_to "#", id: 7 do
+                  家電・スマホ・カメラ
+              %li.categoryTree--item
+                = link_to "#", id: 8 do
+                  スポーツ・レジャー
+              %li.categoryTree--item
+                = link_to "#", id: 9 do
+                  ハンドメイド
+              %li.categoryTree--item
+                = link_to "#", id: 10 do
+                  チケット
+              %li.categoryTree--item
+                = link_to "#", id: 11 do
+                  自転車・オートバイ
+              %li.categoryTree--item
+                = link_to "#", id: 12 do
+                  その他
+
         %li.listsLeft__item
-          %a{id: "brandBtn", href: "#"}
+          =id: "brandBtn", href: "#"}
             ブランド
           %ul.brandsPuldawn.displayNone
           -# ここからの階層はあとで記述
@@ -51,13 +92,13 @@
         "
         %br/
       .content__btn
-        %a.aBtn{href: "#"}
-          -# = image_tag 'src', alt: '', class: ''
-        %a.gBtn{href: "#"}
-          -# = image_tag 'src', alt: '', class: ''
+        -# = link_to {"#", name: "aBtn"} do
+        -#   = image_tag '', alt: 'App Store', class: 'app-store'
+        -# = link_to {"#", name: "gBtn"} do
+        -#   = image_tag '', alt: 'Google Play', class: 'google-play'
     .picture
 
-  %section.topIntroduction
+  .topIntroduction
     %h2.subtitle
       "
       FURIMAが選ばれる理由
@@ -65,15 +106,14 @@
     %ul.lists
       %li.list
         .list__pict
-          %span.number
-            1
-          -# = image_tag 'src', alt: '', class: ''
+          %span.number 1
+          -# = image_tag 'pict-reason-01.jpg', alt: 'pict-reason-01', class: 'pict-reason-01'
         %h3.list__text
           %span
             3分
-          "
+          -# "
           ですぐに出品
-          "
+          -# "
         %p.list__descroptioin
           スマホで入力するだけで簡単に出品できる
       %li.list
@@ -84,9 +124,9 @@
         %h3.list__text
           %span
             シンプル
-          "
+          -# "
           で使いやすい
-          "
+          -# "
         %p.list__descroptioin
           めんどくさい入力は必要なく、検索も購入もスムーズ！
 
@@ -96,9 +136,9 @@
             3
           -# = image_tag 'src', alt: '', class: ''
         %h3.list__text
-          "
+          -# "
           手数料
-          "
+          -# "
           %span
             業界最安          
         %p.list__descroptioin
@@ -122,9 +162,9 @@
         "
         %br/
       .btn
-        %a{href: "#"}
+        = link_to "#" do
           -# = image_tag 'src', alt: '', class: 'aBtn'
-        %a{href: "#"}
+        = link_to "#" do
           -# = image_tag 'src', alt: '', class: 'gBtn'
 
   %section.topKeyFeatures
@@ -139,14 +179,14 @@
           スマホひとつで、いつでもどこでも簡単に出品・購入が可能!
 
       %section.item
-        %figure.ite__img
+        %figure.item__img
         %h3.item__subtitle
           売上金は即日振込みに対応
         %p.item__detail
           午前9時までに振込をご依頼いただければ、翌日に指定の口座に入金いたします!
 
       %section.item
-        %figure.ite__img
+        %figure.item__img
         %h3.item__subtitle
           様々な支払いに対応
         %p.item__detail
@@ -276,18 +316,17 @@
                   (税込)
 
 
-%aside.appBanner
-  -# = image_tag 'bg-appBanner-pict.jpg', alt: 'bg-appBanner-pict', class: 'bg-appBanner-pict'
+.appBanner
   .inner
     %h2.inner__title
       だれでもかんたん、人生を変えるフリマアプリ
     %p.inner__text
       今すぐ無料ダウンロード
     .inner__icon
-      %a{href: "#"}
-        -# = image_tag '/assets/app-store-9c5e28e8f81bd9912e0ded2f78821e04778a1356c05dc7c7bf1e88614be37c34.svg', alt: 'App Store', class: 'app-store'
-      %a{href: "#"}
-        -# = image_tag '/assets/google-play-469c63f1269e456307c4dde176b33cc3bbbbf142ac4d7369656010130149db1a.svg', alt: 'Google Play', class: 'google-play'
+      = link_to "#" do
+        -# = image_tag '', alt: 'App Store', class: 'app-store'
+      = link_to "#" do
+        -# = image_tag '', alt: 'Google Play', class: 'google-play'
 
 
 .footer
@@ -335,12 +374,11 @@
             お知らせ
 
   .footer__logo
-    %a{href: "#"}
+    = link_to "#" do
       = image_tag 'logo-white.png', alt: 'logo-white', class: 'logo-white'
   %p 
     © FURIMA
 
-%a{href: "#"}
   .purchaseBtn
     %span.purchaseBtn__text
       出品する

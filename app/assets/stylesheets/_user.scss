@@ -146,3 +146,44 @@
     }
   }
 }
+
+.mypage{
+  width: 100%;
+  &__header{
+    background-color: green;
+    height: 100px;
+  }
+  &__sub-bar{
+    background-color:lightblue;
+    height: 50px;
+    ul{
+      padding: 0;
+      margin: 0;
+      display: flex;
+      list-style: none;
+      width: 1020px;
+      margin: 0 auto;
+      li{
+        line-height: 50px;
+        font-size: 14px;
+        .icon{
+          margin: 0 8px;
+          font-size: 9px;
+          color: #888;
+        }
+      }
+    }
+  }
+  &__content{
+    background-color: lightcoral;
+    height: 800px;
+  }
+  &__banner{
+    background-color: lightgreen;
+    height: 50px;
+  }
+  &__footer{
+    background-color: lightyellow;
+    height: 50px;
+  }
+}

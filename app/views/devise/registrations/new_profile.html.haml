@@ -1,0 +1,29 @@
+%h2 Create Account
+%h5 詳細情報
+= render "devise/shared/links"
+.account-page__inner--right.user-form
+  = form_for @profile do |f|
+    = render "devise/shared/error_messages", resource: @profile
+    .field
+      = f.label :lastname
+      %br/
+      = f.text_field :lastname
+    .field
+      = f.label :firstname
+      %br/
+      = f.text_field :firstname
+    .field
+      = f.label :lastname_kana
+      %br/
+      = f.text_field :lastname_kana
+    .field
+      = f.label :firstname_kana
+      %br/
+      = f.text_field :firstname_kana
+    .field
+      = f.label :birthday
+      %br/
+      = f.text_field :birthday
+    .actions
+      = f.submit "Sign up"
+= render "devise/shared/links"

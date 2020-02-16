@@ -1,0 +1,89 @@
+.new-sale-page
+  = render "shared/user-header"
+  .container
+    %h2 商品の情報を入力
+    .sale-image-box
+      .sale-image-box__head 
+        %label 出品画像
+        %span.form-require  必須
+      %p 最大10枚までアップロードできます
+      %label.image-upload-dropbox(for="image_file")
+        %input#image_file(type="file")/
+        %pre.upload-explanation
+          ドラッグアンドドロップ
+          またはクリックしてファイルをアップロード
+    .sale-content
+      .main-content
+        .main-form-group
+          = label_tag :name do
+            商品名
+            %span.form-require  必須
+          %input.input-default{placeholder: '商品名(必須40文字まで)'}
+        .main-form-group
+          %label 商品の説明
+          %span.form-require  必須
+          %textarea.textarea-default{rows: '5', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'}
+    .sale-content
+      %h3 商品の詳細
+      .sale-content__form
+        .form-group
+          %label カテゴリー
+          %span.form-require  必須
+          %select
+            %option ---
+            %option レディース
+            %option メンズ
+          %select
+            %option ---
+            %option レディース
+            %option メンズ
+          %select
+            %option ---
+            %option レディース
+            %option メンズ
+        .form-group
+          %label 商品の状態
+          %span.form-require  必須
+          %select
+            %option ---
+            %option 新品未使用
+            %option 未使用に近い
+    .sale-content
+      %h3 配送について
+      .sale-content__form
+        .form-group
+          %label 配送料の負担
+          %span.form-require  必須
+          %select
+            %option ---
+            %option 送料込
+            %option 着払い
+        .form-group
+          %label 配送元の地域
+          %span.form-require  必須
+          %select
+            %option ---
+            %option 東京都
+            %option 神奈川県
+        .form-group
+          %label 配送までの日数
+          %span.form-require  必須
+          %select
+            %option ---
+            %option 1〜2日で発送
+            %option 2~3日で発送
+    .sale-content
+      %h3 販売価格
+      .sale-content__form
+        .form-group
+          .input-box
+            .input-box__left
+              %label 価格
+              %span.form-require  必須
+            .input-box__right
+              ¥
+              %input{placeholder: '例）300 '}
+    .sell-btn-box
+      %button.sell-btn 出品する
+      = link_to "もどる", "#", class: "back-btn"
+  = render "shared/user-footer"

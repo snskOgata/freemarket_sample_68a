@@ -240,6 +240,8 @@
         }
       }
     }
+
+    
     &__main{
       background-color: #f5f5f5;
       width: 700px;
@@ -283,7 +285,7 @@
         }
       }
       .mypage-tab-container-notification-todo{
-        background-color: green;
+        background-color: #ccc;
         height: 300px;
         ul.mypage-tabs{
           list-style: none;
@@ -303,12 +305,12 @@
         }
         .tab-content{
           height: 228px;
-          background-color: lightgreen;
+          background-color: white;
         }
       }
 
       .mypage-tab-container{
-        background-color: green;
+        background-color: #ccc;
         height: 372px;
         margin: 40px 0 0;
         .mypage-tab-head{
@@ -336,7 +338,7 @@
         }
         .tab-content{
           height: 228px;
-          background-color: lightgreen;
+          background-color: white;
         }  
         
             

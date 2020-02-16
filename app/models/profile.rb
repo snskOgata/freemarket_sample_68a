@@ -1,8 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :user, optional: true
 
-  # 全角ひらがなカタカナ
-  VALID_NAME_REGEX = /\A[ぁ-んァ-ン一-龥]/ 
+  # 全角ひらがなカタカナ漢字
+  VALID_NAME_REGEX = /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/
   # 全角カタカナ
   VALID_KANA_REGEX = /\A[ァ-ヶー－]+\z/
 

@@ -1,18 +1,205 @@
 .mypage
   .mypage__header
+    header
   .mypage__sub-bar
     %ul
-      %li{:itemscope => "", :itemtype => "#"}
-        %a{:href => "#", :itemprop => "#"}
-          %span{:itemprop => "title"} メルカリ
-        %i.icon-arrow-right
+      %li{itemscope: "", itemtype:"#"}
+        %a{href: "#", :itemprop => "#"}
+          %span{:itemprop => "title"} フリマ
+        %i.icon-chevron-right
           = icon('fas', 'chevron-right', class: 'icon')
-      %li{:itemscope => "", :itemtype => "#"}
-        %span{:itemprop => "title"} マイページ
+      %li{itemscope: "", itemtype:"#"}
+        %span{itemprop: "title"} マイページ
 
-  .mypage__content
+  .mypage__contents.clearfix
+    .mypage__contents__left
+      .mypage-nav
+        %ul.mypage-nav-list
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              マイページ
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              お知らせ
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              やることリスト
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          -# %li
+          -#   %a.mypage-nav-list-item{href: "#"}
+          -#     いいね！一覧
+          -#     %i.icon-chevron-right
+          -#       = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              出品する
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              出品した商品 - 出品中
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              出品した商品 - 取引中
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              出品した商品 - 売却済み
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              購入した商品 - 取引中
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              購入した商品 - 過去の取引
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          -# %li
+          -#   %a.mypage-nav-list-item{href: "#"}
+          -#     ニュース一覧
+          -#     %i.icon-chevron-right
+          -#       = icon('fas', 'chevron-right', class: 'icon')
+          -# %li
+          -#   %a.mypage-nav-list-item{href: "#"}
+          -#     評価一覧
+          -#     %i.icon-chevron-right
+          -#       = icon('fas', 'chevron-right', class: 'icon')
+          -# %li
+          -#   %a.mypage-nav-list-item{href: "#"}
+          -#     ガイド
+          -#     %i.icon-chevron-right
+          -#       = icon('fas', 'chevron-right', class: 'icon')
+          -# %li
+          -#   %a.mypage-nav-list-item{href: "#"}
+          -#     お問い合わせ
+          -#     %i.icon-chevron-right
+          -#       = icon('fas', 'chevron-right', class: 'icon')
+
+        -# %h3.mypage-nav-head
+        -#   メルペイ
+        -# %ul.mypage-nav-list
+        -#   %li
+        -#     %a.mypage-nav-list-item{href: "#"}
+        -#       売上・振込申請
+        -#       %i.icon-chevron-right
+        -#         = icon('fas', 'chevron-right', class: 'icon')
+        -#   %li
+        -#     %a.mypage-nav-list-item{href: "#"}
+        -#       ポイント
+        -#       %i.icon-chevron-right
+        -#         = icon('fas', 'chevron-right', class: 'icon')
+
+
+        %h3.mypage-nav-head
+          設定
+        %ul.mypage-nav-list
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              プロフィール
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              発送元・お届け先住所変更
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              支払い方法
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              メール/パスワード
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              本人情報
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+          %li
+            %a.mypage-nav-list-item{href: "#"}
+              ログアウト
+              %i.icon-chevron-right
+                = icon('fas', 'chevron-right', class: 'icon')
+        
+
+
+
+        -# %li
+        -#   .mypage-nav-list-item
+        -#     = link_to "ログアウト" "#" class:'icon' do
+        -#       %i.icon-chevron-right
+        -#         = icon('fas', 'chevron-right', class: 'icon')
+        
+        
+
+
+            
+        
+
+       
+    
+
+       
+    
+    .mypage__contents__main
+      .mypage-user-info
+        .mypage-user-info__content
+          .mypage-user-info__content--icon
+            = image_tag 'member_photo_noimage_thumb.png', alt: 'logo', class: 'user-logo'
+          .mypage-user-info__content--detail
+            %div ジョシュ
+            .mypage-number
+              %span
+                評価
+                %span.bold 0
+              %span
+                出品数
+                %span.bold 0
+
+      .mypage-tab-container-notification-todo
+        %ul.mypage-tabs
+          %li.active
+            %h3
+              %a{"data-toggle" => "tab", href: "#"}
+                お知らせ
+          %li
+            %h3
+              %a{"data-toggle" => "tab", href: "#"}
+                やることリスト
+        .tab-content
+
+      .mypage-tab-container
+        .mypage-tab-head
+          購入した商品
+        %ul.mypage-tabs
+          %li.active
+            %h3
+              %a{"data-toggle" => "tab", href: "#"}
+                取引中
+          %li
+            %h3
+              %a{"data-toggle" => "tab", href: "#"}
+                過去の取引
+        .tab-content
+
   .mypage__banner
+    app-banner
   .mypage__footer
-
+    footer
     
-    
+  
+  

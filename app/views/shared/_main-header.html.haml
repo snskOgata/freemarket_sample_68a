@@ -23,45 +23,53 @@
           = link_to "#", id: "catBtn" do
             カテゴリー
           .tree.displayNone
-            %ul.categoryTree
-              %li.categoryTree--item
-                = link_to "#", id: 1  do
+            %ul#menu-content
+              %li.first-content
+                = link_to "#" do
                   レディース
-              %li.categoryTree--item
-                = link_to "#", id: 2 do
+                  %ul.second-content 
+                    = link_to "#" do
+                      トップス
+                    %li
+                      %ul
+                        %li.third-content
+                          Tシャツ/カットソー（半袖/袖なし）
+                  
+              %li.first-content
+                = link_to "#" do
                   メンズ
-              %li.categoryTree--item
-                = link_to "#", id: 3 do
+              %li.first-content
+                = link_to "#" do
                   ベビー・キッズ
-              %li.categoryTree--item
-                = link_to "#", id: 4 do
+              %li.first-content
+                = link_to "#" do
                   インテリア・住まい・小物
-              %li.categoryTree--item
-                = link_to "#", id: 5 do
+              %li.first-content
+                = link_to "#" do
                   本・音楽・ゲーム
-              %li.categoryTree--item
-                = link_to "#", id: 6 do
+              %li.first-content
+                = link_to "#" do
                   おもちゃ・ホビー・グッズ
-              %li.categoryTree--item
-                = link_to "#", id: 7 do
+              %li.first-content
+                = link_to "#" do
                   コスメ・香水・美容
-              %li.categoryTree--item
-                = link_to "#", id: 8 do
+              %li.first-content
+                = link_to "#" do
                   家電・スマホ・カメラ
-              %li.categoryTree--item
-                = link_to "#", id: 9 do
+              %li.first-content
+                = link_to "#" do
                   スポーツ・レジャー
-              %li.categoryTree--item
-                = link_to "#", id: 10 do
+              %li.first-content
+                = link_to "#" do
                   ハンドメイド
-              %li.categoryTree--item
-                = link_to "#", id: 11 do
+              %li.first-content
+                = link_to "#" do
                   チケット
-              %li.categoryTree--item
-                = link_to "#", id: 12 do
+              %li.first-content
+                = link_to "#" do
                   自転車・オートバイ
-              %li.categoryTree--item
-                = link_to "#", id: 13 do
+              %li.first-content
+                = link_to "#" do
                   その他
 
         %li.listsLeft__item

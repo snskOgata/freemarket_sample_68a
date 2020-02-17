@@ -91,16 +91,16 @@ describe Profile do
       expect(profile.errors[:birthday]).to include("can't be blank")
     end
 
-    # 14. birthdayのdayが[30]だと登録できないこと
+    # 14. birthdayのmounthが[1],dayが[32]だと登録できないこと
     it "is invalid a birthday with a day that has value of [30]" do
-      profile = build(:profile, birthday: "2020-02-30")
+      profile = build(:profile, birthday: "2020-01-32")
       profile.valid?
       expect(profile.errors[:birthday]).to include("can't be blank")
     end
 
-    # 15. birthdayのdayが[29]だと登録できること
-    it "is valid a birthday with a day that has value of [29]" do
-      profile = build(:profile, birthday: "2020-02-29")
+    # 15. birthdayのmounthが[1],dayが[31]だと登録できること
+    it "is valid a birthday with a day that has value of [31]" do
+      profile = build(:profile, birthday: "2020-01-31")
       profile.valid?
       expect(profile).to be_valid
     end

@@ -71,6 +71,20 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("is too short (minimum is 7 characters)")
     end
+
+    # 11. nicknameが20字なら登録できること
+    it "is valid with a nickname of 20 " do
+      user = build(:user, nickname: "01234567890123456789")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    # 2. nicknameが21字だと登録できないこと
+    it "is invalid with a nickname of 21" do
+      user = build(:user, nickname: "012345678901234567890")
+      user.valid?
+      expect(user.errors[:nickname]).to include("is too long (maximum is 20 characters)")
+    end
   end
 
 end

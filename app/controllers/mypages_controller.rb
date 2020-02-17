@@ -5,9 +5,6 @@ class MypagesController < ApplicationController
   def new
   end
 
-  def destroy
-  end
-
   def logout
   end
 

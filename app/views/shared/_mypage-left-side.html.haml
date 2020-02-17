@@ -4,83 +4,83 @@
       -# リンク指定
       %li
         .mypage-nav-list-item
-          マイページ
-          -# =link_to("マイページ" "#" class: "link") 
+          =link_to("マイページ" ,mypages_index_path ,class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li     
+        .mypage-nav-list-item
+          =link_to("お知らせ", root_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li     
+        .mypage-nav-list-item
+          =link_to("やることリスト", root_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li     
+        .mypage-nav-list-item
+          =link_to("出品する", root_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li     
+        .mypage-nav-list-item
+          =link_to("出品した商品 - 出品中", root_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li     
+        .mypage-nav-list-item
+          =link_to("出品した商品 - 取引中", root_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li     
+        .mypage-nav-list-item
+          =link_to("出品した商品 - 売却済み", root_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')      
+      %li
+        .mypage-nav-list-item
+          =link_to("購入した商品 - 取引中", root_path, class: "link") 
           %i.icon-chevron-right
           = icon('fas', 'chevron-right', class: 'icon')
       %li
-        %a.mypage-nav-list-item{href: "#"}
-          お知らせ
+        .mypage-nav-list-item
+          =link_to("購入した商品 - 過去の取引", root_path, class: "link") 
           %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          やることリスト
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          出品する
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          出品した商品 - 出品中
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          出品した商品 - 取引中
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          出品した商品 - 売却済み
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          購入した商品 - 取引中
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          購入した商品 - 過去の取引
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
+          = icon('fas', 'chevron-right', class: 'icon')
+      
     %h3.mypage-nav-head
       設定
     %ul.mypage-nav-list
       %li
-        %a.mypage-nav-list-item{href: "#"}
-          プロフィール
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          発送元・お届け先住所変更
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      -# リンク指定
-      %li
         .mypage-nav-list-item
-          =link_to("支払い方法", root_path, class: "link") 
+          =link_to("プロフィール", root_path, class: "link") 
           %i.icon-chevron-right
           = icon('fas', 'chevron-right', class: 'icon')
       %li
-        %a.mypage-nav-list-item{href: "#"}
-          メール/パスワード
+        .mypage-nav-list-item
+          =link_to("発送元・お届け先住所変更", root_path, class: "link") 
           %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
-      %li
-        %a.mypage-nav-list-item{href: "#"}
-          本人情報
-          %i.icon-chevron-right
-            = icon('fas', 'chevron-right', class: 'icon')
+          = icon('fas', 'chevron-right', class: 'icon')
       -# リンク指定
       %li
         .mypage-nav-list-item
-          =link_to("ログアウト", destroy_user_session_path, method: :delete, class: "link") 
+          =link_to("支払い方法", mypages_index_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li
+        .mypage-nav-list-item
+          =link_to("メール/パスワード", root_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li
+        .mypage-nav-list-item
+          =link_to("本人情報", root_path, class: "link") 
+          %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      -# リンク指定
+      %li
+        .mypage-nav-list-item
+          =link_to("ログアウト", mypages_logout_path, class: "link") 
           %i.icon-chevron-right
           = icon('fas', 'chevron-right', class: 'icon')
           

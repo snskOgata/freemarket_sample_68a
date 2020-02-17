@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_13_030353) do
+ActiveRecord::Schema.define(version: 2020_02_17_065253) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "ancestry"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "seller_id", null: false
+    t.string "name", limit: 40, null: false
+    t.text "detail", null: false
+    t.integer "condition_id", null: false
+    t.integer "delivery_payer_id", null: false
+    t.integer "prefecture_id", null: false
+    t.integer "prep_days_id", null: false
+    t.integer "price", null: false
+    t.integer "status_id", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["seller_id"], name: "index_sales_on_seller_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -33,4 +48,5 @@ ActiveRecord::Schema.define(version: 2020_02_13_030353) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "sales", "users", column: "seller_id"
 end

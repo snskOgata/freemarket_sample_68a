@@ -5,4 +5,5 @@ class Sale < ApplicationRecord
 
   has_many: :category_sales
   has_many: :categories, through: :category_sales
+  has_many: :photos
 end

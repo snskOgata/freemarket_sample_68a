@@ -77,35 +77,35 @@ describe Address do
       expect(address.errors[:postal_code]).to include("is invalid")
     end
 
-    # 12. postal_codeが1234-1234だと登録できないこと
+    # 12. postal_codeが1231234だと登録できないこと
     it "is invalid with that postal_code value 1231234" do
       address = build(:address, postal_code: "1231234")
       address.valid?
       expect(address.errors[:postal_code]).to include("is invalid")
     end
 
-    # 13. prefecture_idが0以下だと登録できないこと
+    # 13. prefecture_idが0だと登録できないこと
     it "is invalid with that prefecture_id value 0" do
       address = build(:address, prefecture_id: "0")
       address.valid?
       expect(address.errors[:prefecture_id]).to include("must be greater than 0")
     end
 
-    # 13. prefecture_idが48以上だと登録できないこと
+    # 13. prefecture_idが48だと登録できないこと
     it "is invalid with that prefecture_id value 48" do
       address = build(:address, prefecture_id: "48")
       address.valid?
       expect(address.errors[:prefecture_id]).to include("must be less than 48")
     end
 
-    # 14. prefecture_idが1だと登録できないこと
+    # 14. prefecture_idが1だと登録できること
     it "is valid with that prefecture_id value 1" do
       address = build(:address, prefecture_id: "1")
       address.valid?
       expect(address).to be_valid
     end
 
-    # 15. prefecture_idが48以上だと登録できないこと
+    # 15. prefecture_idが47だと登録できないこと
     it "is valid with that prefecture_id value 47" do
       address = build(:address, prefecture_id: "47")
       address.valid?

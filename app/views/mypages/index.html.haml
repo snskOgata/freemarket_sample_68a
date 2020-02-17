@@ -1,0 +1,41 @@
+.mypage
+  .mypage__header
+    header
+  .mypage__sub-bar
+    %ul
+      %li{itemscope: "", itemtype:"#"}
+        %a{href: "#", itemprop: "#"}
+          %span{itemprop: "title"} フリマ
+        %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li{itemscope: "", itemtype:"#"}
+        %a{href: "#", itemprop: "#"}
+          %span{itemprop: "title"} マイページ
+        %i.icon-chevron-right
+          = icon('fas', 'chevron-right', class: 'icon')
+      %li{itemscope: "", itemtype:"#"}
+        %span{itemprop: "title"} 支払い方法
+
+  .mypage__contents.clearfix
+    = render "shared/mypage-left-side"
+    .mypage__contents__main
+      .credit-card
+        .credit-card__header
+          支払い方法
+        .credit-card__content
+          .select-card
+            %h3
+              クレジットカード一覧
+          .add-card
+            .add-card__click
+              =link_to("クレジットカードを追加する", root_path, class: "link") 
+
+  .mypage__banner
+    app-banner
+  .mypage__footer
+    footer
+
+
+
+
+

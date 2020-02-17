@@ -4,4 +4,11 @@ Rails.application.routes.draw do
 
   resources :category, controller: :categories, only: [:index, :show]
   resources :users, only: :show
+  resources :mypages, only: [:index, :new, :destroy] do
+    collection do
+      get 'logout'
+    end
+  end
 end
+
+

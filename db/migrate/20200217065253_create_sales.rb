@@ -1,6 +1,7 @@
 class CreateSales < ActiveRecord::Migration[5.2]
   def change
     create_table :sales do |t|
+      t.references :seller, foreign_key: { to_table: :users }, null: false
       t.string :name, null: false, limit: 40
       t.text :detail, null: false
       t.integer :condition_id, null: false

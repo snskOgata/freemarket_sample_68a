@@ -1,0 +1,2 @@
+class CategorySale < ApplicationRecord
+end

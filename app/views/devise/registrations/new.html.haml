@@ -1,39 +1,36 @@
-#account-page.account-page
-  .account-page__inner.clearfix
-    .account-page__inner--left.account-page__header
-      %h2 Create Account
-      %h5 新規アカウントの作成
-      = render "devise/shared/links"
-    .account-page__inner--right.user-form
-      = form_for(@user, url: user_registration_path) do |f|
-        .field
-          .field-label
-            = f.label :nickname
-          .field-input
-            = f.text_field :nickname, autofocus: true
-        - show_errors(@user, :nickname).each do |error|
-          = error
-        .field
-          .field-label
-            = f.label :email,"email"
-          .field-input
-            = f.email_field :email
-        - show_errors(@user, :email).each do |error|
-          = error
-        .field
-          .field-label
-            = f.label :password,"password"
-            %i (英数字7文字以上)
-          .field-input
-            = f.password_field :password, autocomplete: "off"
-        - show_errors(@user, :password).each do |error|
-          = error
-        .field
-          .field-label
-            = f.label :password_confirmation,"password"
-          .field-input
-            = f.password_field :password_confirmation, autocomplete: "off"
-        - show_errors(@user, :password_confirmation).each do |error|
-          = error
-        .actions
-          = f.submit "Create Account", class: 'btn'
+%h2 Create Account
+%h5 新規アカウントの作成
+= render "devise/shared/links"
+.account-page__inner--right.user-form
+  = form_for(@user, url: user_registration_path) do |f|
+    .field
+      .field-label
+        = f.label :nickname
+      .field-input
+        = f.text_field :nickname, autofocus: true
+    - show_errors(@user, :nickname).each do |error|
+      = error
+    .field
+      .field-label
+        = f.label :email,"email"
+      .field-input
+        = f.email_field :email
+    - show_errors(@user, :email).each do |error|
+      = error
+    .field
+      .field-label
+        = f.label :password,"password"
+        %i (英数字7文字以上)
+      .field-input
+        = f.password_field :password, autocomplete: "off"
+    - show_errors(@user, :password).each do |error|
+      = error
+    .field
+      .field-label
+        = f.label :password_confirmation,"password"
+      .field-input
+        = f.password_field :password_confirmation, autocomplete: "off"
+    - show_errors(@user, :password_confirmation).each do |error|
+      = error
+    .actions
+      = f.submit "Create Account", class: 'btn'

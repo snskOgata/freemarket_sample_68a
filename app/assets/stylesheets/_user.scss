@@ -147,6 +147,7 @@
   }
 }
 
+// マイページ
 .mypage{
   background-color: #f5f5f5;
   * {
@@ -187,9 +188,11 @@
     
   }
 
+  
   &__contents{
     background-color: #f5f5f5;
-    margin: 40px auto ;
+    margin: 0 auto ;
+    padding: 20px 0 20px;
     width: 1020px;
 
     &__left{
@@ -269,13 +272,6 @@
             .user-logo{
               height: 60px;
               width: 60px;
-
-              // position: absolute;
-              // top: 0;
-              // left: 0;
-              // right: 0;
-              // bottom: 0;
-              // margin: auto;
             }
           }
           &--detail{
@@ -357,7 +353,7 @@
         background-color: white;
         padding: 60px;
         margin-top: 30px;
-        // 今だけ
+        
         &__form{
           line-height: 48px;
           
@@ -371,11 +367,7 @@
           }
         }
       }    
-
-
-
-
-
+      
       // 支払選択ページ
       .credit-card{
         background-color: lightpink;
@@ -411,10 +403,6 @@
           }
         }
       }
-
-
-
-
 
       // クレカ情報入力
       .add-credit-card{
@@ -541,24 +529,10 @@
       content: "";
       display: block;
     }
-    
   }
 
-
-
-
-
-
-
-  &__banner{
-    background-color: lightyellow;
-    height: 50px;
-  }
-  &__footer{
-    background-color: lightsalmon;
-    height: 50px;
-  }
 }
+
 .credit-card{
   background-color: lightpink;
   margin-top: 30px;

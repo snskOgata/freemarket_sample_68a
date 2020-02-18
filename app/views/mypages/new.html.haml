@@ -1,26 +1,5 @@
+= render "shared/main-header"
 .mypage
-  .mypage__header
-    header
-  .mypage__sub-bar
-    %ul
-      %li{itemscope: "", itemtype:"#"}
-        %a{href: "#", itemprop: "#"}
-          %span{itemprop: "title"} フリマ
-        %i.icon-chevron-right
-          = icon('fas', 'chevron-right', class: 'icon')
-      %li{itemscope: "", itemtype:"#"}
-        %a{href: "#", itemprop: "#"}
-          %span{itemprop: "title"} マイページ
-        %i.icon-chevron-right
-          = icon('fas', 'chevron-right', class: 'icon')
-      %li{itemscope: "", itemtype:"#"}
-        %a{href: "#", itemprop: "#"}
-          %span{itemprop: "title"} 支払い方法
-        %i.icon-chevron-right
-          = icon('fas', 'chevron-right', class: 'icon')   
-      %li{itemscope: "", itemtype:"#"}
-        %span{itemprop: "title"} クレジットカード情報入力
-
   .mypage__contents.clearfix
     = render "shared/mypage-left-side"
     .mypage__contents__main
@@ -46,7 +25,15 @@
             .add-card
               .add-card__click
                 %input{type: "submit", class: "submit-btn", value: "追加する"}
-  .mypage__banner
-    app-banner
-  .mypage__footer
-    footer
+.appBanner
+  .inner
+    %h2.inner__title
+      だれでもかんたん、人生を変えるフリマアプリ
+    %p.inner__text
+      今すぐ無料ダウンロード
+    .inner__icon
+      = link_to "#" do
+        = image_tag 'AppStore.png', alt: 'AppStore', class: 'aBtn'
+      = link_to "#" do
+        = image_tag 'GooglePlayBadge.png', alt: 'GooglePlay', class: 'gBtn'
+= render "shared/main-footer"

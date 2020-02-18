@@ -191,117 +191,14 @@ header {
                 }
               }
             }
-            #menu-cotent > li > a {
-              position: relative;
-              display: block;
-              height: 100%;
-              padding-left: 15px;
-              padding-right: 15px;
-              line-height: 32px;
-              color: $dark_gray;
-              font-size: 100%;
-              text-decoration: none;
-              z-index: 2;
-              
-            }
-            #menu-content > li > a:hover{
-              color: $dark_gray;
-              opacity: 1;
-              display: inline-block;
-              // background-color: #fff;
-            }
-            #menu-content > li > ul.second-content{
-              visibility: hidden;
-              position: absolute;
-              top: 0;
-              margin: 0;
-              padding-left: 0;
-              list-style-type: none;
-              z-index: -100;
-              height: 38px;
-            }
-            #menu-content > li:hover > ul.second-content{
-              visibility: visible;
-              top: -2px;
-              left: 240px;
-              z-index: 100;
-              transition: all .3s;
-              display: inline-block;
-              color: $dark_gray;
-              background-color: white;
-            }
-            #menu-content > li > ul.second-content > li{
-              left: 240px;
-              width: 240px;
-              height: 40px;
-              position: relative;
-              color: $dark_gray;
-              top: -40px;
-            }
-            #menu-content > li > ul.second-content > li > a{
-              display: block;
-              line-height: 32px;
-              color: $dark_gray;
-              font-size: 100%;
-              text-decoration: none;
-            }
-            #menu-content > li > ul.second-content > li > a:hover{
-              color: $dark_gray;
-            }
-            /* 3階層目 */
-            li {
-              list-style-type: none;
-              background-color: white;
-              padding-left: 10px;
-              width: 240px;
-              cursor: pointer;
-            }
-            
-            ul.third-content {
-              position: absolute;
-              visibility: hidden;
-            }
-            
-            #menu-content > li.first-content > ul.second-content > li > ul.third-content {
-              visibility: hidden;
-              position: absolute;
-              top: 0;
-              margin: 0;
-              padding-left: 10px;
-              list-style-type: none;
-              z-index: -200;
-            }
-            #menu-content > li > ul.second-content > li:hover > ul.third-content {
-              visibility: visible;
-              top: 9px;
-              left: 240px;
-              z-index: 200;
-              transition: all .3s;
-              color: $dark_gray;
-              background-color: white;
-            }
-            #menu-content > li > ul.second-content > li > ul.third-content > li{
-              text-align: center;
-              width: 200px;
-              height: 40px;
-              position: relative;
-              // color: #333;
-            }
-            #menu-content > li > ul.second-content > li > ul.third-content > li > a{
-              display: block;
-              line-height: 32px;
-              // color: #333;
-              font-size: 100%;
-              text-decoration: none;
-            }
-            #menu-content > li > ul.second-content > li > ul.third-content > li > a:hover{
-              color: $dark_gray;
-            }
+
+           
           }
         }
       }
     }
   }
+
 
     .listsRight {
       margin-left: auto;

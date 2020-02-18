@@ -109,12 +109,12 @@
       ピックアップカテゴリー
     .productBox
       .productHead
-        = link_to "#"
+        = link_to "#" do
           %h3.title
             新規投稿商品
       .productLists
         .productList
-          = link_to "/products/3"
+          = link_to "/products/3" do
             %figure.productList--img
               = image_tag 'product3.png', alt: 'product3', class: 'product3'
             .productList--body
@@ -130,7 +130,7 @@
                 %p
                   (税込)
         .productList
-          = link_to "/products/2"
+          = link_to "/products/2" do
             %figure.productList--img
               = image_tag 'product2.png', alt: 'product2', class: 'product2'
             .productList--body
@@ -147,7 +147,7 @@
                   (税込)
                   
         .productList
-          = link_to "/products/1"
+          = link_to "/products/1" do
             %figure.productList--img
               = image_tag 'product1.png', alt: 'product1', class: 'product1'
             .productList--body
@@ -168,12 +168,12 @@
       ピックアップカテゴリー
     .productBox
       .productHead
-        = link_to "/products/1"
+        = link_to "/products/1" do
           %h3.title
             アーカイバ
       .productLists
         .productList
-          = link_to "/products/3"
+          = link_to "/products/3" do
             %figure.productList--img
               = image_tag 'product3.png', alt: 'product3', class: 'product3'
             .productList--body
@@ -189,7 +189,7 @@
                 %p
                   (税込)
         .productList
-          = link_to "/products/2"
+          = link_to "/products/2" do
             %figure.productList--img
               = image_tag 'product2.png', alt: 'product2', class: 'product2'
             .productList--body
@@ -205,7 +205,7 @@
                 %p
                   (税込)
         .productList
-          = link_to "/products/1"
+          = link_to "/products/1" do
             %figure.productList--img
               = image_tag 'product1.png', alt: 'product1', class: 'product1'
             .productList--body
@@ -233,8 +233,4 @@
       = link_to "#" do
         = image_tag 'GooglePlayBadge.png', alt: 'GooglePlay', class: 'gBtn'
 
-
 = render "shared/main-footer"
-
-
-  

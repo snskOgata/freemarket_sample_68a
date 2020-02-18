@@ -110,9 +110,9 @@ header {
           width: 36px;
           border: 0;
           cursor: pointer;
-          background-color: #3CCACE;
+          background-color: $blue_green;
           padding: 8px;
-          color: #fff;
+          color:white;
         }
         
       }
@@ -148,7 +148,7 @@ header {
           padding: 0;
           .category-list {
             a {
-              color: #333;
+              color: $dark_gray;
               text-decoration: none;
               line-height: 32px;
               background-position: center right;
@@ -167,12 +167,12 @@ header {
           .tree {
             z-index: 2;
             position: absolute;
-            background-color: #fff;
+            background-color:white;
             width: 240px;
             top: 40px;
             
             #menu-content {
-              background-color: #fff;
+              background-color: white;
               display: flex;
               flex-direction: column;
               position: relative;
@@ -181,7 +181,7 @@ header {
               .first-content {
                 position: relative;
                 a {
-                  color: #333;
+                  color: $dark_gray;
                   text-decoration: none;
                   line-height: 32px;
                   background-position: center right;
@@ -198,14 +198,14 @@ header {
               padding-left: 15px;
               padding-right: 15px;
               line-height: 32px;
-              color: #333;
+              color: $dark_gray;
               font-size: 100%;
               text-decoration: none;
               z-index: 2;
               
             }
             #menu-content > li > a:hover{
-              color: #333;
+              color: $dark_gray;
               opacity: 1;
               display: inline-block;
               // background-color: #fff;
@@ -227,31 +227,31 @@ header {
               z-index: 100;
               transition: all .3s;
               display: inline-block;
-              color: #333;
-              background-color: #fff;
+              color: $dark_gray;
+              background-color: white;
             }
             #menu-content > li > ul.second-content > li{
               left: 240px;
               width: 240px;
               height: 40px;
               position: relative;
-              color: #333;
+              color: $dark_gray;
               top: -40px;
             }
             #menu-content > li > ul.second-content > li > a{
               display: block;
               line-height: 32px;
-              color: #333;
+              color: $dark_gray;
               font-size: 100%;
               text-decoration: none;
             }
             #menu-content > li > ul.second-content > li > a:hover{
-              color: #333;
+              color: $dark_gray;
             }
             /* 3階層目 */
             li {
               list-style-type: none;
-              background-color: #fff;
+              background-color: white;
               padding-left: 10px;
               width: 240px;
               cursor: pointer;
@@ -277,8 +277,8 @@ header {
               left: 240px;
               z-index: 200;
               transition: all .3s;
-              color: #333;
-              background-color: #fff;
+              color: $dark_gray;
+              background-color: white;
             }
             #menu-content > li > ul.second-content > li > ul.third-content > li{
               text-align: center;
@@ -295,7 +295,7 @@ header {
               text-decoration: none;
             }
             #menu-content > li > ul.second-content > li > ul.third-content > li > a:hover{
-              color: #333;
+              color: $dark_gray;
             }
           }
         }
@@ -307,7 +307,7 @@ header {
       margin-left: auto;
       display: flex;
       &__item {
-        color: #333;
+        color: $dark_gray;
         line-height: 38px;
         padding: 0 0 0 16px;
         &--login {
@@ -326,7 +326,7 @@ ul {
 }
 
 a {
-  color: #000;
+  color: black;
   text-decoration: none;
 }
 
@@ -356,12 +356,12 @@ a {
         text-shadow: 0 0 5px rgba(0,0,0,0.4);
         font-size: 60px;
         line-height: 1.2;
-        color: #fff;
+        color: white;
       }
       &__text {
         text-shadow: 0 0 5px rgba(0,0,0,0.4);
         font-size: 18px;
-        color: #fff;
+        color: white;
         line-height: 1.77778;
         margin: 16px 0 0 0;
       }
@@ -412,7 +412,7 @@ a {
       content: "";
       width: 70px;
       height: 4px;
-      background-color: #3CCACE;
+      background-color: $blue_green;
       position: absolute;
       bottom: 0;
       left: 50%;
@@ -444,8 +444,8 @@ a {
             text-align: center;
             margin: 0 5px 0 0;
             padding: 10px 20px;
-            background-color: #3CCACE;
-            color: #fff;
+            background-color: $blue_green;
+            color: white;
           }
           .img {
             width: 100%;
@@ -459,7 +459,7 @@ a {
           line-height: 50px;
           margin: 0 0 0 2px;
           span {
-            color: #3CCACE;
+            color: $blue_green;
           }
         }
         &__description {
@@ -483,7 +483,7 @@ a {
     display: flex;
     align-items: center;
     &__inner {
-      color: #fff;
+      color: white;
       text-shadow: 0 0 5px rgba(0,0,0,0.4);
       text-align: left;
       max-width: 1040px;
@@ -523,7 +523,7 @@ a {
   // トップキーフィーチャーズ
   .topKeyFeatures {
     padding: 60px 100px;
-    background-color: #fff;
+    background-color: white;
     
     .head {
       font-size: 27px;
@@ -584,7 +584,7 @@ a {
   // ピックアップコンテインナー
   .pickupContainer {
     padding: 80px 0 0;
-    background-color: #f8f8f8;
+    background-color: white;
     height: 100%;
     .head {
       text-align: center;
@@ -598,7 +598,7 @@ a {
         a{
           font-size: 24px;
           text-decoration: none;
-          color: #3CCACE;
+          color: $blue_green;
           .title {
             font-weight: bold;
           }
@@ -635,7 +635,7 @@ a {
           }
           &--body {
             background-color: white;
-            color: #333;
+            color: $dark_gray;
             padding: 16px;
             .name {
               overflow: hidden;
@@ -667,7 +667,7 @@ a {
             }
           }
           a {
-            background-color: #fff;
+            background-color: white;
             display: inline-block;
           }
         }
@@ -695,7 +695,7 @@ a {
   background-position: center;
   background-image: url(pict/bg-appBanner-pict.jpg);
   .inner {
-    color: #fff;
+    color: white;
     text-align: center;
     &__title {
       text-shadow: 0 0 5px rgba(0,0,0,0.4);
@@ -738,8 +738,8 @@ a {
 // フッター
 .footer {
   padding: 60px 0;
-  color: #fff;
-  background-color: #272727;
+  color: white;
+  background-color: $lamp_black;
   text-align: center;
   .contents {
     max-width: 840px;
@@ -751,7 +751,7 @@ a {
       width: calc(1 / 3 * 100%);
       margin: 0 2% 0 0;
       li {
-        color: #000;
+        color:black;
         text-decoration: none;
         // color: #fff;
         // text-decoration: none;
@@ -764,7 +764,7 @@ a {
         font-weight: bold;
       }
       a {
-        color: #fff;
+        color: white;
         text-decoration: none;
         font-size: 12px;
         line-height: 32px;
@@ -806,7 +806,7 @@ a {
     position: fixed;
     padding: 15px;
     &__text {
-      color: #fff;
+      color: white;
       display: block;
       font-size: 18px;
       text-decoration: none;

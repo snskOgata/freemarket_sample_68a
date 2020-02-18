@@ -9,7 +9,7 @@ class CreateSales < ActiveRecord::Migration[5.2]
       t.integer :prep_days,     null: false
       t.integer :price,         null: false
       t.integer :status,        null: false
-      t.references :seller,     foreign_key: { to_table: :users}
+      t.references :seller,     foreign_key: { to_table: :users }
       t.timestamps
     end
   end

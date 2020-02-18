@@ -1,6 +1,5 @@
-class Controller < ApplicationController
+class SalesController < ApplicationController
   def index
-    @sale = Sale.new
-    
+    @sales = Sale.where(id: 1..3)
   end
 end

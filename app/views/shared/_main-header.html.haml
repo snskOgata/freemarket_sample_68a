@@ -19,21 +19,23 @@
     -# ナビゲーションバー
     .nav
       %ul.listsLeft
-        %li.listsLeft__item.listsLeft__item--first
-          = link_to "#", id: "catBtn" do
-            カテゴリー
-          .tree.displayNone
-            %ul#menu-content
-              %li.first-content
-                = link_to "#" do
-                  レディース
-                  %ul.second-content 
+        %li.listsLeft__left
+          .menu
+            = link_to "#" do
+              カテゴリー
+              .menu-content
+                %ul
+                  %li.first-content
                     = link_to "#" do
-                      トップス
-                    %li
-                      %ul
-                        %li.third-content
-                          Tシャツ/カットソー（半袖/袖なし）
+                      レディース
+                    %ul
+                      %li.second-content
+                        = link_to "#" do
+                          トップス 
+                        %ul
+                          %li.third-content
+                            = link_to "#" do
+                              Tシャツ/カットソー（半袖/袖なし）
                   
               %li.first-content
                 = link_to "#" do

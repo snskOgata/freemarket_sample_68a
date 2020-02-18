@@ -1,10 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
 * Ruby version
 
 2.5.1
@@ -27,7 +22,6 @@ Rails 5.2.4.1
 
 * Deployment instructions
 
-* ...
 
 # フリマアプリ DB設計
 ## usersテーブル
@@ -39,9 +33,9 @@ Rails 5.2.4.1
 ### Association
 - has_many : sales
 - has_many : orders
-- has_many : credits
+- has_many : cards
 - has_one : profile
-- has_one : user_address
+- has_one : address
 
 ## profiles テーブル
 |Column|Type|Options|
@@ -55,7 +49,7 @@ Rails 5.2.4.1
 ### Association
 - belongs_to : user
 
-## user_addressテーブル
+## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string|null: false|
@@ -68,13 +62,11 @@ Rails 5.2.4.1
 ### Association
 - belongs_to :user
 
-## credits テーブル
+## cards テーブル
 |Column|Type|Options|
 |------|----|-------|
-|number|string|null:false|
-|expiration_date|date|null:false|
-|name|string|null:false|
-|security|string|null:false|
+|customer_id|string|null:false|
+|card_id|string|null:false|
 |user|references|foreign_key: true|
 ### Association
 - belongs_to : user
@@ -84,32 +76,34 @@ Rails 5.2.4.1
 |------|----|-------|
 |name|string|null: false|
 |detail|text|null: false|
-|price|integer|null: false|
+|condition_id|integer|null: false|
 |delivery_payer|integer|null: false|
-|from|integer|null: false|
+|prefecture|integer|null: false|
 |prep_days|integer|null: false|
-|user|references|foreign_key: true|
+|price|integer|null: false|
+|status|integer|null: false, default:true|
+|seller|references|foreign_key: {to_column: :users}|
 ### Association
 - has_many :images
-- has_many :categories, source: category
-- belongs_to :user
-- belongs_to :order
+- has_many :category_sales
+- has_many :categories, through: category_sales
+- belongs_to :seller, class_name "user"
+- has_one :order
 
 ## ordersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user|references|forein_key: true|
+|buyer|references|forein_key: {to_table: :users}|
 |sale|references|forein_key: true|
 ### Association
-- has_many :images
-- has_many :categories, source: category
-- belongs_to :user
+- belongs_to :buyer, class_name "user"
 - belongs_to :sale
 
 ## photosテーブル
 |Column|Type|Options|
 |------|----|-------|
 |image|string|
+|sale|references|foreign_key: true|
 ### Association
 - belongs_to :sale
 
@@ -119,7 +113,17 @@ Rails 5.2.4.1
 |name|string|null: false|
 |ancestry|string|
 ### Association
-- has_many :sale
+- has_many :category_sales
+- has_many :sale, through: category_sales
 - has_ancestry
 
-[![Image from Gyazo](https://i.gyazo.com/b60a0610125ab27a2d373eaf56045932.png)](https://gyazo.com/b60a0610125ab27a2d373eaf56045932)
+## category_salesテーブル
+|Column|Type|Options|
+|------|----|-------|
+|category|references|forein_key: true|
+|sale|references|forein_key: true|
+### Association
+- belongs_to :category
+- belongs_to :sale
+
+[![Image from Gyazo](https://i.gyazo.com/b354b717df40fa3dc76eac97f25e2668.png)](https://gyazo.com/b354b717df40fa3dc76eac97f25e2668)

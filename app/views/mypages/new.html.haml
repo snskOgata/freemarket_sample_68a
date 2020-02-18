@@ -1,0 +1,30 @@
+= render "shared/main-header"
+.mypage
+  .mypage__contents.clearfix
+    = render "shared/mypage-left-side"
+    .mypage__contents__main
+      .add-credit-card
+        .add-credit-card__header
+          クレジットカード情報入力
+        .add-credit-card__content
+          %form.registers
+            .registers__card-num
+              %span.heading カード番号
+              %span.form-require 必須
+              %input{type: "text", class: "card-num-box", placeholder: "半角数字のみ"}
+            .registers__exp-date
+              %span.heading 有効期限
+              %span.form-require 必須
+              .expire
+                %input{type: "text", class: "exp-month-box"}月
+                %input{type: "text", class: "exp-year-box"}年
+            .registers__security-num
+              %span.heading セキュリティコード
+              %span.form-require 必須
+              %input{type: "text", class: "security-num-box", placeholder: "カード背面4桁もしくは3桁の番号"}
+            .add-card
+              .add-card__click
+                %input{type: "submit", class: "submit-btn", value: "追加する"}
+= render "shared/appBanner"
+
+= render "shared/main-footer"

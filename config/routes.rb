@@ -11,5 +11,14 @@ Rails.application.routes.draw do
   resources :users, only: [:edit, :update, :destroy]
   root to: 'sales#index'
   resources :category, controller: :categories, only: [:index, :show]
+  resources :users, only: :show
   resources :sales, only: :new
+  namespace :mypages do
+    get "index"
+    get "new"
+    get "logout"
+  end
+
 end
+
+

@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root to: 'homes#show'
   # resources :sales, controller: :sales, only: [:index]
   resources :category, controller: :categories, only: [:index, :show]
+  resources :sales, only: :new
 end

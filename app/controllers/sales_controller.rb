@@ -1,5 +1,10 @@
 class SalesController < ApplicationController
+  
   def index
-    @sales = Sale.where(id: 1..3)
+    @sales = Sale.last(id: 3)
   end
+
+  def new
+  end
+  
 end

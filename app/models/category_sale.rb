@@ -1,4 +1,4 @@
 class CategorySale < ApplicationRecord
-  belongs_to: :category
-  belongs_to: :sale
+  belongs_to :category
+  belongs_to :sale
 end

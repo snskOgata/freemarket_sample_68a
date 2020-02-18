@@ -10,6 +10,5 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:edit, :update, :destroy]
   root to: 'sales#index'
-  root to: 'homes#show'
   resources :category, controller: :categories, only: [:index, :show]
 end

@@ -81,3 +81,4 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'font-awesome-sass'
 gem 'enum_help'
+gem "jquery-rails"

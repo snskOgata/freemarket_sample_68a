@@ -1,0 +1,87 @@
+.pcHeader
+  .headerInner
+
+    -# メインヘッダー
+    .mainHeader
+      %h1.icon
+        = link_to "#" do
+          = image_tag 'logo.png', alt: 'logo',  class: 'logo'
+      .searchBox
+        %form{action: ""}
+          %input{name: "utf8", type: "hidden"}/
+          %input.searchBox--input{id: "searchInput", name: "key", placeholder: "キーワードから探す"}/
+          %button{type: "submit"}/
+          .searchBox__icon
+            = image_tag 'icon/icon-search.png', alt: 'icon-search', size: "20x20", class: 'icon-search'
+        %input{type: "hidden", name: "authenticity_token", value: ""}/
+      %ul.resultLists
+
+    -# ナビゲーションバー
+    .nav
+      %ul.listsLeft
+        %li.listsLeft__item.listsLeft__item--first
+          = link_to "#", id: "catBtn" do
+            カテゴリー
+          .tree.displayNone
+            %ul#menu-content
+              %li.first-content
+                = link_to "#" do
+                  レディース
+                  %ul.second-content 
+                    = link_to "#" do
+                      トップス
+                    %li
+                      %ul
+                        %li.third-content
+                          Tシャツ/カットソー（半袖/袖なし）
+                  
+              %li.first-content
+                = link_to "#" do
+                  メンズ
+              %li.first-content
+                = link_to "#" do
+                  ベビー・キッズ
+              %li.first-content
+                = link_to "#" do
+                  インテリア・住まい・小物
+              %li.first-content
+                = link_to "#" do
+                  本・音楽・ゲーム
+              %li.first-content
+                = link_to "#" do
+                  おもちゃ・ホビー・グッズ
+              %li.first-content
+                = link_to "#" do
+                  コスメ・香水・美容
+              %li.first-content
+                = link_to "#" do
+                  家電・スマホ・カメラ
+              %li.first-content
+                = link_to "#" do
+                  スポーツ・レジャー
+              %li.first-content
+                = link_to "#" do
+                  ハンドメイド
+              %li.first-content
+                = link_to "#" do
+                  チケット
+              %li.first-content
+                = link_to "#" do
+                  自転車・オートバイ
+              %li.first-content
+                = link_to "#" do
+                  その他
+
+        %li.listsLeft__item
+          = link_to "#", id: "brandBtn" do
+            ブランド
+          %ul.brandsPuldawn.displayNone
+           
+
+      %ul.listsRight
+        %li.listsRight__item.listsRight__item--login
+          = link_to "#" do
+            ログイン
+        %li.listsRight__item.listsRight__item--new
+          = link_to "#" do
+            新規会員登録

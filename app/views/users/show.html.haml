@@ -43,17 +43,7 @@
                 過去の取引
         .tab-content
 
-.appBanner
-  .inner
-    %h2.inner__title
-      だれでもかんたん、人生を変えるフリマアプリ
-    %p.inner__text
-      今すぐ無料ダウンロード
-    .inner__icon
-      = link_to "#" do
-        = image_tag 'AppStore.png', alt: 'AppStore', class: 'aBtn'
-      = link_to "#" do
-        = image_tag 'GooglePlayBadge.png', alt: 'GooglePlay', class: 'gBtn'
+= render "shared/appBanner"
 = render "shared/main-footer"
   
 

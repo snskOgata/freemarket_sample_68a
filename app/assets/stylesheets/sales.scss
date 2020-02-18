@@ -1,3 +1,35 @@
-// Place all the styles related to the sales controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.sale{
+  background-color: #f5f5f5;
+  * {
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+  }
+  &__header{
+    background-color: green;
+    height: 100px;
+  }
+  
+
+  &__contents{
+    background-color: yellowgreen;
+    width: 700px;
+    height: 914px;
+    margin: 40px auto 0;
+    padding: 24px 16px 55px 16px;
+    &__main{
+      background-color: lightblue;
+      width: 700px;
+      height: 400px;
+      
+    } 
+  }
+  &__banner{
+    background-color: lightyellow;
+    height: 50px;
+  }
+  &__footer{
+    background-color: lightsalmon;
+    height: 50px;
+  }
+}

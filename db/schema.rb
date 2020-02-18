@@ -12,6 +12,19 @@
 
 ActiveRecord::Schema.define(version: 2020_02_17_074134) do
 
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "postal_code", null: false
+    t.integer "prefecture_id", null: false
+    t.string "city", null: false
+    t.string "block_number", null: false
+    t.string "phone_number"
+    t.string "building"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "ancestry"
@@ -34,6 +47,18 @@ ActiveRecord::Schema.define(version: 2020_02_17_074134) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sale_id"], name: "index_photos_on_sale_id"
+  end
+
+  create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "lastname", null: false
+    t.string "firstname", null: false
+    t.string "lastname_kana", null: false
+    t.string "firstname_kana", null: false
+    t.date "birthday", null: false
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -65,8 +90,10 @@ ActiveRecord::Schema.define(version: 2020_02_17_074134) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "category_sales", "categories"
   add_foreign_key "category_sales", "sales"
   add_foreign_key "photos", "sales"
+  add_foreign_key "profiles", "users"
   add_foreign_key "sales", "users", column: "seller_id"
 end

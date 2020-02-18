@@ -1,9 +1,12 @@
 class SalesController < ApplicationController
 
-  def show
+  def index
+  end
+
+  def new
   end
   
-  def index
+  def show
   end
 
 end

@@ -4,6 +4,8 @@ class Sale < ApplicationRecord
     :prefecture_id, :prep_days_id, :price, :status_id, presence: true
   validates :name, length: { maximum: 40 }
 
+  enum status: { on_sale: 0, soldout: 1 }
+
   has_many :category_sales
   has_many :categories, through: :category_sales
   has_many :photos

@@ -105,7 +105,7 @@ describe Address do
       expect(address).to be_valid
     end
 
-    # 15. prefecture_idが47だと登録できないこと
+    # 15. prefecture_idが47だと登録できること
     it "is valid with that prefecture_id value 47" do
       address = build(:address, prefecture_id: "47")
       address.valid?

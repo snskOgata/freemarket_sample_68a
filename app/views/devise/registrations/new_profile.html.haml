@@ -3,27 +3,37 @@
 = render "devise/shared/links"
 .account-page__inner--right.user-form
   = form_for @profile do |f|
-    = render "devise/shared/error_messages", resource: @profile
+    -# = render "devise/shared/error_messages", resource: @profile
     .field
       = f.label :lastname
-      %br/
       = f.text_field :lastname
+      - show_errors(@profile, :lastname).each do |error|
+        = error
+    %br/
     .field
       = f.label :firstname
-      %br/
       = f.text_field :firstname
+      - show_errors(@profile, :firstname).each do |error|
+        = error
+    %br/
     .field
       = f.label :lastname_kana
-      %br/
       = f.text_field :lastname_kana
+      - show_errors(@profile, :lastname_kana).each do |error|
+        = error
+    %br/
     .field
       = f.label :firstname_kana
-      %br/
       = f.text_field :firstname_kana
+      - show_errors(@profile, :firstname_kana).each do |error|
+        = error
+    %br/
     .field
       = f.label :birthday
-      %br/
       = f.text_field :birthday
+      - show_errors(@profile, :birthday).each do |error|
+        = error
+    %br/
     .actions
       = f.submit "Sign up"
 = render "devise/shared/links"

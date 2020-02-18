@@ -92,7 +92,7 @@ describe Profile do
     end
 
     # 14. birthdayのmounthが[1],dayが[32]だと登録できないこと
-    it "is invalid a birthday with a day that has value of [30]" do
+    it "is invalid a birthday with a day that has value of [32]" do
       profile = build(:profile, birthday: "2020-01-32")
       profile.valid?
       expect(profile.errors[:birthday]).to include("can't be blank")

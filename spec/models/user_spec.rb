@@ -79,7 +79,7 @@ describe User do
       expect(user).to be_valid
     end
 
-    # 2. nicknameが21字だと登録できないこと
+    # 12. nicknameが21字だと登録できないこと
     it "is invalid with a nickname of 21" do
       user = build(:user, nickname: "012345678901234567890")
       user.valid?

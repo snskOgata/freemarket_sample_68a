@@ -2,7 +2,7 @@
   = render "shared/user-header"
   .container
     %h2 商品の情報を入力
-    = form_with model: @sale do |f| 
+    = form_with model: @sale, local: true do |f| 
       .sale-image-box
         .sale-image-box__head 
           %label 出品画像

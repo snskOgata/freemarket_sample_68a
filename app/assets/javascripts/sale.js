@@ -64,7 +64,7 @@ $(function () {
       op.text = categories[first_num].sub[second_num].sub[i].name;
       third.append(op);
     }
-    if (first_num !== 0) {
+    if (second_num !== 0) {
       third.show();
     } else {
       third.hide();

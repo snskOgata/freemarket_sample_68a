@@ -1,21 +1,5 @@
+= render "shared/main-header"
 .mypage
-  .mypage__header
-    header
-  .mypage__sub-bar
-    %ul
-      %li{itemscope: "", itemtype:"#"}
-        %a{href: "#", itemprop: "#"}
-          %span{itemprop: "title"} フリマ
-        %i.icon-chevron-right
-          = icon('fas', 'chevron-right', class: 'icon')
-      %li{itemscope: "", itemtype:"#"}
-        %a{href: "#", itemprop: "#"}
-          %span{itemprop: "title"} マイページ
-        %i.icon-chevron-right
-          = icon('fas', 'chevron-right', class: 'icon')
-      %li{itemscope: "", itemtype:"#"}
-        %span{itemprop: "title"} 支払い方法
-
   .mypage__contents.clearfix
     = render "shared/mypage-left-side"
     .mypage__contents__main
@@ -30,10 +14,10 @@
             .add-card__click
               =link_to("クレジットカードを追加する", mypages_new_path, class: "link") 
 
-  .mypage__banner
-    app-banner
-  .mypage__footer
-    footer
+= render "shared/appBanner"
+
+= render "shared/main-footer"
+
 
 
 

@@ -16,63 +16,34 @@
         %input{type: "hidden", name: "authenticity_token", value: ""}/
       %ul.resultLists
 
+
+
+
     -# ナビゲーションバー
     .nav
       %ul.listsLeft
-        %li.listsLeft__left
-          .menu
-            = link_to "#" do
-              カテゴリー
-              .menu-content
-                %ul
+        %li.listsLeft__item.listsLeft__item--first
+          = link_to "#", id: "catBtn" do
+            カテゴリー
+          .tree.displayNone
+
+            %ul#menu-content
+              - @main_categories.each do |category|
+                = link_to "#" do
                   %li.first-content
-                    = link_to "#" do
-                      レディース
-                    %ul
-                      %li.second-content
+                    = category.name
+                    %ul.second-contents
+                      - category.children.each do |child|
                         = link_to "#" do
-                          トップス 
-                        %ul
-                          %li.third-content
-                            = link_to "#" do
-                              Tシャツ/カットソー（半袖/袖なし）
-                  
-              %li.first-content
-                = link_to "#" do
-                  メンズ
-              %li.first-content
-                = link_to "#" do
-                  ベビー・キッズ
-              %li.first-content
-                = link_to "#" do
-                  インテリア・住まい・小物
-              %li.first-content
-                = link_to "#" do
-                  本・音楽・ゲーム
-              %li.first-content
-                = link_to "#" do
-                  おもちゃ・ホビー・グッズ
-              %li.first-content
-                = link_to "#" do
-                  コスメ・香水・美容
-              %li.first-content
-                = link_to "#" do
-                  家電・スマホ・カメラ
-              %li.first-content
-                = link_to "#" do
-                  スポーツ・レジャー
-              %li.first-content
-                = link_to "#" do
-                  ハンドメイド
-              %li.first-content
-                = link_to "#" do
-                  チケット
-              %li.first-content
-                = link_to "#" do
-                  自転車・オートバイ
-              %li.first-content
-                = link_to "#" do
-                  その他
+                          %li.second-content
+                            = child.name
+                            %ul.third-contents
+                              - child.children.each do |grand_children|
+                                = link_to "#" do
+                                  = grand_children.name
+                                  %li.third-content
+                                
+
 
         %li.listsLeft__item
           = link_to "#", id: "brandBtn" do

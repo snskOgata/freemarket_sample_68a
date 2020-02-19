@@ -100,7 +100,7 @@ $(function () {
     inputs.push($(this));
     var img = $(`<div class= "img_view"><img></div>`);
     reader.onload = function (e) {
-      var btn_wrapper = $('<div class="btn_wrapper"><div class="btn edit">編集</div><div class="btn delete">削除</div></div>');
+      var btn_wrapper = $('<div class="btn_wrapper"><div class="delete-img-btn">削除</div></div>');
       img.append(btn_wrapper);
       img.find('img').attr({
         src: e.target.result
@@ -145,14 +145,20 @@ $(function () {
       })
       return;
     }
-    var new_image = $(`<input multiple= "multiple" name="sale_photos[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
+    var new_image = $(`<input multiple= "multiple" name="sale_photos[image][]" class="upload-image" data-image= ${images.length} type="file">`);
     input_area.prepend(new_image);
+
+    console.log(input_area.children())
+    $.each(input_area.children(), function (index, input) {
+      console.log(input);
+      console.log(input.dataset.image)
+    })
   });
-  $(document).on('click', '.delete', function () {
+  $(document).on('click', '.delete-img-btn', function () {
     var target_image = $(this).parent().parent();
-    $.each(inputs, function (index, input) {
-      if ($(this).data('image') == target_image.data('image')) {
-        $(this).remove();
+    $.each(input_area.children(), function (index, input) {
+      if (input.dataset.image == target_image.data('image')) {
+        input.remove();
         target_image.remove();
         var num = $(this).data('image');
         images.splice(num, 1);

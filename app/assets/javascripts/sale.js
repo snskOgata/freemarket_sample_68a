@@ -3,9 +3,9 @@ $(function () {
   // カテゴリ一覧を保持する変数
   var categories = []
   // 大中小カテゴリごとの順番を保持
-  var first_num = 0
-  var second_num = 0
-  var third_num = 0
+  var first_num = -1
+  var second_num = -1
+  var third_num = -1
 
   // ページ遷移後にカテゴリ一覧を取得
   $.getJSON(
@@ -33,7 +33,7 @@ $(function () {
     third.children().remove();
     // 選択した番号を
     first_num = $("#category-first option:selected").data("num");
-    for (var i = 0; i < categories.length; i++) {
+    for (var i = 0; i < categories[first_num].sub.length; i++) {
       var op = document.createElement("option");
       op.value = categories[first_num].sub[i].id;
       op.text = categories[first_num].sub[i].name;
@@ -48,5 +48,26 @@ $(function () {
       third.hide();
     }
   });
+
+  // 中カテゴリに変更があれば発火
+  $('#category-second').change(function () {
+
+    var third = $('#category-third')
+    third.children().remove();
+    // 選択した番号を
+    second_num = $("#category-first option:selected").data("num");
+    for (var i = 0; i < categories[first_num].sub[second_num].sub.length; i++) {
+      var op = document.createElement("option");
+      op.value = categories[first_num].sub[second_num].sub[i].id;
+      op.text = categories[first_num].sub[second_num].sub[i].name;
+      third.append(op)
+    }
+    if (first_num !== 0) {
+      third.show();
+    } else {
+      third.hide();
+    }
+  });
+
 
 })

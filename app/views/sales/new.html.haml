@@ -63,7 +63,7 @@
                 %span.form-require  必須
               .input-box__right
                 ¥
-                %input{placeholder: '例）300 '}
+                = f.text_field :price, placeholder: '例）300 '
       .sell-btn-box
         = f.submit "出品する", class: "sell-btn"
         = link_to "もどる", "#", class: "back-btn"

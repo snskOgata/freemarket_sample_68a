@@ -31,9 +31,9 @@
           .form-group
             %label カテゴリー
             %span.form-require  必須
-            %select#category-first
-            %select#category-second
-            %select#category-third
+            %select#category-first{name: "sale[category_ids][]"}
+            %select#category-second{name: "sale[category_ids][]"}
+            %select#category-third{name: "sale[category_ids][]"}
           .form-group
             %label 商品の状態
             %span.form-require  必須
@@ -65,6 +65,6 @@
                 ¥
                 %input{placeholder: '例）300 '}
       .sell-btn-box
-        %button.sell-btn 出品する
+        = f.submit "出品する", class: "sell-btn"
         = link_to "もどる", "#", class: "back-btn"
   = render "shared/user-footer"

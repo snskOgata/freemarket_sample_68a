@@ -1,99 +1,55 @@
--# %h2 住所情報登録
--# = form_for @address do |f|
--#   .field
--#     = f.label :postal_code
--#     %br/
--#     = f.text_field :postal_code
--#     - show_errors(@address, :postal_code).each do |error|
--#       = error
--#   %br/
--#   .field
--#     = f.label :prefecture
--#     %br/
--#     = f.collection_select :prefecture_id, Prefecture.all, :id, :name
--#     - show_errors(@address, :prefecture_id).each do |error|
--#       = error
--#   .field
--#     = f.label :city
--#     = f.text_field :city
--#     - show_errors(@address, :city).each do |error|
--#       = error
--#   %br/
--#   .field
--#     = f.label :block_number
--#     %br/
--#     = f.text_field :block_number
--#     - show_errors(@address, :block_number).each do |error|
--#       = error
--#   %br/
--#   .field
--#     = f.label :phone_number
--#     %br/
--#     = f.text_field :phone_number
--#     - show_errors(@address, :phone_number).each do |error|
--#       = error
--#   %br/
--#   .field
--#     = f.label :building
--#     %br/
--#     = f.text_field :building
--#     - show_errors(@address, :building).each do |error|
--#       = error
--#   %br/
--#   .actions
--#     = f.submit "Sign up"
--# = render "devise/shared/links"
 .account-page
   = render "shared/user-header"
   .account-page__contents
     .account-page__contents__title
-      .h1 商品送付先住所情報    
-    = form_for @address do |f|
-      .field
-        .field-label
-          = f.label :郵便番号
-          %span.form-require 必須
-        .field-input
-          = f.text_field :postal_code, autofocus: true
-        - show_errors(@address, :postal_code).each do |error|
-          = error
-      .field
-        .field-label
-          = f.label :都道府県
-          %span.form-require 必須
-        = f.collection_select :prefecture_id, Prefecture.all, :id, :name
-        - show_errors(@address, :prefecture_id).each do |error|
-          = error
-      .field
-        .field-label
-          = f.label :市区町村
-          %span.form-require 必須
-        .field-input
-          = f.text_field :city, autofocus: true
-        - show_errors(@address, :city).each do |error|
-          = error
-      .field
-        .field-label
-          = f.label :番地
-          %span.form-require 必須
-        .field-input
-          = f.text_field :block_number, autofocus: true
-        - show_errors(@address, :block_number).each do |error|
-          = error
-      .field
-        .field-label
-          = f.label :マンション名やビル名・部屋番号
-        .field-input
-          = f.text_field :building, autofocus: true
-        - show_errors(@address, :building).each do |error|
-          = error
-      .field
-        .field-label
-          = f.label :お届け先の電話番号
-        .field-input
-          = f.text_field :phone_number, autofocus: true
-        - show_errors(@address, :phone_number).each do |error|
-          = error
-      .actions
-        = f.submit "登録する", class: 'btn'
+      .h1 商品送付先住所情報
+    .account-page__contents__register    
+      = form_for @address do |f|
+        .field
+          .field-label
+            = f.label :郵便番号
+            %span.form-require 必須
+          .field-input
+            = f.text_field :postal_code, autofocus: true, placeholder: '(例)123-1234'
+          - show_errors(@address, :postal_code).each do |error|
+            = error
+        .field
+          .field-label
+            = f.label :都道府県
+            %span.form-require 必須
+          = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+          - show_errors(@address, :prefecture_id).each do |error|
+            = error
+        .field
+          .field-label
+            = f.label :市区町村
+            %span.form-require 必須
+          .field-input
+            = f.text_field :city, autofocus: true, placeholder: '(例)渋谷市渋谷町'
+          - show_errors(@address, :city).each do |error|
+            = error
+        .field
+          .field-label
+            = f.label :番地
+            %span.form-require 必須
+          .field-input
+            = f.text_field :block_number, autofocus: true, placeholder: '(例)渋谷坂１−２−３'
+          - show_errors(@address, :block_number).each do |error|
+            = error
+        .field
+          .field-label
+            = f.label :マンション名やビル名・部屋番号
+          .field-input
+            = f.text_field :building, autofocus: true, placeholder: '(例)マンション渋谷　１２３号室'
+          - show_errors(@address, :building).each do |error|
+            = error
+        .field
+          .field-label
+            = f.label :お届け先の電話番号
+          .field-input
+            = f.text_field :phone_number, autofocus: true, placeholder: '01012345678'
+          - show_errors(@address, :phone_number).each do |error|
+            = error
+        .actions
+          = f.submit "登録する", class: 'btn'
 = render "shared/user-footer"

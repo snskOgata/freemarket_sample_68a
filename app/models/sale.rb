@@ -1,7 +1,7 @@
 class Sale < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   validates :name, :detail, :condition_id, :delivery_payer_id, 
-    :prefecture_id, :prep_days_id, :price, :status_id, presence: true
+    :prefecture_id, :prep_days_id, :price, :status, presence: true
   validates :name, length: { maximum: 40 }
 
   enum status: { on_sale: 0, soldout: 1 }

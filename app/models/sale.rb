@@ -1,4 +1,5 @@
 class Sale < ApplicationRecord
+ 
   extend ActiveHash::Associations::ActiveRecordExtensions
   validates :name, :detail, :condition_id, :delivery_payer_id, 
     :prefecture_id, :prep_days_id, :price, :status, presence: true
@@ -14,4 +15,5 @@ class Sale < ApplicationRecord
   belongs_to_active_hash :delivery_payer
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :prep_days
+
 end

@@ -13,20 +13,15 @@ class SalesController < ApplicationController
 
   def create
     @sale = Sale.new(sale_params)
-    # if @sale.save
-    #   redirect_to root_path, notice: '商品を出品しました'
-    # else
-    #   render :new
-    # end
-     if @sale.save
-          params[:sale_photos][:image].each do |image|
-            @sale.photos.create(image: image, sale_id: @sale.id)
-          end
-        redirect_to root_path
-      else
-        @sale.photos.build
-        render :new
-      end
+    if @sale.save
+        params[:sale_photos][:image].each do |image|
+          @sale.photos.create(image: image, sale_id: @sale.id)
+        end
+      redirect_to root_path
+    else
+      @sale.photos.build
+      render :new
+    end
   end
 
   private 

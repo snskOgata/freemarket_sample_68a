@@ -5,35 +5,6 @@
   box-sizing: border-box;
 }
 
-body, 
-div, 
-dl, 
-dt, 
-dd, 
-ul, 
-ol, 
-li, 
-h1, 
-h2, 
-h3, 
-h4, 
-h5, 
-h6, 
-pre, 
-code, 
-form, 
-fieldset, 
-legend, 
-input, 
-textarea, 
-p, 
-blockquote, 
-th, 
-td {
-  padding: 0;
-  margin: 0;
-}
-
 h1, 
 h2, 
 h3, 
@@ -126,15 +97,18 @@ header {
         padding-inline-start: 40px;
     }
   }
+
+  
   .nav {
     font-size: 14px;
     display: flex;
-    padding-bottom: 10px;
+    // padding-bottom: 10px;
     line-height: 38px;
     color: #333;
     .listsLeft {
       position: relative;
       display: flex;
+      height: 48px;
       &__item {
         display: flex;
         padding: 0 0 0 16px;
@@ -153,6 +127,8 @@ header {
               padding-left: 10px;
             }
           }
+
+
           .displayNone {
             display: none;
           }
@@ -160,6 +136,7 @@ header {
             display: block;
             left: -10px;
           }
+
           .tree {
             z-index: 2;
             position: absolute;
@@ -167,6 +144,7 @@ header {
             width: 240px;
             top: 40px;
             
+
             #menu-content {
               background-color: white;
               display: flex;
@@ -174,21 +152,45 @@ header {
               position: relative;
               width: 240px;
               margin-top: 10px;
-              .first-content {
-                position: relative;
-                a {
-                  color: $dark_gray;
-                  text-decoration: none;
-                  line-height: 32px;
-                  background-position: center right;
-                  background-repeat: no-repeat;
-                  background-size: 18px;
-                  padding-left: 10px;
-                }
+              padding-left: 15px;
+              
+              .second-contents {
+                position: absolute;
+                background-color: white;
+                top: -10px;
+                left: 240px;
+                width: 240px;
+                padding-left: 15px;
+                display: none;
               }
-            }
 
-           
+              .second-content {
+                width: 225px;
+                height: 38px;
+              }
+
+              .first-content:hover .second-contents {
+                display: block;
+              }
+
+
+              .third-contents {
+                position: absolute;
+                background-color: white;
+                top: 0px;
+                left: 240px;
+                width: 240px;
+                padding-left: 15px;
+                display: none;
+              }
+
+              .second-content:hover .third-contents {
+                display: block;
+              }
+
+
+
+            }
           }
         }
       }

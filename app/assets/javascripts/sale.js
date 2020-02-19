@@ -145,7 +145,7 @@ $(function () {
       })
       return;
     }
-    var new_image = $(`<input multiple= "multiple" name="sale_photos[image][]" class="upload-image" data-image= ${images.length} type="file">`);
+    var new_image = $(`<input multiple= "multiple" name="sale_photos[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image);
 
     console.log(input_area.children())
@@ -154,13 +154,14 @@ $(function () {
       console.log(input.dataset.image)
     })
   });
+
   $(document).on('click', '.delete-img-btn', function () {
     var target_image = $(this).parent().parent();
     $.each(input_area.children(), function (index, input) {
       if (input.dataset.image == target_image.data('image')) {
         input.remove();
         target_image.remove();
-        var num = $(this).data('image');
+        var num = input.dataset.image
         images.splice(num, 1);
         inputs.splice(num, 1);
         if (inputs.length == 0) {
@@ -170,6 +171,10 @@ $(function () {
         }
       }
     })
+    $.each(input_area.children(), function (index, input) {
+      input.dataset.image = index
+    })
+
     $('input[type= "file"].upload-image:first').attr({
       'data-image': inputs.length
     })
@@ -217,5 +222,10 @@ $(function () {
     if (images.length == 3) {
       dropzone.find('i').replaceWith('<p>ココをクリックしてください</p>')
     }
+    console.log(input_area.children())
+    $.each(input_area.children(), function (index, input) {
+      console.log(input);
+      console.log(input.dataset.image)
+    })
   })
 })

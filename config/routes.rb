@@ -10,11 +10,11 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:edit, :update, :destroy]
   root to: 'sales#index'
-  root to: 'homes#show'
   # resources :sales, controller: :sales, only: [:index]
   resources :category, controller: :categories, only: [:index, :show]
   resources :users, only: :show
   resources :sales, only: :new
+  resources :orders, only: [:new]
   namespace :mypages do
     get "index"
     get "new"

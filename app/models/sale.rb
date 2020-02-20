@@ -4,6 +4,7 @@ class Sale < ApplicationRecord
   validates :name, :detail, :condition_id, :delivery_payer_id, 
     :prefecture_id, :prep_days_id, :price, :status, presence: true
   validates :name, length: { maximum: 40 }
+  validates :detail, length: { maximum: 1000 }
 
   enum status: { on_sale: 0, soldout: 1 }
 
@@ -17,4 +18,5 @@ class Sale < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :prep_days
 
+  belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
 end

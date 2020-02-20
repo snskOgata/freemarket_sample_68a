@@ -9,38 +9,51 @@
         %table
           %tr
             %th 出品者
-            %td ジョシュ
+            %td 
+              = @sale.seller.name
           %tr
             %th カテゴリ
-            %td メンズ
+            %td 
+              -# - @sale.category_sales.each do |category_sale|
+              -#   = category_sale.name
+
+              - @sale.categories.each do |categories|
+                = categories.name
+              -# = @sale.categories.inspect
           %tr
             %th 商品の状態
-            %td 目立った傷や汚れなし
+            %td 
+              = @sale.status_i18n
           %tr
             %th 配送料の負担
-            %td 送料込み(出品者負担)
+            %td 
+              = @sale.delivery_payer.type
           %tr
             %th 配送元地域
-            %td 大阪府
+            %td 
+              = @sale.prefecture.name
           %tr
             %th 発送日の目安
-            %td 4~7日で発送
+            %td 
+              = @sale.prep_days.type
+
     .sales-show__contents__price-box
       %span.item-price
-        4,500円
+        = @sale.price
       %span.item-tax
         (税込)
     .sales-show__contents__purchase
       = link_to('購入画面に進む', root_path, class: 'purchase-btn')
     .sales-show__contents__discription
-      ポケットも多く(上部、表面、サイド腰部分)
-      日帰り登山には使いやすいバックパック。
-      容量：20.5L
-      高さ：約560mm
-      幅：約300mm
-      奥行：約200mm
-      カラー：ブラック
-      素材：ポリエステル
+      = @sale.detail
+      -# ポケットも多く(上部、表面、サイド腰部分)
+      -# 日帰り登山には使いやすいバックパック。
+      -# 容量：20.5L
+      -# 高さ：約560mm
+      -# 幅：約300mm
+      -# 奥行：約200mm
+      -# カラー：ブラック
+      -# 素材：ポリエステル
         
         
 = render "shared/appBanner"
@@ -51,3 +64,16 @@
 
 
 
+-# <% if user_signed_in? && current_user.id == @tweet.user_id %>
+-#       <div class="more">
+-#         <span><%= image_tag 'arrow_top.png' %></span>
+-#         <ul class="more_list">
+-#           <li>
+-#             <%= link_to '編集', "/tweets/#{@tweet.id}/edit", method: :get %>
+-#           </li>
+-#           <li>
+-#             <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
+-#           </li>
+-#         </ul>
+-#       </div>
+-#     <% end %>

@@ -12,6 +12,8 @@ class SalesController < ApplicationController
   end
   
   def show
+    @sale = Sale.find(params[:id])
+    @main_categories = Category.where(id: 1..13)
   end
 
 

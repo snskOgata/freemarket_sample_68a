@@ -5,6 +5,7 @@ class Sale < ApplicationRecord
     :prefecture_id, :prep_days_id, :price, :status, presence: true
   validates :name, length: { maximum: 40 }
   validates :detail, length: { maximum: 1000 }
+  validate :check_categories
 
   enum status: { on_sale: 0, soldout: 1 }
 
@@ -19,4 +20,14 @@ class Sale < ApplicationRecord
   belongs_to_active_hash :prep_days
 
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+
+  def check_categories
+    has_error = false
+    category_sales.each do |cat|
+      has_error = true if cat.id == 0
+    end
+    if has_error
+      errors.add(:categories, "の内容が不正です")
+    end
+  end
 end

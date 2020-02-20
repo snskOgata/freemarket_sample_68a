@@ -53,7 +53,7 @@ describe Sale do
       end
     end
 
-    context 'セレクタ系' do
+    context 'セレクタ' do
         it "商品状態がnilでは登録不可能" do
         sale = build(:sale, condition_id: nil)
         sale.valid?
@@ -73,6 +73,13 @@ describe Sale do
         sale = build(:sale, prep_days_id: nil)
         sale.valid?
         expect(sale.errors[:prep_days_id]).to include("を入力してください")
+      end
+    end
+    context 'ユーザ' do
+      it "ユーザが紐ついていないと登録不可能" do
+        sale = build(:sale, seller_id: nil)
+        sale.valid?
+        expect(sale.errors[:seller]).to include("を入力してください")
       end
     end
   end

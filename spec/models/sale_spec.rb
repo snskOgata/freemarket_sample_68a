@@ -3,8 +3,7 @@ describe Sale do
   describe '#create' do
     context '有効な値' do
       it "有効な情報では登録可能" do
-        user = build(:user)
-        sale = build(:sale, seller_id: user.id)
+        sale = build(:sale)
         expect(sale).to be_valid
       end
     end

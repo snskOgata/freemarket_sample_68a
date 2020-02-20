@@ -7,5 +7,7 @@ FactoryBot.define do
     prefecture_id     {1}
     prep_days_id      {1}
     price             {1000}
+
+    association :seller, factory: :user
   end
 end

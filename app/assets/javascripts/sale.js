@@ -86,11 +86,23 @@ $(function () {
     third_num = $("#category-third option:selected").data("num");
   })
 
-  // 出品ボタンを押した時に、カテゴリを選択していないと忠告する
+  // 出品ボタンを押した時に、必要な情報が入力されていないとアラートを表示
   $('#submit-sale').on("click", function (e) {
+    var has_error = false;
+    var error_message = "";
     if ((first_num < 1) || (second_num < 1) || (third_num < 1)) {
       e.preventDefault();
-      alert('カテゴリは全て入力してください')
+      error_message += "カテゴリは全て入力してください\n";
+      has_error = true;
+    }
+    if (images.length == 0) {
+      e.preventDefault();
+      error_message += "画像は1枚以上選択してください\n";
+      has_error = true;
+    }
+
+    if (has_error) {
+      alert(error_message);
     }
   })
 
@@ -114,7 +126,7 @@ $(function () {
     var new_image = $(`<input multiple= "multiple" name="sale_photos[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image);
   });
-  
+
   // 画像の削除ボタンを押した時に発火
   $(document).on('click', '.delete-img-btn', function () {
     var target_image = $(this).parent().parent();
@@ -148,7 +160,7 @@ $(function () {
     })
     redrawImages();
   })
-  
+
   // 投稿画像たちを再描画するメソッド
   function redrawImages() {
     if (images.length <= 4) {

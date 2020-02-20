@@ -114,7 +114,8 @@ $(function () {
     var new_image = $(`<input multiple= "multiple" name="sale_photos[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image);
   });
-
+  
+  // 画像の削除ボタンを押した時に発火
   $(document).on('click', '.delete-img-btn', function () {
     var target_image = $(this).parent().parent();
     $.each(input_area.children(), function (index, input) {
@@ -147,6 +148,8 @@ $(function () {
     })
     redrawImages();
   })
+  
+  // 投稿画像たちを再描画するメソッド
   function redrawImages() {
     if (images.length <= 4) {
       $('#preview').empty();

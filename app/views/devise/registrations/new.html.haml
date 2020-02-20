@@ -1,161 +1,43 @@
-%h2 Create Account
-%h5 新規アカウントの作成
-= render "devise/shared/links"
-.account-page__inner--right.user-form
-  = form_for(@user, url: user_registration_path) do |f|
-    .field
-      .field-label
-        = f.label :nickname
-      .field-input
-        = f.text_field :nickname, autofocus: true
-    - show_errors(@user, :nickname).each do |error|
-      = error
-    .field
-      .field-label
-        = f.label :email,"email"
-      .field-input
-        = f.email_field :email
-    - show_errors(@user, :email).each do |error|
-      = error
-    .field
-      .field-label
-        = f.label :password,"password"
-        %i (英数字7文字以上)
-      .field-input
-        = f.password_field :password, autocomplete: "off"
-    - show_errors(@user, :password).each do |error|
-      = error
-    .field
-      .field-label
-        = f.label :password_confirmation,"password"
-      .field-input
-        = f.password_field :password_confirmation, autocomplete: "off"
-    - show_errors(@user, :password_confirmation).each do |error|
-      = error
-    .actions
-      = f.submit "Create Account", class: 'btn'
-
--# 以下のコードが本来のフロントであるが、ユーザー機能を確認するためにコメントアウトしている。
--# .account-page
--#   = render "shared/user-header"
--#   .account-page__contents
--#     .account-page__contents__title
--#       会員情報入力
--#     .account-page__contents__register
--#       = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
--#         = devise_error_messages!
-        
--#         .h1 ユーザー情報
--#         .field
--#           .field-label
--#             = f.label :ニックネーム
--#             %span.form-require 必須
--#           .field-input
--#             = f.text_field :nickname, autofocus: true, placeholder: '(例)フリマ太郎'
--#         .field
--#           .field-label
--#             = f.label :メールアドレス
--#             %span.form-require 必須
--#           .field-input
--#             = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
--#         .field
--#           .field-label
--#             = f.label :パスワード
--#             %span.form-require 必須
--#           .field-input
--#             = f.password_field :password, autocomplete: "off", placeholder: '7文字以上の半角英数字'
--#             %i ※ 英字と数字の両方を含めて設定してください
--#         .field
--#           .field-label
--#             = f.label :パスワード再入力
--#           .field-input
--#             = f.password_field :password_confirmation, autocomplete: "off"
-
--#         .h1 本人確認情報
--#         .field
--#           .field-label
--#             = f.label :お名前
--#             %span.form-require 必須
--#           .field-fullname
--#             .field-inputs-last
--#               = f.text_field :nickname, autofocus: true, placeholder: '(例)山田'
--#             .field-inputs-first
--#               = f.text_field :nickname, autofocus: true, placeholder: '(例)太郎'
--#         .field
--#           .field-label
--#             = f.label :お名前カナ
--#             %span.form-require 必須
--#           .field-fullname
--#             .field-inputs-last
--#               = f.text_field :nickname, autofocus: true, placeholder: '(例)ヤマダ'
--#             .field-inputs-first
--#               = f.text_field :nickname, autofocus: true, placeholder: '(例)タロウ'
--#         .field
--#           .field-label
--#             = f.label :生年月日
--#             %span.form-require 必須
--#           .field-birth-info
--#             .field-input-birth__year
--#               = f.text_field :nickname, autofocus: true
--#               %span.day 年
--#             .field-input-birth__month
--#               = f.text_field :nickname, autofocus: true
--#               %span.day 月
--#             .field-inputbirth__day
--#               = f.text_field :nickname, autofocus: true
--#               %span.day 日
-
--#         .h1 商品送付先住所情報
--#         .field
--#           .field-label
--#             = f.label :送付先氏名
--#             %span.form-require 必須
--#           .field-input
--#             = f.text_field :nickname, autofocus: true
--#         .field
--#           .field-label
--#             = f.label :送付先氏名ふりがな
--#             %span.form-require 必須
--#           .field-input
--#             = f.text_field :nickname, autofocus: true
--#         .field
--#           .field-label
--#             = f.label :郵便番号
--#             %span.form-require 必須
--#           .field-input
--#             = f.text_field :nickname, autofocus: true
--#         .field
--#           .field-label
--#             = f.label :都道府県
--#             %span.form-require 必須
--#           .field-input
--#             = f.text_field :nickname, autofocus: true
--#         .field
--#           .field-label
--#             = f.label :市区町村
--#             %span.form-require 必須
--#           .field-input
--#             = f.text_field :nickname, autofocus: true
--#         .field
--#           .field-label
--#             = f.label :番地
--#             %span.form-require 必須
--#           .field-input
--#             = f.text_field :nickname, autofocus: true
--#         .field
--#           .field-label
--#             = f.label :マンション名やビル名・部屋番号
--#           .field-input
--#             = f.text_field :nickname, autofocus: true
-        
--#         .field
--#           .field-label
--#             = f.label :お届け先の電話番号
--#           .field-input
--#             = f.text_field :nickname, autofocus: true
--#         .actions
--#           = f.submit "登録する", class: 'btn'
--#   = render "shared/user-footer"
-  
-
- 
+.account-page
+  = render "shared/user-header"
+  .account-page__contents
+    .account-page__contents__title
+      会員情報入力
+    .account-page__contents__register
+      = form_for(@user, url: user_registration_path) do |f|
+        .field
+          .field-label
+            = f.label :ニックネーム
+            %span.form-require 必須
+          .field-input
+            = f.text_field :nickname, autofocus: true, placeholder: '(例)フリマ太郎'
+          - show_errors(@user, :nickname).each do |error|
+            = error
+        .field
+          .field-label
+            = f.label :メールアドレス
+            %span.form-require 必須
+          .field-input
+            = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
+          - show_errors(@user, :email).each do |error|
+            = error
+        .field
+          .field-label
+            = f.label :パスワード
+            %span.form-require 必須
+          .field-input
+            = f.password_field :password, autocomplete: "off", placeholder: '7文字以上の半角英数字'
+            %i ※ 英字と数字の両方を含めて設定してください
+          - show_errors(@user, :password).each do |error|
+            = error
+        .field
+          .field-label
+            = f.label :パスワード再入力
+            %span.form-require 必須
+          .field-input
+            = f.password_field :password_confirmation, autocomplete: "off", placeholder: '7文字以上の半角英数字'
+          - show_errors(@user, :password_confirmation).each do |error|
+            = error
+        .actions
+          = f.submit "次へ", class: 'btn'
+= render "shared/user-footer"

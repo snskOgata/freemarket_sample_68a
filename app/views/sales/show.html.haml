@@ -2,7 +2,7 @@
 .sales-show
   .sales-show__contents
     .sales-show__contents__name
-      バックパック
+      = @sale.name
     .sales-show__contents__main.clearfix
       .sale-photo
       .sale-detail-table
@@ -10,16 +10,12 @@
           %tr
             %th 出品者
             %td 
-              = @sale.seller.name
+              = @sale.seller.nickname
           %tr
             %th カテゴリ
             %td 
-              -# - @sale.category_sales.each do |category_sale|
-              -#   = category_sale.name
-
               - @sale.categories.each do |categories|
                 = categories.name
-              -# = @sale.categories.inspect
           %tr
             %th 商品の状態
             %td 
@@ -39,6 +35,7 @@
 
     .sales-show__contents__price-box
       %span.item-price
+        %span ¥
         = @sale.price
       %span.item-tax
         (税込)
@@ -46,34 +43,5 @@
       = link_to('購入画面に進む', root_path, class: 'purchase-btn')
     .sales-show__contents__discription
       = @sale.detail
-      -# ポケットも多く(上部、表面、サイド腰部分)
-      -# 日帰り登山には使いやすいバックパック。
-      -# 容量：20.5L
-      -# 高さ：約560mm
-      -# 幅：約300mm
-      -# 奥行：約200mm
-      -# カラー：ブラック
-      -# 素材：ポリエステル
-        
-        
 = render "shared/appBanner"
 = render "shared/main-footer"
-
-
-
-
-
-
--# <% if user_signed_in? && current_user.id == @tweet.user_id %>
--#       <div class="more">
--#         <span><%= image_tag 'arrow_top.png' %></span>
--#         <ul class="more_list">
--#           <li>
--#             <%= link_to '編集', "/tweets/#{@tweet.id}/edit", method: :get %>
--#           </li>
--#           <li>
--#             <%= link_to '削除', "/tweets/#{@tweet.id}", method: :delete %>
--#           </li>
--#         </ul>
--#       </div>
--#     <% end %>

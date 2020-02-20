@@ -90,18 +90,41 @@ $(function () {
   $('#submit-sale').on("click", function (e) {
     var has_error = false;
     var error_message = "";
-    if ((first_num < 1) || (second_num < 1) || (third_num < 1)) {
-      e.preventDefault();
-      error_message += "カテゴリは全て入力してください\n";
-      has_error = true;
-    }
+    var name_form = $('#name_form');
+    var detail_form = $('#detail_form');
+    var price_form = $('#price_form');
+    var price = price_form.val();
+    // 画像が0枚
     if (images.length == 0) {
-      e.preventDefault();
       error_message += "画像は1枚以上選択してください\n";
       has_error = true;
     }
-
+    // 名前が空
+    if (name_form.val().replace(/\s+/g, "").length == 0) {
+      error_message += "商品名を入力してください\n";
+      has_error = true;
+    }
+    // 説明が空
+    if (detail_form.val().replace(/\s+/g, "").length == 0) {
+      error_message += "商品の説明を入力してください\n";
+      has_error = true;
+    }
+    // カテゴリがひとつでも選択されていない
+    if ((first_num < 1) || (second_num < 1) || (third_num < 1)) {
+      error_message += "カテゴリは全て入力してください\n";
+      has_error = true;
+    }
+    // 金額が空
+    if (price_form.val().replace(/\s+/g, "").length == 0) {
+      error_message += "販売価格を入力してください\n";
+      has_error = true;
+    }
+    if ((price < 300) || (price > 9999999)) {
+      error_message += "販売価格は¥300〜¥9999999で入力してください\n";
+      has_error = true;
+    }
     if (has_error) {
+      e.preventDefault();
       alert(error_message);
     }
   })
@@ -111,7 +134,7 @@ $(function () {
     var file = $(this).prop('files')[0];
     var reader = new FileReader();
     inputs.push($(this));
-    var img = $(`<div class= "img_view"><img></div>`);
+    var img = $(`<div class= "img_view"><div class="img_box"><img></div></div>`);
     reader.onload = function (e) {
       var btn_wrapper = $('<div class="btn_wrapper"><div class="delete-img-btn">削除</div></div>');
       img.append(btn_wrapper);

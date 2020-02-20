@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :nickname, presence: true, uniqueness: true, length: { maximum: 20 }
   
-  has_many :sales
+  has_many :sales, class_name: 'Sale', foreign_key: 'seller_id'
   has_many :orders
   has_many :credits, dependent: :destroy
   has_one  :profile, dependent: :destroy

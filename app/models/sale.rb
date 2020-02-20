@@ -17,4 +17,6 @@ class Sale < ApplicationRecord
   belongs_to_active_hash :delivery_payer
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :prep_days
+
+  belongs_to :seller, class_name: 'User', foreign_key: 'user_id'
 end

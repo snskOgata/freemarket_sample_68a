@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get 'card/new'
-  get 'card/show'
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
   }
@@ -22,7 +20,7 @@ Rails.application.routes.draw do
     get "new"
     get "logout"
   end
-
+  resources :cards, only: [:new, :index, :destroy, :create]
 end
 
 

@@ -7,7 +7,7 @@ class User < ApplicationRecord
   
   has_many :sales
   has_many :orders
-  has_many :credits, dependent: :destroy
+  has_many :cards,   dependent: :destroy
   has_one  :profile, dependent: :destroy
   has_one  :address, dependent: :destroy
 

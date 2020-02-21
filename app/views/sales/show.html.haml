@@ -48,5 +48,11 @@
       = link_to('購入画面に進む', root_path, class: 'purchase-btn')
     .sales-show__contents__discription
       = @sale.detail
+
+    .sales-show__contents__purchase
+      = link_to('商品の編集', root_path, class: 'purchase-btn')
+    %span or
+    .sales-show__contents__purchase
+      = link_to('この商品を削除する', root_path, class: 'purchase-btn')
 = render "shared/appBanner"
 = render "shared/main-footer"

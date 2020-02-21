@@ -30,6 +30,12 @@ class SalesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def destroy
+  end
+
   private 
     def sale_params
       params.require(:sale).permit(:name, :detail, :condition_id, :delivery_payer_id, :prefecture_id, :prep_days_id, :price, category_ids: [], photos_attributes: [:image]).merge(seller_id: current_user.id)

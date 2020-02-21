@@ -25,7 +25,19 @@
         float: left;
         height: 420px;
         width: 300px;
-        background-color: brown;
+        background-color:white;
+        ul.bxslider{
+          height: 300px;
+          width: 300px;
+          li.custom-thumb{
+            display: inline-flex;
+            height: 120px;
+            .photo-image{
+              height: 60px;
+              width: 60px;
+            }
+          }
+        }
       }
       .sale-detail-table{
         float: right;

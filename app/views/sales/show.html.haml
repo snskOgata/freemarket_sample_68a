@@ -5,6 +5,11 @@
       = @sale.name
     .sales-show__contents__main.clearfix
       .sale-photo
+        %ul.bxslider
+          - @sale.photos.each do |photo|
+            %li
+              = image_tag photo.image.url, class:"photo-image"  
+        .custom-thumb
       .sale-detail-table
         %table
           %tr

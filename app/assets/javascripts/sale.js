@@ -10,7 +10,7 @@ $(function () {
   // 画像保存に用いる変数
   var dropzone = $('.dropzone-area');
   var dropzone2 = $('.dropzone-area2');
-  var images = [];
+  var images = []; //画像ひとつひとつを表示するためのdiv要素を保持
   var inputs = [];
   var input_area = $('.input_area');
   var preview = $('#preview');
@@ -21,7 +21,6 @@ $(function () {
     '/category',
     function (data) {
       categories = data
-      console.log(categories)
       for (var i = 0; i < categories.length; i++) {
         var op = document.createElement("option");
         op.value = categories[i].id;
@@ -43,6 +42,7 @@ $(function () {
     third.children().remove();
     // 選択した番号を保持
     first_num = $("#category-first option:selected").data("num");
+    // 子要素のカテゴリをセット
     for (var i = 0; i < categories[first_num].sub.length; i++) {
       var op = document.createElement("option");
       op.value = categories[first_num].sub[i].id;
@@ -50,6 +50,7 @@ $(function () {
       op.dataset.num = [i];
       second.append(op);
     }
+    // 中小カテゴリの表示・非表示
     if (first_num !== 0) {
       second.show();
       third.hide();
@@ -62,22 +63,24 @@ $(function () {
   // 中カテゴリに変更があれば発火
   $('#category-second').change(function () {
     // 子要素を削除
+    third_num = -1;
     var third = $('#category-third')
     third.children().remove();
     // 選択した番号を保持
     second_num = $("#category-second option:selected").data("num");
+    // 子要素のカテゴリをセット
     for (var i = 0; i < categories[first_num].sub[second_num].sub.length; i++) {
       var op = document.createElement("option");
       op.value = categories[first_num].sub[second_num].sub[i].id;
       op.text = categories[first_num].sub[second_num].sub[i].name;
       third.append(op);
     }
+    // 小カテゴリの表示・非表示
     if (second_num !== 0) {
       third.show();
     } else {
       third.hide();
     }
-    third_num = -1;
   });
 
   // 小カテゴリに変更があれば発火
@@ -119,6 +122,7 @@ $(function () {
       error_message += "販売価格を入力してください\n";
       has_error = true;
     }
+    // 金額が範囲外
     if ((price < 300) || (price > 9999999)) {
       error_message += "販売価格は¥300〜¥9999999で入力してください\n";
       has_error = true;
@@ -152,7 +156,8 @@ $(function () {
 
   // 画像の削除ボタンを押した時に発火
   $(document).on('click', '.delete-img-btn', function () {
-    var target_image = $(this).parent().parent();
+    var target_image = $(this).parent().parent(); // データを保持している要素を取得
+    // 該当するデータと要素を削除する
     $.each(input_area.children(), function (index, input) {
       if (input.dataset.image == target_image.data('image')) {
         input.remove();
@@ -167,10 +172,11 @@ $(function () {
         }
       }
     })
+    // input_areaの子要素にdata-imageを再設定
     $.each(input_area.children(), function (index, input) {
       input.dataset.image = index
     })
-
+    // inputフィールドに番号を紐付け
     $('input[type= "file"].upload-image:first').attr({
       'data-image': inputs.length
     })

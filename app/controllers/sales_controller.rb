@@ -13,7 +13,7 @@ class SalesController < ApplicationController
   def create
     redirect_to new_user_session_path unless user_signed_in?
     @sale = Sale.new(sale_params)
-    if params[:sale_photos][:image].present? && @sale.save
+    if !params[:sale][category_ids].include?(0) && params[:sale_photos][:image].present? && @sale.save
       params[:sale_photos][:image].each do |image|
         @sale.photos.create(image: image, sale_id: @sale.id)
       end

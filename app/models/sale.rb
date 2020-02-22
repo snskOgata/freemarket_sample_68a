@@ -22,12 +22,6 @@ class Sale < ApplicationRecord
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
 
   def check_categories
-    has_error = false
-    category_sales.each do |cat|
-      has_error = true if cat.id == 0
-    end
-    if has_error
-      errors.add(:categories, "の内容が不正です")
-    end
+    errors.add(:categories, "は1つ以上指定して下さい") if categories.size < 1
   end
 end

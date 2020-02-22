@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   end
   root to: 'sales#index'
   resources :users, only: [:edit, :update, :destroy, :show]
-  resources :sales, only: [:new, :show, :create, :edit, :destroy]
+  resources :sales
   resources :category, controller: :categories, only: [:index, :show]
   namespace :mypages do
     get "index"

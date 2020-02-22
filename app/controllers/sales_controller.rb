@@ -34,6 +34,9 @@ class SalesController < ApplicationController
     @sale = Sale.find(params[:id])
   end
 
+  def update
+  end
+
   def destroy
     sale = Sale.find(params[:id])
     sale.destroy

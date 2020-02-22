@@ -5,10 +5,11 @@
       = @sale.name
     .sales-show__contents__main.clearfix
       .sale-photo
-        %ul.bxslider
-          - @sale.photos.each do |photo|
-            %li
-              = image_tag photo.image.url, class:"photo-image"  
+        .bx-viewport
+          %ul.bxslider
+            - @sale.photos.each do |photo|
+              %li
+                = image_tag photo.image.url, class:"photo-image"  
         .custom-thumb
       .sale-detail-table
         %table
@@ -44,15 +45,22 @@
         = @sale.price
       %span.item-tax
         (税込)
-    .sales-show__contents__purchase
-      = link_to('購入画面に進む', root_path, class: 'purchase-btn')
-    .sales-show__contents__discription
-      = @sale.detail
-
-    .sales-show__contents__purchase
-      = link_to('商品の編集', root_path, class: 'purchase-btn')
-    %span or
-    .sales-show__contents__purchase
-      = link_to('この商品を削除する', root_path, class: 'purchase-btn')
+    - if user_signed_in? && current_user.id == @sale.seller_id
+      .sales-show__contents__discription
+        = @sale.detail
+      .sales-show__contents__edit
+        = link_to('商品の編集', root_path, class: 'edit-btn')
+      %span.or or
+      .sales-show__contents__destroy
+        = link_to('この商品を削除する', root_path, class: 'destroy-btn')
+    - elsif user_signed_in?
+      .sales-show__contents__purchase
+        = link_to('購入画面に進む', root_path, class: 'purchase-btn')
+      .sales-show__contents__discription
+        = @sale.detail
+    - else
+      .sales-show__contents__discription
+        = @sale.detail
 = render "shared/appBanner"
 = render "shared/main-footer"
+

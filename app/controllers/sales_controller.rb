@@ -31,9 +31,13 @@ class SalesController < ApplicationController
   end
 
   def edit
+    @sale = Sale.find(params[:id])
   end
 
   def destroy
+    sale = Sale.find(params[:id])
+    sale.destroy
+    redirect_to root_path
   end
 
   private 

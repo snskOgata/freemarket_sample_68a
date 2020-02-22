@@ -1,5 +1,5 @@
 class SalesController < ApplicationController
-  
+
   def index
     @main_categories = Category.where(id: 1..13)
   end
@@ -9,6 +9,10 @@ class SalesController < ApplicationController
     @sale = Sale.new
     @sale.photos.build()
   end
+  
+  def show
+  end
+
 
   def create
     redirect_to new_user_session_path unless user_signed_in?

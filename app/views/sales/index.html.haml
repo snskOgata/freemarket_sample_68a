@@ -116,14 +116,14 @@
         .productList
           = link_to "/products/3" do
             %figure.productList--img
-              = image_tag 'product3.png', alt: 'product3', class: 'product3'
+              = @sales.image
             .productList--body
               %h3.name
-                product3
+                = @sales.name
               .details
                 %ul
                   %li
-                    30000円
+                    = @sales.price
                   %li
                     %i.fa.fa-star.likeIcon
                       0
@@ -132,14 +132,14 @@
         .productList
           = link_to "/products/2" do
             %figure.productList--img
-              = image_tag 'product2.png', alt: 'product2', class: 'product2'
+              = @sales.image
             .productList--body
               %h3.name
-                product2
+                = @sales.name
               .details
                 %ul
                   %li
-                    20000円
+                    = @sales.price
                   %li
                     %i.fa.fa-star.LikeIcon
                       0
@@ -149,14 +149,14 @@
         .productList
           = link_to "/products/1" do
             %figure.productList--img
-              = image_tag 'product1.png', alt: 'product1', class: 'product1'
+              = @sales.image
             .productList--body
               %h3.name
-                product1
+                @sales.name
               .details
                 %ul
                   %li
-                    10000円
+                    = @sales.price
                   %li
                     %i.fa.fa-star.LikeIcon
                       0
@@ -221,16 +221,6 @@
                 %p
                   (税込)
 
-.appBanner
-  .inner
-    %h2.inner__title
-      だれでもかんたん、人生を変えるフリマアプリ
-    %p.inner__text
-      今すぐ無料ダウンロード
-    .inner__icon
-      = link_to "#" do
-        = image_tag 'AppStore.png', alt: 'AppStore', class: 'aBtn'
-      = link_to "#" do
-        = image_tag 'GooglePlayBadge.png', alt: 'GooglePlay', class: 'gBtn'
+= render "shared/appBanner"
 
 = render "shared/main-footer"

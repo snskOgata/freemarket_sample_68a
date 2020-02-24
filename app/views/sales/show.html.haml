@@ -49,7 +49,7 @@
       .sales-show__contents__discription
         = @sale.detail
       .sales-show__contents__edit
-        = link_to('商品の編集', '#', class: 'edit-btn')
+        = link_to('商品の編集', edit_sale_path(@sale), class: 'edit-btn')
       %span.or or
       .sales-show__contents__destroy
         = link_to('この商品を削除する', '#', class: 'destroy-btn')

@@ -1,3 +1,4 @@
+= render "shared/main-header"
 .category-page
   .container
     .child-links
@@ -10,3 +11,5 @@
         = render partial: "shared/sale", collection: @sales
     .category-label
       = @parent.present? ? "#{@category.name}(#{@parent.name})" : @category.name
+= render "shared/appBanner"
+= render "shared/main-footer"

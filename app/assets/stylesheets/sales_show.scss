@@ -25,11 +25,25 @@
         float: left;
         height: 420px;
         width: 300px;
-        background-color: brown;
+        background-color:white;
+        .bx-viewport{
+          height: 300px;
+          .bxslider{
+            height: 300px;
+            width: 300px;
+            li.custom-thumb{
+              display: inline-flex;
+              height: 120px;
+              .photo-image{
+                height: 300px;
+                width: 300px;
+              }
+            }
+          }
+        }
       }
       .sale-detail-table{
         float: right;
-        height: 420px;
         width: 300px;
         background-color: lightcoral;
         table{
@@ -82,7 +96,7 @@
       height: 60px;
       background-color:#3CCACE;
       text-align: center;
-      margin-top: 16px;
+      margin-top: 40px;
       .purchase-btn{
         color: white;
         font-size: 24px;
@@ -90,8 +104,37 @@
         text-align: center
       }
     }
+    &__edit{
+      height: 60px;
+      background-color:#3CCACE;
+      text-align: center;
+      margin-top: 40px;
+      .edit-btn{
+        color: white;
+        font-size: 24px;
+        line-height: 60px;
+        text-align: center
+      }
+    }
+    span.or{
+      display: block;
+      width: center;
+      margin: 20px auto;
+      text-align: center;
+      font-size: 20px;
+    }
+    &__destroy{
+      height: 60px;
+      background-color:#3CCACE;
+      text-align: center;
+      .destroy-btn{
+        color: white;
+        font-size: 24px;
+        line-height: 60px;
+        text-align: center
+      }
+    }
     &__discription{
-      height: 200px;
       margin-top: 30px;
       white-space: pre-wrap;
     }

@@ -85,3 +85,4 @@ gem 'payjp'
 gem 'dotenv-rails'
 gem "jquery-rails"
 gem 'fog-aws'
+gem 'bxslider-rails'

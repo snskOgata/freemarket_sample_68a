@@ -1,5 +1,7 @@
 class SalesController < ApplicationController
 
+  before_action :set_sale, only: [:edit, :show, :destroy]
+
   def index
     @main_categories = Category.where(id: 1..13)
     @sales = Sale.order(created_at: :desc).limit(3)
@@ -12,6 +14,7 @@ class SalesController < ApplicationController
   end
   
   def show
+    @main_categories = Category.where(id: 1..13)
   end
 
 
@@ -29,8 +32,28 @@ class SalesController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def destroy
+    if @sale.seller_id == current_user.id
+      @sale.destroy
+      redirect_to root_path
+      flash[:alert] = '商品を削除しました'
+    else
+      redirect_to root_path
+      flash[:alert] = '商品削除に失敗しました'
+    end
+  end
+
   private 
     def sale_params
       params.require(:sale).permit(:name, :detail, :condition_id, :delivery_payer_id, :prefecture_id, :prep_days_id, :price, category_ids: []).merge(seller_id: current_user.id)
     end
+
+  def set_sale
+    @sale = Sale.find(params[:id]) 
+  end
 end
+
+

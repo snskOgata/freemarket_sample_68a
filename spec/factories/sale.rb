@@ -7,7 +7,10 @@ FactoryBot.define do
     prefecture_id     {1}
     prep_days_id      {1}
     price             {1000}
-
     association :seller, factory: :user
+
+    after(:build) do |sale|
+      sale.categories << create_list(:category, 3)
+    end
   end
 end

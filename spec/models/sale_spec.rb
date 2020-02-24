@@ -82,5 +82,13 @@ describe Sale do
         expect(sale.errors[:seller]).to include("を入力してください")
       end
     end
+    context 'カテゴリ' do
+      it "カテゴリが紐ついていないと登録不可能" do
+        sale = build(:sale)
+        sale.categories = []
+        sale.valid?
+        expect(sale.errors[:categories]).to include("は1つ以上指定して下さい")
+      end
+    end
   end
 end

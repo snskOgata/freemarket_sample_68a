@@ -1,0 +1,25 @@
+= render "shared/main-header"
+.mypage
+  .mypage__contents.clearfix
+    = render "shared/mypage-left-side"
+    .mypage__contents__main
+      .credit-card
+        .credit-card__header
+          支払い方法
+        .credit-card__content
+          .select-card
+            %h3
+              クレジットカード一覧
+          .add-card
+            .add-card__click
+              =link_to("クレジットカードを追加する", mypages_new_path, class: "link") 
+
+= render "shared/appBanner"
+
+= render "shared/main-footer"
+
+
+
+
+
+

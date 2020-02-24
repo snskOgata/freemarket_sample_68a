@@ -1,0 +1,68 @@
+.pcHeader
+  .headerInner
+
+    -# メインヘッダー
+    .mainHeader
+      %h1.icon
+        = link_to "#" do
+          = image_tag 'logo.png', alt: 'logo',  class: 'logo'
+      .searchBox
+        %form{action: ""}
+          %input{name: "utf8", type: "hidden"}/
+          %input.searchBox--input{id: "searchInput", name: "key", placeholder: "キーワードから探す"}/
+          %button{type: "submit"}/
+          .searchBox__icon
+            = image_tag 'icon/icon-search.png', alt: 'icon-search', size: "20x20", class: 'icon-search'
+        %input{type: "hidden", name: "authenticity_token", value: ""}/
+      %ul.resultLists
+
+
+
+
+    -# ナビゲーションバー
+    .nav
+      %ul.listsLeft
+        %li.listsLeft__item.listsLeft__item--first
+          = link_to "#", id: "catBtn" do
+            カテゴリー
+          .tree.displayNone
+
+            %ul#menu-content
+              - @main_categories.each do |category|
+                = link_to "#" do
+                  %li.first-content
+                    = category.name
+                    %ul.second-contents
+                      - category.children.each do |child|
+                        = link_to "#" do
+                          %li.second-content
+                            = child.name
+                            %ul.third-contents
+                              - child.children.each do |grand_children|
+                                = link_to "#" do
+                                  = grand_children.name
+                                  %li.third-content
+                                
+
+
+        %li.listsLeft__item
+          = link_to "#", id: "brandBtn" do
+            ブランド
+          %ul.brandsPuldawn.displayNone
+           
+
+      %ul.listsRight
+        -if user_signed_in?
+          %li.listsRight__item.listsRight__item--login
+            = link_to destroy_user_session_path, method: :delete do
+              ログアウト
+          %li.listsRight__item.listsRight__item--new
+            = link_to "#" do
+              マイページ
+        -else
+          %li.listsRight__item.listsRight__item--login
+            = link_to new_user_session_path do
+              ログイン
+          %li.listsRight__item.listsRight__item--new
+            = link_to new_user_registration_path do
+              新規会員登録

@@ -1,0 +1,13 @@
+= render "shared/main-header"
+.mypage
+  .mypage__contents.clearfix
+    = render "shared/mypage-left-side"
+    .mypage__contents__main      
+      .log-out  
+        .log-out__form
+          .log-out__form__click
+            =link_to("ログアウト", destroy_user_session_path, class: "log-out-link") 
+
+= render "shared/appBanner"
+
+= render "shared/main-footer"

@@ -1,0 +1,79 @@
+.new-sale-page
+  = render "shared/user-header"
+  .container
+    %h2 商品の情報を入力
+    = form_with model: @sale, local: true do |f| 
+      .sale-image-box
+        .sale-image-box__head 
+          %label 出品画像
+          %span.form-require  必須
+        %p 最大10枚までアップロードできます
+        = f.fields_for :photos do |image|
+          .dropzone-container
+            #preview
+            .dropzone-area
+              = image.label :image, class: "dropzone-box", for: "upload-image" do
+                .input_area
+                  = image.file_field :image, multiple: true, name: 'sale_photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                %p ここをクリックしてください
+          .dropzone-container
+            #preview2
+            .dropzone-area2
+              = image.label :image, class: "dropzone-box", for: "upload-image" do
+                %p ここをクリックしてください
+
+      .sale-content
+        .main-content
+          .main-form-group
+            = label_tag :name do
+              商品名
+              %span.form-require  必須
+            = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "input-default", id: 'name_form'
+          .main-form-group
+            = label_tag :detail do
+              %label 商品の説明
+              %span.form-require  必須
+            = f.text_area :detail, class: "textarea-default", rows: '5', id: 'detail_form', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+      .sale-content
+        %h3 商品の詳細
+        .sale-content__form
+          .form-group
+            %label カテゴリー
+            %span.form-require  必須
+            %select#category-first{name: "sale[category_ids][]"}
+            %select#category-second{name: "sale[category_ids][]"}
+            %select#category-third{name: "sale[category_ids][]"}
+          .form-group
+            %label 商品の状態
+            %span.form-require  必須
+            = f.collection_select :condition_id, Condition.all, :id, :type
+      .sale-content
+        %h3 配送について
+        .sale-content__form
+          .form-group
+            %label 配送料の負担
+            %span.form-require  必須
+            = f.collection_select :delivery_payer_id, DeliveryPayer.all, :id, :type
+          .form-group
+            %label 配送元の地域
+            %span.form-require  必須
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+          .form-group
+            %label 配送までの日数
+            %span.form-require  必須
+            = f.collection_select :prep_days_id, PrepDays.all, :id, :type
+      .sale-content
+        %h3 価格（¥300〜9,999,999）
+        .sale-content__form
+          .form-group
+            .input-box
+              .input-box__left
+                %label 販売価格
+                %span.form-require  必須
+              .input-box__right
+                ¥
+                = f.text_field :price, type: "number", placeholder: '例）300 ', id: "price_form", min: "300", max: "9999999"
+      .sell-btn-box
+        = f.submit "出品する", class: "sell-btn", id: "submit-sale"
+        = link_to "もどる", "#", class: "back-btn"
+  = render "shared/user-footer"

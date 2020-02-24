@@ -12,7 +12,7 @@
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-    %script{type:"text/javascript"}Payjp.setPublicKey'(pk_test_b15044dc4a6a6e10c6a30d14)';
+    %script{type:"text/javascript"}Payjp.setPublicKey(Rails.application.credentials[:payjp][:key])
     
   %body
     = yield

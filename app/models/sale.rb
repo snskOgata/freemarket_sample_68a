@@ -5,6 +5,7 @@ class Sale < ApplicationRecord
     :prefecture_id, :prep_days_id, :price, :status, presence: true
   validates :name, length: { maximum: 40 }
   validates :detail, length: { maximum: 1000 }
+  validate :check_categories
 
   enum status: { on_sale: 0, soldout: 1 }
 
@@ -19,4 +20,8 @@ class Sale < ApplicationRecord
   belongs_to_active_hash :prep_days
 
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+
+  def check_categories
+    errors.add(:categories, "は1つ以上指定して下さい") if categories.size < 1
+  end
 end

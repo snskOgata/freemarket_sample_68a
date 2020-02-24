@@ -4,7 +4,7 @@
     -# メインヘッダー
     .mainHeader
       %h1.icon
-        = link_to "#" do
+        = link_to root_path do
           = image_tag 'logo.png', alt: 'logo',  class: 'logo'
       .searchBox
         %form{action: ""}
@@ -23,7 +23,7 @@
     .nav
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
-          = link_to "#", id: "catBtn" do
+          = link_to category_index_path, id: "catBtn" do
             カテゴリー
           .tree.displayNone
 
@@ -57,7 +57,7 @@
             = link_to destroy_user_session_path, method: :delete do
               ログアウト
           %li.listsRight__item.listsRight__item--new
-            = link_to mypages_new_path do
+            = link_to mypages_index_path do
               マイページ
         -else
           %li.listsRight__item.listsRight__item--login

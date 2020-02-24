@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     post 'addresses', to: 'users/registrations#create_address'
   end
   root to: 'sales#index'
-  resources :users, only: [:edit, :update, :destroy, :show]
+  # resources :users, only: [:edit, :update, :destroy, :show]
   resources :sales, only: [:new, :show, :create, :edit, :destroy]
   resources :category, controller: :categories, only: [:index, :show]
   namespace :mypages do

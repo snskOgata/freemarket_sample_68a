@@ -113,7 +113,8 @@
           %h3.title
             新規投稿商品
       .productLists
-        = render partial: "shared/sale", collection: @sales
+        .sale-items
+          = render partial: "shared/sale", collection: @sales
        
 
   %section.pickupContainer
@@ -125,7 +126,8 @@
           %h3.title
             アーカイバ
       .productLists
-        = render partial: "shared/sale", collection: @sales
+        .sale-items
+          = render partial: "shared/sale", collection: @sales
 
 = render "shared/appBanner"
 

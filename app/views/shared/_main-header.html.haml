@@ -57,7 +57,7 @@
             = link_to destroy_user_session_path, method: :delete do
               ログアウト
           %li.listsRight__item.listsRight__item--new
-            = link_to mypages_new_path do
+            = link_to mypages_index_path do
               マイページ
         -else
           %li.listsRight__item.listsRight__item--login

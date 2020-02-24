@@ -1,5 +1,7 @@
 class SalesController < ApplicationController
 
+  before_action :set_sale, only: [:edit, :show, :destroy]
+
   def index
     @main_categories = Category.where(id: 1..13)
   end
@@ -11,7 +13,6 @@ class SalesController < ApplicationController
   end
   
   def show
-    @sale = Sale.find(params[:id])
     @main_categories = Category.where(id: 1..13)
   end
 
@@ -31,11 +32,9 @@ class SalesController < ApplicationController
   end
 
   def edit
-    @sale = Sale.find(params[:id])
   end
 
   def destroy
-    sale = Sale.find(params[:id])
     sale.destroy
     redirect_to root_path
   end
@@ -44,4 +43,10 @@ class SalesController < ApplicationController
     def sale_params
       params.require(:sale).permit(:name, :detail, :condition_id, :delivery_payer_id, :prefecture_id, :prep_days_id, :price, category_ids: [], photos_attributes: [:image]).merge(seller_id: current_user.id)
     end
+
+  def set_sale
+    @sale = Sale.find(params[:id]) 
+  end
 end
+
+

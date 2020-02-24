@@ -1,0 +1,16 @@
+.productList
+  = link_to sale_path(sale.id) do
+    %figure.productList--img
+      = image_tag sale.photos[0].image.url
+    .productList--body
+      %h3.name
+        = sale.name
+      .details
+        %ul
+          %li
+            = sale.price
+          %li
+            %i.fas.fa-star
+              0
+        %p
+          (税込)

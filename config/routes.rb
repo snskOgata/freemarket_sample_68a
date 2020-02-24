@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   end
   root to: 'sales#index'
   # resources :users, only: [:edit, :update, :destroy, :show]
-  resources :sales, only: [:new, :show, :create, :edit, :destroy]
+  resources :sales, only: [:new, :show, :create, :edit, :destroy] do
+    resources :orders, only: [:new, :create]
+  end
+
   resources :category, controller: :categories, only: [:index, :show]
-  resources :orders, only: [:new]
   namespace :mypages do
     get "index"
     get "new"

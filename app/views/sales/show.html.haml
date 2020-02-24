@@ -55,7 +55,7 @@
         = link_to('この商品を削除する', '#', class: 'destroy-btn')
     - elsif user_signed_in?
       .sales-show__contents__purchase
-        = link_to('購入画面に進む', '#', class: 'purchase-btn')
+        = link_to('購入画面に進む', new_sale_order_path(@sale.id),  class: 'purchase-btn')
       .sales-show__contents__discription
         = @sale.detail
     - else

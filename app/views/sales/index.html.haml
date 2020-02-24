@@ -113,55 +113,24 @@
           %h3.title
             新規投稿商品
       .productLists
-        .productList
-          = link_to "#" do
-            %figure.productList--img
-              = @sales.image
-            .productList--body
-              %h3.name
-                = @sales.name
-              .details
-                %ul
-                  %li
-                    = @sales.price
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
-        .productList
-          = link_to "#" do
-            %figure.productList--img
-              = @sales.image
-            .productList--body
-              %h3.name
-                = @sales.name
-              .details
-                %ul
-                  %li
-                    = @sales.price
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
-                  
-        .productList
-          = link_to "#" do
-            %figure.productList--img
-              = @sales.image
-            .productList--body
-              %h3.name
-                @sales.name
-              .details
-                %ul
-                  %li
-                    = @sales.price
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
+        - @sales.each do |sale|
+          .productList
+            = link_to sale_path(sale.id) do
+              %figure.productList--img
+                = image_tag sale.photos[0].image.url
+              .productList--body
+                %h3.name
+                  = sale.name
+                .details
+                  %ul
+                    %li
+                      = sale.price
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)
+       
 
   %section.pickupContainer
     %h2.head
@@ -172,54 +141,23 @@
           %h3.title
             アーカイバ
       .productLists
-        .productList
-          = link_to "#" do
-            %figure.productList--img
-              = @sales.image
-            .productList--body
-              %h3.name
-                = @sales.name
-              .details
-                %ul
-                  %li
-                    = @sales.price
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
-        .productList
-          = link_to "#" do
-            %figure.productList--img
-              = @sales.image
-            .productList--body
-              %h3.name
-                = @sales.name
-              .details
-                %ul
-                  %li
-                    = @sales.price
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
-        .productList
-          = link_to "#" do
-            %figure.productList--img
-              = @sales.image
-            .productList--body
-              %h3.name
-                = @sales.name
-              .details
-                %ul
-                  %li
-                    = @sales.price
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
+        - @sales.each do |sale|
+          .productList
+            = link_to sale_path(sale.id) do
+              %figure.productList--img
+                = image_tag sale.photos[0].image.url
+              .productList--body
+                %h3.name
+                  = sale.name
+                .details
+                  %ul
+                    %li
+                      = sale.price
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)     
 
 = render "shared/appBanner"
 

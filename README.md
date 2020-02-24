@@ -126,4 +126,4 @@ Rails 5.2.4.1
 - belongs_to :category
 - belongs_to :sale
 
-[![Image from Gyazo](https://i.gyazo.com/b354b717df40fa3dc76eac97f25e2668.png)](https://gyazo.com/b354b717df40fa3dc76eac97f25e2668)
+[![Image from Gyazo](https://i.gyazo.com/39585d967f064a979b61fd003db67ec4.png)](https://gyazo.com/39585d967f064a979b61fd003db67ec4)

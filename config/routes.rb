@@ -8,12 +8,10 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
-  resources :users, only: [:edit, :update, :destroy]
   root to: 'sales#index'
-  # resources :sales, controller: :sales, only: [:index]
+  resources :users, only: [:edit, :update, :destroy, :show]
+  resources :sales, only: [:new, :show, :create, :edit, :destroy]
   resources :category, controller: :categories, only: [:index, :show]
-  resources :users, only: :show
-  resources :sales, only: :new
   resources :orders, only: [:new]
   namespace :mypages do
     get "index"

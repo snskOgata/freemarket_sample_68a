@@ -26,7 +26,7 @@
         text-decoration: none;
          &:hover {
           color: white;
-          background-color: red;
+          background-color: $blue_green;
         }
       }
     }
@@ -39,7 +39,7 @@
           border-top-right-radius: 4px;
           font-size: 22px;
           color: white;
-          background-color: red;
+          background-color: $blue_green;
           height: 40px;
           line-height: 40px;
           padding-left: 30px;
@@ -94,7 +94,7 @@
     }
     .category-label {
       height: 54px;
-      background-color: red;
+      background-color: $blue_green;
       color: #fff;
       font-size: 22px;
       line-height: 54px;
@@ -242,7 +242,7 @@
   }
 
   .form-require {
-    background-color: red;
+    background-color: $blue_green;
     color: white;
     margin: 0 0 0 8px;
     padding: 2px 4px;
@@ -254,8 +254,8 @@
   .sell-btn-box{
     padding: 40px;
     .sell-btn {
-      background: #ea352d;
-      border: 1px solid #ea352d;
+      background: $blue_green;
+      border: 1px solid $blue_green;
       color: white;
       display: block;
       width: 100%;

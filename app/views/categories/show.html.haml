@@ -1,19 +1,15 @@
+= render "shared/main-header"
 .category-page
   .container
     .child-links
       - @children.each do |child|
         = link_to child.name, category_path(child.id), class: 'child-link'
-    .item-container
-      .item-container__header
+    .sale-item-container
+      .sale-item-container__header
         = "#{@category.name}の商品一覧"
-      .items
-        - (1..20).each do |i|
-          =link_to "#", class: 'item' do
-            = image_tag 'item_sample.jpg',size: '188x188', class: 'item__image'
-            .item__body
-              %h3.item__body__name
-                コスプレ制服
-              .item__body__price
-                ¥ 30,000
+      .sale-items
+        = render partial: "shared/sale", collection: @sales
     .category-label
       = @parent.present? ? "#{@category.name}(#{@parent.name})" : @category.name
+= render "shared/appBanner"
+= render "shared/main-footer"

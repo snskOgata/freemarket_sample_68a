@@ -82,5 +82,6 @@ gem 'mini_magick'
 gem 'font-awesome-sass'
 gem 'enum_help'
 gem 'payjp'
-gem 'jquery-rails'
 gem 'dotenv-rails'
+gem "jquery-rails"
+gem 'fog-aws'

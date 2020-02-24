@@ -29,18 +29,18 @@
 
             %ul#menu-content
               - @main_categories.each do |category|
-                = link_to "#" do
+                = link_to category_path(category.id) do
                   %li.first-content
                     = category.name
                     %ul.second-contents
                       - category.children.each do |child|
-                        = link_to "#" do
+                        = link_to category_path(child.id) do
                           %li.second-content
                             = child.name
                             %ul.third-contents
-                              - child.children.each do |grand_children|
-                                = link_to "#" do
-                                  = grand_children.name
+                              - child.children.each do |gchild|
+                                = link_to category_path(gchild.id)  do
+                                  = gchild.name
                                   %li.third-content
                                 
 

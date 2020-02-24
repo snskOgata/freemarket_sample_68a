@@ -113,124 +113,52 @@
           %h3.title
             新規投稿商品
       .productLists
-        .productList
-          = link_to "/products/3" do
-            %figure.productList--img
-              = image_tag 'product3.png', alt: 'product3', class: 'product3'
-            .productList--body
-              %h3.name
-                product3
-              .details
-                %ul
-                  %li
-                    30000円
-                  %li
-                    %i.fa.fa-star.likeIcon
-                      0
-                %p
-                  (税込)
-        .productList
-          = link_to "/products/2" do
-            %figure.productList--img
-              = image_tag 'product2.png', alt: 'product2', class: 'product2'
-            .productList--body
-              %h3.name
-                product2
-              .details
-                %ul
-                  %li
-                    20000円
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
-                  
-        .productList
-          = link_to "/products/1" do
-            %figure.productList--img
-              = image_tag 'product1.png', alt: 'product1', class: 'product1'
-            .productList--body
-              %h3.name
-                product1
-              .details
-                %ul
-                  %li
-                    10000円
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
+        - @sales.each do |sale|
+          .productList
+            = link_to sale_path(sale.id) do
+              %figure.productList--img
+                = image_tag sale.photos[0].image.url
+              .productList--body
+                %h3.name
+                  = sale.name
+                .details
+                  %ul
+                    %li
+                      = sale.price
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)
+       
 
   %section.pickupContainer
     %h2.head
       ピックアップカテゴリー
     .productBox
       .productHead
-        = link_to "/products/1" do
+        = link_to "#" do
           %h3.title
             アーカイバ
       .productLists
-        .productList
-          = link_to "/products/3" do
-            %figure.productList--img
-              = image_tag 'product3.png', alt: 'product3', class: 'product3'
-            .productList--body
-              %h3.name
-                product3
-              .details
-                %ul
-                  %li
-                    30000円
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
-        .productList
-          = link_to "/products/2" do
-            %figure.productList--img
-              = image_tag 'product2.png', alt: 'product2', class: 'product2'
-            .productList--body
-              %h3.name
-                product2
-              .details
-                %ul
-                  %li
-                    20000円
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
-        .productList
-          = link_to "/products/1" do
-            %figure.productList--img
-              = image_tag 'product1.png', alt: 'product1', class: 'product1'
-            .productList--body
-              %h3.name
-                product1
-              .details
-                %ul
-                  %li
-                    10000円
-                  %li
-                    %i.fa.fa-star.LikeIcon
-                      0
-                %p
-                  (税込)
+        - @sales.each do |sale|
+          .productList
+            = link_to sale_path(sale.id) do
+              %figure.productList--img
+                = image_tag sale.photos[0].image.url
+              .productList--body
+                %h3.name
+                  = sale.name
+                .details
+                  %ul
+                    %li
+                      = sale.price
+                    %li
+                      %i.fa.fa-star.likeIcon
+                        0
+                  %p
+                    (税込)     
 
-.appBanner
-  .inner
-    %h2.inner__title
-      だれでもかんたん、人生を変えるフリマアプリ
-    %p.inner__text
-      今すぐ無料ダウンロード
-    .inner__icon
-      = link_to "#" do
-        = image_tag 'AppStore.png', alt: 'AppStore', class: 'aBtn'
-      = link_to "#" do
-        = image_tag 'GooglePlayBadge.png', alt: 'GooglePlay', class: 'gBtn'
+= render "shared/appBanner"
 
 = render "shared/main-footer"

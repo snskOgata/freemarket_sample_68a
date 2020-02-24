@@ -28,6 +28,8 @@ class CategoriesController < ApplicationController
   end
 
   def show
+    @sales = Sale.joins(:categories).where(categories: {id: params[:id]})
+    @main_categories = Category.where(id: 1..13)
     @category = Category.find(params[:id])
     @children = @category.children
     @parent = @category.parent

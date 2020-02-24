@@ -13,9 +13,7 @@
 -#           .add-card
 -#             .add-card__click
 -#               =link_to("クレジットカードを追加する", mypages_new_path, class: "link") 
-
 -# = render "shared/appBanner"
-
 -# = render "shared/main-footer"
 
 = render "shared/main-header"
@@ -44,9 +42,10 @@
               =link_to("お知らせ", root_path, class: "link")           
           %li
             %h3
-              =link_to("やることリスト", root_path, class: "link") 
-              
-        .tab-content
+              クレジットカード一覧
+          .add-card
+            .add-card__click
+              =link_to("クレジットカードを追加する", "#", class: "link") 
 
       .mypage-tab-container
         .mypage-tab-head

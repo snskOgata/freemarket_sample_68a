@@ -9,7 +9,7 @@ class Sale < ApplicationRecord
 
   enum status: { on_sale: 0, soldout: 1 }
 
-  has_many :category_sales
+  has_many :category_sales, dependent: :destroy
   has_many :categories, through: :category_sales
   has_many :photos, dependent: :destroy
   accepts_nested_attributes_for :photos, allow_destroy: true

@@ -49,10 +49,10 @@
       .sales-show__contents__discription
         = @sale.detail
       .sales-show__contents__edit
-        = link_to('商品の編集', '#', class: 'edit-btn')
+        = link_to('商品の編集', edit_sale_path, class: 'edit-btn')
       %span.or or
       .sales-show__contents__destroy
-        = link_to('この商品を削除する', '#', class: 'destroy-btn')
+        = link_to('この商品を削除する', sale_path(@sale.id), "data-method": :delete, class: 'destroy-btn', data:{confirm: "本当に削除しますか？"})
     - elsif user_signed_in?
       .sales-show__contents__purchase
         = link_to('購入画面に進む', new_sale_order_path(@sale.id),  class: 'purchase-btn')

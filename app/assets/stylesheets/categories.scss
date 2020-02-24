@@ -26,7 +26,7 @@
         text-decoration: none;
          &:hover {
           color: white;
-          background-color: red;
+          background-color: $blue_green;
         }
       }
     }
@@ -39,7 +39,7 @@
           border-top-right-radius: 4px;
           font-size: 22px;
           color: white;
-          background-color: red;
+          background-color: $blue_green;
           height: 40px;
           line-height: 40px;
           padding-left: 30px;
@@ -85,52 +85,16 @@
       margin: 16px 16px 0 0;
       }
     }
-    .item-container{
+    .sale-item-container{
       width: auto;
       margin: 24px 0 8px;
       &__header {
         font-size: 22px;
       }
-      .items{
-        display: flex;
-        flex-wrap: wrap;
-        .item{
-          background-color: white;
-          width: 188px;
-          height: 246px;
-          text-decoration: none;
-          margin: 0 20px 20px 0;
-          &__body {
-            position: relative;
-            height: 58px;
-            padding: 8px 12px;
-            &__name {
-              color: #333333;
-              font-size: 14px;
-              font-weight: 400;
-              height: 3em;
-              line-height: 1.5;
-              word-break: break-word;
-              white-space: normal;
-            }
-            &__price {
-              z-index: 2;
-              position: absolute;
-              top: -30px;
-              left: 0;
-              padding: 4px 12px 4px 8px;
-              border-radius: 0 16px 16px 0;
-              font-weight: 600;
-              color: #fff;
-              background-color: rgba(0,0,0,0.3);
-            }
-          }
-        }
-      }
     }
     .category-label {
       height: 54px;
-      background-color: red;
+      background-color: $blue_green;
       color: #fff;
       font-size: 22px;
       line-height: 54px;
@@ -278,7 +242,7 @@
   }
 
   .form-require {
-    background-color: red;
+    background-color: $blue_green;
     color: white;
     margin: 0 0 0 8px;
     padding: 2px 4px;
@@ -290,8 +254,8 @@
   .sell-btn-box{
     padding: 40px;
     .sell-btn {
-      background: #ea352d;
-      border: 1px solid #ea352d;
+      background: $blue_green;
+      border: 1px solid $blue_green;
       color: white;
       display: block;
       width: 100%;

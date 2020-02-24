@@ -31,13 +31,17 @@
           .bxslider{
             height: 300px;
             width: 300px;
-            li.custom-thumb{
-              display: inline-flex;
+            display: flex;
+            align-items: center;
+            .photo-image {
+              max-height: 290px;
+              max-width: 290px;
+            }
+            .custom-thumb{
+              display: inline-block;
               height: 120px;
-              .photo-image{
-                height: 300px;
-                width: 300px;
-              }
+              width: auto;
+              overflow: hidden;
             }
           }
         }

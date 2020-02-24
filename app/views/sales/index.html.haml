@@ -113,23 +113,7 @@
           %h3.title
             新規投稿商品
       .productLists
-        - @sales.each do |sale|
-          .productList
-            = link_to sale_path(sale.id) do
-              %figure.productList--img
-                = image_tag sale.photos[0].image.url
-              .productList--body
-                %h3.name
-                  = sale.name
-                .details
-                  %ul
-                    %li
-                      = sale.price
-                    %li
-                      %i.fa.fa-star.likeIcon
-                        0
-                  %p
-                    (税込)
+        = render partial: "shared/sale", collection: @sales
        
 
   %section.pickupContainer
@@ -141,23 +125,7 @@
           %h3.title
             アーカイバ
       .productLists
-        - @sales.each do |sale|
-          .productList
-            = link_to sale_path(sale.id) do
-              %figure.productList--img
-                = image_tag sale.photos[0].image.url
-              .productList--body
-                %h3.name
-                  = sale.name
-                .details
-                  %ul
-                    %li
-                      = sale.price
-                    %li
-                      %i.fa.fa-star.likeIcon
-                        0
-                  %p
-                    (税込)     
+        = render partial: "shared/sale", collection: @sales
 
 = render "shared/appBanner"
 

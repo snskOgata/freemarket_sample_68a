@@ -35,8 +35,14 @@ class SalesController < ApplicationController
   end
 
   def destroy
-    sale.destroy
-    redirect_to root_path
+    if @sale.seller_id == current_user.id
+      @sale.destroy
+      redirect_to root_path
+      flash[:alert] = '商品を削除しました'
+    else
+      redirect_to root_path
+      flash[:alert] = '商品削除に失敗しました'
+    end
   end
 
   private 

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # resources :users, only: [:edit, :update, :destroy, :show]
   resources :sales, only: [:new, :show, :create, :edit, :destroy]
   resources :category, controller: :categories, only: [:index, :show]
+  resources :orders, only: [:new]
   namespace :mypages do
     get "index"
     get "new"

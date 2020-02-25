@@ -1,6 +1,8 @@
 class OrdersController < ApplicationController
 
   def new
+    @sale = Sale.find(params[:sale_id]) 
+    @order = Order.new
     card = Card.where(user_id: current_user.id).first
     #テーブルからpayjpの顧客IDを検索
     if card.present?
@@ -22,7 +24,5 @@ class OrdersController < ApplicationController
     customer: card.customer_id, #顧客ID
     currency: 'jpy', #日本円
   )
-  redirect_to action: 'done' #完了画面に移動
   end
-
 end

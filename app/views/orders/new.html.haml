@@ -5,20 +5,22 @@
       %h2 購入内容の確認
     .item-contents
       .item-photo
+        = image_tag @sale.photos[0].image.url,size: '188x188', class: 'sale-item__image'
       .item-detail
         %p.item-detail__name
-          なんかの商品名前 　　　色々かっこよくて　　 
-          　とにかくすごい
+          = @sale.name
+        %p.item-detail__detail
+          = @sale.detail 
         %p.item-detail__price
-          %span ¥１０００
+          = @sale.price
           %span (税込)送料込み
     .buy-contents
-      = form_with(local: true )do |f|
+      = form_with(url: sale_orders_path, local: true )do |f|
         .field
           .field__price-label
             = f.label :支払い金額
           .field__item-price
-            ¥１０００
+            = @sale.price
         .field
           .field__credit-label
             = f.label :支払い方法
@@ -37,7 +39,11 @@
           .field__send-label
             = f.label :発送先
           .field__send-method
-            発送先住所を表示
+            = current_user.address.postal_code
+            = current_user.address.prefecture.name
+            = current_user.address.city
+            = current_user.address.block_number
+            = current_user.address.building
             %br
             = link_to "#" do
               発送先住所の変更

@@ -20,9 +20,11 @@ class OrdersController < ApplicationController
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
     Payjp::Charge.create(
-    amount: 300, #支払金額
-    customer: card.customer_id, #顧客ID
-    currency: 'jpy', #日本円
-  )
+      amount: Sale.find(params[:sale_id]).price, #価格
+      customer: card.customer_id, #顧客ID
+      currency: 'jpy', #日本円
+    )
+    
+
   end
 end

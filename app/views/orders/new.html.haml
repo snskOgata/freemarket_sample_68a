@@ -22,9 +22,17 @@
         .field
           .field__credit-label
             = f.label :支払い方法
-          .field__credit-registration
-            = link_to "#" do
-              クレジットカードの登録
+          - if @card_infomation.present?
+            .field__credit-registration
+              = "**** **** **** " + @card_infomation.last4
+              %br
+              - exp_month = @card_infomation.exp_month.to_s
+              - exp_year = @card_infomation.exp_year.to_s.slice(2,3)
+              = exp_month + " / " + exp_year
+          - else
+            .field__credit-registration
+              = link_to  new_card_path do
+                クレジットカードの登録
         .field
           .field__send-label
             = f.label :発送先

@@ -151,9 +151,20 @@ $(function () {
       }
       reader.readAsDataURL(file);
       images.push(img);
+      // input_areaの子要素に各種属性を再設定
+      $.each(input_area.children(), function (index, input) {
+        input.name = `sale[photos_attributes][${index}][image]`;
+        input.id = `sale_photos_attributes_${index}_image`
+        input.dataset.image = index
+      })
+      // ドロップゾーンのfor属性を更新
+      $.each($(".dropzone-box"), function (index, elem) {
+        elem.htmlFor = `sale_photos_attributes_${images.length}_image`
+      })
+
       // 新しいインプットフィールドを追加
       var new_image = $(`<input name="sale[photos_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="sale_photos_attributes_${images.length}_image">`);
-      input_area.prepend(new_image);
+      input_area.append(new_image);
       $.each($(".dropzone-box"), function (index, elem) {
         elem.htmlFor = `sale_photos_attributes_${images.length}_image`
       })
@@ -167,15 +178,9 @@ $(function () {
       $.each(input_area.children(), function (index, input) {
         if (input.dataset.image == target_image.data('image')) {
           input.remove();
-          target_image.remove();
-          var num = input.dataset.image
+          var num = input.dataset.image;
           images.splice(num, 1);
           inputs.splice(num, 1);
-          if (inputs.length == 0) {
-            $('input[type= "file"].upload-image').attr({
-              'data-image': 0
-            })
-          }
         }
       })
       // input_areaの子要素に各種属性を再設定
@@ -188,6 +193,11 @@ $(function () {
       $.each($(".dropzone-box"), function (index, elem) {
         elem.htmlFor = `sale_photos_attributes_${images.length}_image`
       })
+      // input_areaが空になった場合、フィールドを付与する
+      if (input_area.children().length == 0) {
+        var new_input = $(`<input name="sale[photos_attributes][0][image]" class="upload-image" data-image= 0 type="file" id="sale_photos_attributes_0_image">`);
+        input_area.append(new_input);
+      }
       redrawImages();
     })
 

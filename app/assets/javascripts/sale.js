@@ -140,7 +140,8 @@ $(function () {
       var file = $(this).prop('files')[0];
       var reader = new FileReader();
       inputs.push($(this));
-      var img = $(`<div class= "img_view"><div class="img_box"><img></div></div>`);
+      var img = $(`<div class= "img_view" data-image= ${images.length}><div class="img_box"><img></div></div>`);
+      // 画像読み込みが終わったら、画像のプレビューを表示
       reader.onload = function (e) {
         var btn_wrapper = $('<div class="btn_wrapper"><div class="delete-img-btn">削除</div></div>');
         img.append(btn_wrapper);
@@ -150,10 +151,24 @@ $(function () {
       }
       reader.readAsDataURL(file);
       images.push(img);
+      // input_areaの子要素に各種属性を再設定
+      $.each(input_area.children(), function (index, input) {
+        input.name = `sale[photos_attributes][${index}][image]`;
+        input.id = `sale_photos_attributes_${index}_image`
+        input.dataset.image = index
+      })
+      // ドロップゾーンのfor属性を更新
+      $.each($(".dropzone-box"), function (index, elem) {
+        elem.htmlFor = `sale_photos_attributes_${images.length}_image`
+      })
 
+      // 新しいインプットフィールドを追加
+      var new_image = $(`<input name="sale[photos_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="sale_photos_attributes_${images.length}_image">`);
+      input_area.append(new_image);
+      $.each($(".dropzone-box"), function (index, elem) {
+        elem.htmlFor = `sale_photos_attributes_${images.length}_image`
+      })
       redrawImages();
-      var new_image = $(`<input multiple= "multiple" name="sale_photos[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
-      input_area.prepend(new_image);
     });
 
     // 画像の削除ボタンを押した時に発火
@@ -163,32 +178,26 @@ $(function () {
       $.each(input_area.children(), function (index, input) {
         if (input.dataset.image == target_image.data('image')) {
           input.remove();
-          target_image.remove();
-          var num = input.dataset.image
+          var num = input.dataset.image;
           images.splice(num, 1);
           inputs.splice(num, 1);
-          if (inputs.length == 0) {
-            $('input[type= "file"].upload-image').attr({
-              'data-image': 0
-            })
-          }
         }
       })
-      // input_areaの子要素にdata-imageを再設定
+      // input_areaの子要素に各種属性を再設定
       $.each(input_area.children(), function (index, input) {
+        input.name = `sale[photos_attributes][${index}][image]`;
+        input.id = `sale_photos_attributes_${index}_image`
         input.dataset.image = index
       })
-      // inputフィールドに番号を紐付け
-      $('input[type= "file"].upload-image:first').attr({
-        'data-image': inputs.length
+      // ドロップゾーンのfor属性を更新
+      $.each($(".dropzone-box"), function (index, elem) {
+        elem.htmlFor = `sale_photos_attributes_${images.length}_image`
       })
-      $.each(inputs, function (index, input) {
-        var input = $(this)
-        input.attr({
-          'data-image': index
-        })
-        $('input[type= "file"].upload-image:first').after(input)
-      })
+      // input_areaが空になった場合、フィールドを付与する
+      if (input_area.children().length == 0) {
+        var new_input = $(`<input name="sale[photos_attributes][0][image]" class="upload-image" data-image= 0 type="file" id="sale_photos_attributes_0_image">`);
+        input_area.append(new_input);
+      }
       redrawImages();
     })
 

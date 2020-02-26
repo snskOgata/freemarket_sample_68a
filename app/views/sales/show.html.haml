@@ -47,10 +47,11 @@
         (税込)
     .sales-show__contents__discription
       = @sale.detail
-    -# - if @sale.stats != on_sale
-    -#   .sales-show__contents__edit
-    -#     = link_to('商品の編集', edit_sale_path, class: 'edit-btn')
-    - if user_signed_in? && current_user.id == @sale.seller_id
+    - if @sale.status != "on_sale"
+      .sales-show__contents__inactive
+        .edit-btn 
+          = @sale.status_i18n
+    - elsif user_signed_in? && current_user.id == @sale.seller_id
       .sales-show__contents__edit
         = link_to('商品の編集', edit_sale_path, class: 'edit-btn')
       %span.or or
@@ -60,6 +61,8 @@
       .sales-show__contents__edit
         = link_to('購入画面に進む', new_sale_order_path(@sale.id),  class: 'edit-btn')
     - else
+      .sales-show__contents__edit
+        = link_to('サインインする', new_user_session_path, class: 'edit-btn')
 
 = render "shared/appBanner"
 = render "shared/main-footer"

@@ -64,5 +64,17 @@
     - else
       .sales-show__contents__discription
         = @sale.detail
+    .prev_and_next
+      .prev
+        - if @prev_sale.present? 
+          = link_to sale_path(@prev_sale) do
+            %i.fas.fa-angle-left
+            = @prev_sale.name
+
+      .next
+        - if @next_sale.present?
+          = link_to sale_path(@next_sale) do
+            = @next_sale.name
+            %i.fas.fa-angle-right
 = render "shared/appBanner"
 = render "shared/main-footer"

@@ -90,5 +90,26 @@ describe Sale do
         expect(sale.errors[:categories]).to include("は1つ以上指定して下さい")
       end
     end
+    context '画像' do
+      it "画像がひとつもない場合、登録不可能" do
+        sale = build(:sale)
+        sale.photos = []
+        sale.valid?
+        expect(sale.errors[:photos]).to include("は1枚以上10枚以下が必須です")
+      end
+      it "画像が10枚の場合、登録可能" do
+        sale = build(:sale)
+        sale.photos = []
+        sale.photos << create_list(:photo, 10)
+        expect(sale).to be_valid
+      end
+      it "画像が10枚以上の場合、登録不可能" do
+        sale = build(:sale)
+        sale.photos = []
+        sale.photos << create_list(:photo, 11)
+        sale.valid?
+        expect(sale.errors[:photos]).to include("は1枚以上10枚以下が必須です")
+      end
+    end
   end
 end

@@ -12,14 +12,14 @@
           .dropzone-container
             #preview
             .dropzone-area
-              = image.label :image, class: "dropzone-box", for: "upload-image" do
+              = image.label :image, class: "dropzone-box", for: "sale_photos_attributes_0_image" do
                 .input_area
-                  = image.file_field :image, multiple: true, name: 'sale_photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                  = image.file_field :image, name: 'sale[photos_attributes][0][image]', id: "sale_photos_attributes_0_image", class: "upload-image", 'data-image': 0
                 %p ここをクリックしてください
           .dropzone-container
             #preview2
             .dropzone-area2
-              = image.label :image, class: "dropzone-box", for: "upload-image" do
+              = image.label :image, class: "dropzone-box", for: "sale_photos_attributes_0_image" do
                 %p ここをクリックしてください
 
       .sale-content

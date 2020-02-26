@@ -25,7 +25,8 @@
                   .category_link
                     - if i != 0
                       %i.fas.fa-angle-right
-                    = category.name
+                    .category_link__name
+                      = category.name
           %tr
             %th 商品の状態
             %td 

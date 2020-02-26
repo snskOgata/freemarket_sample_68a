@@ -75,11 +75,17 @@
               .category_link {
                 margin: 0;
                 color: $blue_green;
-                display: inline-block;
+                display: block;
                 font-size: 14px;
+                line-height: 14px;
                 &:hover {
-                  border-bottom: 1px solid lightskyblue;
                   color: lightskyblue;
+                }
+                &__name {
+                  display: inline;
+                  &:hover {
+                    border-bottom: 1px solid lightskyblue;
+                  }
                 }
               }
             }

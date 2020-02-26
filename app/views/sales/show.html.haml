@@ -20,8 +20,11 @@
           %tr
             %th カテゴリ
             %td 
-              - @sale.categories.each do |categories|
-                = categories.name
+              - @sale.categories.each_with_index do |category, i|
+                = link_to category_path(category.id) , class: "category_link" do
+                  - if i != 0
+                    %i.fas.fa-angle-right
+                  = category.name
           %tr
             %th 商品の状態
             %td 

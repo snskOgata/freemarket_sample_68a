@@ -58,21 +58,29 @@
           tr{
             height: 70px;
             border: solid 1px #eee;
-            line-height: 70px;
             th{
               width: 117px;
               text-align: left;
               font-weight: 400;
               background: #fafafa;
-              padding-left: 10px;
+              display: table-cell;
+              vertical-align: middle;
+              padding: 10px;
             }
             td{
               width: 182px;
               background: #fff;
-              margin: 0;
+              margin: auto 0;
               padding-left: 10px;
-              line-height: 30px;
+              display: table-cell;
+              vertical-align: middle;
               border-left: solid 1px #eee;
+              .category_link {
+                margin: 0;
+                color: $blue_green;
+                display: block;
+                font-size: 14px;
+              }
             }
           }
         }

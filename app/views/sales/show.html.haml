@@ -21,10 +21,11 @@
             %th カテゴリ
             %td 
               - @sale.categories.each_with_index do |category, i|
-                = link_to category_path(category.id) , class: "category_link" do
-                  - if i != 0
-                    %i.fas.fa-angle-right
-                  = category.name
+                = link_to category_path(category.id) do
+                  .category_link
+                    - if i != 0
+                      %i.fas.fa-angle-right
+                    = category.name
           %tr
             %th 商品の状態
             %td 
@@ -64,17 +65,17 @@
     - else
       .sales-show__contents__discription
         = @sale.detail
-    .prev_and_next
-      .prev
-        - if @prev_sale.present? 
-          = link_to sale_path(@prev_sale) do
-            %i.fas.fa-angle-left
-            = @prev_sale.name
+  .prev_and_next
+    .prev
+      - if @prev_sale.present? 
+        = link_to sale_path(@prev_sale), class: "link" do
+          %i.fas.fa-angle-left
+          = @prev_sale.name
 
-      .next
-        - if @next_sale.present?
-          = link_to sale_path(@next_sale) do
-            = @next_sale.name
-            %i.fas.fa-angle-right
+    .next
+      - if @next_sale.present?
+        = link_to sale_path(@next_sale), class: "link"do
+          = @next_sale.name
+          %i.fas.fa-angle-right
 = render "shared/appBanner"
 = render "shared/main-footer"

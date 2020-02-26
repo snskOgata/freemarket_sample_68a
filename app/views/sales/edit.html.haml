@@ -3,24 +3,25 @@
   .container
     %h2 商品の情報を入力
     = form_with model: @sale, local: true do |f| 
-      .sale-image-box
-        .sale-image-box__head 
-          %label 出品画像
-          %span.form-require  必須
-        %p 最大10枚までアップロードできます
+      #image-box
+        #previews
+          - if @sale.persisted?
+            - @sale.photos.each_with_index do |photo, i|
+              = image_tag photo.image.url, data: { index: i }, width: "100", height: '100'
         = f.fields_for :photos do |image|
-          .dropzone-container
-            #preview
-            .dropzone-area
-              = image.label :image, class: "dropzone-box", for: "upload-image" do
-                .input_area
-                  = image.file_field :image, multiple: true, name: 'sale_photos[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                %p ここをクリックしてください
-          .dropzone-container
-            #preview2
-            .dropzone-area2
-              = image.label :image, class: "dropzone-box", for: "upload-image" do
-                %p ここをクリックしてください
+          .js-file_group{"data-index" => "#{image.index}"}
+            = image.file_field :src, class: 'js-file'
+            %br/
+            %span.js-remove 削除
+          - if @sale.persisted?
+            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
+        -# 新規画像の追加 
+        - if @sale.persisted?
+          .js-file_group{"data-index" => "#{@sale.photos.count}"}
+            = file_field_tag :image, name: 'sale[photos_attributes][0][image]', id: "sale_photos_attributes_0_image", class: "upload-image", 'data-image': 0
+            .js-remove 削除
+      = f.submit
 
       .sale-content
         .main-content
@@ -34,7 +35,6 @@
               %label 商品の説明
               %span.form-require  必須
             = f.text_area :detail, class: "textarea-default", rows: '5', id: 'detail_form', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
-
       .sale-content
         %h3 商品の詳細
         .sale-content__form

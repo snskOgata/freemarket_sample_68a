@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-      #orderテーブルに購入者のIDと商品のIDを保存
+    #orderテーブルに購入者のIDと商品のIDを保存
     Order.create(buyer_id: current_user.id, sale_id: params[:sale_id])
     
     card = Card.where(user_id: current_user.id).first

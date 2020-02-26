@@ -20,6 +20,7 @@ class Sale < ApplicationRecord
   belongs_to_active_hash :prep_days
 
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+  has_one :order 
 
   def check_categories
     errors.add(:categories, "は1つ以上指定して下さい") if categories.size < 1

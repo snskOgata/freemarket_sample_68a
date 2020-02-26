@@ -111,24 +111,24 @@
         line-height: 60px;
         text-align: center
       }
-      &__inactive{
-        height: 60px;
-        background-color: gray;
-        text-align: center;
-        .edit-btn{
-          color: white;
-          font-size: 24px;
-          line-height: 60px;
-          text-align: center
-        }
+    }
+    &__inactive{
+      height: 60px;
+      background-color: gray;
+      text-align: center;
+      .edit-btn{
+        color: white;
+        font-size: 24px;
+        line-height: 60px;
+        text-align: center
       }
-      span.or{
-        display: block;
-        width: center;
-        margin: 20px auto;
-        text-align: center;
-        font-size: 20px;
-      }
+    }
+    span.or{
+      display: block;
+      width: center;
+      margin: 20px auto;
+      text-align: center;
+      font-size: 20px;
     }
   }
 }

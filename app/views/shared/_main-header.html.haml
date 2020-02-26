@@ -29,19 +29,22 @@
 
             %ul#menu-content
               - @main_categories.each do |category|
-                = link_to category_path(category.id) do
-                  %li.first-content
-                    = category.name
+                %li.first-content
+                  = link_to category_path(category.id) do
+                    .first-name
+                      = category.name
                     %ul.second-contents
                       - category.children.each do |child|
-                        = link_to category_path(child.id) do
-                          %li.second-content
-                            = child.name
+                        %li.second-content
+                          = link_to category_path(child.id) do
+                            .second-name
+                              = child.name
                             %ul.third-contents
                               - child.children.each do |gchild|
-                                = link_to category_path(gchild.id)  do
-                                  = gchild.name
-                                  %li.third-content
+                                %li.third-content
+                                  = link_to category_path(gchild.id)  do
+                                    .third-name
+                                      = gchild.name
                                 
 
 
@@ -57,7 +60,7 @@
             = link_to destroy_user_session_path, method: :delete do
               ログアウト
           %li.listsRight__item.listsRight__item--new
-            = link_to mypages_new_path do
+            = link_to mypages_index_path do
               マイページ
         -else
           %li.listsRight__item.listsRight__item--login

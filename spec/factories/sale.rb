@@ -11,6 +11,7 @@ FactoryBot.define do
 
     after(:build) do |sale|
       sale.categories << create_list(:category, 3)
+      sale.photos << create_list(:photo, 3)
     end
   end
 end

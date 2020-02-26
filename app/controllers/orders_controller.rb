@@ -17,6 +17,9 @@ class OrdersController < ApplicationController
   end
 
   def create
+      #orderテーブルに購入者のIDと商品のIDを保存
+    Order.create(buyer_id: current_user.id, sale_id: params[:sale_id])
+    
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
     Payjp::Charge.create(
@@ -24,7 +27,8 @@ class OrdersController < ApplicationController
       customer: card.customer_id, #顧客ID
       currency: 'jpy', #日本円
     )
-    
 
+    Sale.find(params[:sale_id]).update(status:"shipping")
   end
+
 end

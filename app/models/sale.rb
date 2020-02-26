@@ -7,7 +7,7 @@ class Sale < ApplicationRecord
   validates :detail, length: { maximum: 1000 }
   validate :check_categories
 
-  enum status: { on_sale: 0, soldout: 1 }
+  enum status: { on_sale: 0, shipping: 1, soldout: 2}
 
   has_many :category_sales, dependent: :destroy
   has_many :categories, through: :category_sales

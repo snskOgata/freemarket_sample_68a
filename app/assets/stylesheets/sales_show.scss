@@ -7,7 +7,6 @@
     background-color:white;
     width: 700px;
     margin: auto;
-    top: 40px;
     padding: 24px 40px 40px;
     &__name{
       font-size: 24px;
@@ -46,12 +45,9 @@
       .sale-detail-table{
         float: right;
         width: 300px;
-        background-color: lightcoral;
         table{
           font-size: 14px;
           color: black;
-          border-style: solid;
-          border-width: 0;
           tr{
             height: 70px;
             border: solid 1px #eee;
@@ -67,13 +63,11 @@
             td{
               width: 182px;
               background: #fff;
-              margin: auto 0;
               padding-left: 10px;
               display: table-cell;
               vertical-align: middle;
               border-left: solid 1px #eee;
               .category_link {
-                margin: 0;
                 color: $blue_green;
                 display: block;
                 font-size: 14px;
@@ -104,7 +98,7 @@
       text-align: center;
       margin-top: 24px;
       .item-price{
-        margin: 0 16px 0 0;
+        margin-right: 16px;
         font-size: 50px;
         font-weight: 600;
       }

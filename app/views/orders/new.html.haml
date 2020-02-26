@@ -15,7 +15,7 @@
           = @sale.price
           %span (税込)送料込み
     .buy-contents
-      = form_with(url: sale_orders_path, local: true )do |f|
+      = form_with(model: [@sale, @order], local: true )do |f|
         .field
           .field__price-label
             = f.label :支払い金額

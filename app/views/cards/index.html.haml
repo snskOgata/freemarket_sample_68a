@@ -17,10 +17,5 @@
           %input{type: "hidden", name: "card_id", value: ""}
           = f.submit "削除する", {class: "content__credit-cards__list__remove"}
           - if flash[:notice]
-            -# .alert.alert-success
-          -#   = flash[:notice]
-          -# - if flash[:alert]
-          -#   .alert.alert-dange
-          -#   = flash[:alert]
   = link_to new_card_path do
     クレジットカードの追加

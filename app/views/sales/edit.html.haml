@@ -19,7 +19,7 @@
         -# 新規画像の追加 
         - if @sale.persisted?
           .js-file_group{"data-index" => "#{@sale.photos.count}"}
-            = file_field_tag :image, name: 'sale[photos_attributes][0][image]', id: "sale_photos_attributes_0_image", class: "upload-image", 'data-image': 0
+            = file_field_tag :image, name: 'sale[photos_attributes][0][image]', id: "sale_photos_attributes_0_image", class: "upload-image js-file", 'data-image': 0
             .js-remove 削除
       = f.submit
 
@@ -29,7 +29,7 @@
             = label_tag :name do
               商品名
               %span.form-require  必須
-            = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "input-default", id: 'name_form'
+            = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "input-default", id: 'name'
           .main-form-group
             = label_tag :detail do
               %label 商品の説明

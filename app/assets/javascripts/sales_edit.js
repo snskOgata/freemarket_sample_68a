@@ -1,24 +1,24 @@
 $(function () {
   // 画像用のinputを生成する関数
-  // console.log("ok");
-  const buildFileField = (num)=> {
-    const html = `
-    <div class="js-file_group" data-index="${num}">
-      <input name="sale[photos_attributes][${num}][image]" id="sale_photos_attributes_${num}_image" class="upload-image" data-image="0" type="file">
+  function buildFileField(num){
+    const html = 
+    `<div class="js-file_group" data-index="${num}">
+      <input class="js-file" type="file" name="sale[photos_attributes][${num}][src]" id="sale_photos_attributes_${num}_src">
       <br>
       <span class="js-remove">削除</span>
-    </div>`;
+     </div>`;
+
     return html;
   }
   // プレビュー用のimgタグを生成する関数
-  const buildImg = (index, url)=> {
-    const html = `<image data-index="${index}" image="${url}" width="100px" height="100px">`;
+  function buildImg(index, url){
+    const html = `<img data-index="${index}" width="100" height="100" src="${url}" />`;
     return html;
   }
 
   let fileIndex = [1,2,3,4,5,6,7,8,9,10];
   lastIndex = $('.js-file_group:last').data('index');
-  
+
   fileIndex.splice(0, lastIndex);
 
   $('.hidden-destroy').hide();
@@ -30,11 +30,17 @@ $(function () {
 
     // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      console.log(targetIndex);
       img.setAttribute('src', blobUrl);
+
     } else {  // 新規画像追加の処理
-      $('#previews').append(buildImg(targetIndex, blobUrl));
+      const html = buildImg(targetIndex, blobUrl)
+
+      $('#previews').append(html);
+
       // fileIndexの先頭の数字を使ってinputを作る
-      $('#image-box').append(buildFileField(fileIndex[0]));
+      const inputHTML = buildFileField(fileIndex[0])
+      $('#image-box').append(inputHTML);
       fileIndex.shift();
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);

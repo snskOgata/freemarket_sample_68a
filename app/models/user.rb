@@ -6,8 +6,8 @@ class User < ApplicationRecord
   validates :nickname, presence: true, uniqueness: true, length: { maximum: 20 }
   
   has_many :sales, class_name: 'Sale', foreign_key: 'seller_id'
-  has_many :orders
-  has_many :credits, dependent: :destroy
+  has_many :orders, class_name: 'Order', foreign_key: 'buyer_id'
+  has_many :cards,   dependent: :destroy
   has_one  :profile, dependent: :destroy
   has_one  :address, dependent: :destroy
 

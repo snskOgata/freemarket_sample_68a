@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_18_094025) do
+ActiveRecord::Schema.define(version: 2020_02_24_121347) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "postal_code", null: false
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 2020_02_18_094025) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -39,6 +48,15 @@ ActiveRecord::Schema.define(version: 2020_02_18_094025) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_category_sales_on_category_id"
     t.index ["sale_id"], name: "index_category_sales_on_sale_id"
+  end
+
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "buyer_id", null: false
+    t.bigint "sale_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
+    t.index ["sale_id"], name: "index_orders_on_sale_id"
   end
 
   create_table "photos", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -91,8 +109,11 @@ ActiveRecord::Schema.define(version: 2020_02_18_094025) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "category_sales", "categories"
   add_foreign_key "category_sales", "sales"
+  add_foreign_key "orders", "sales"
+  add_foreign_key "orders", "users", column: "buyer_id"
   add_foreign_key "photos", "sales"
   add_foreign_key "profiles", "users"
   add_foreign_key "sales", "users", column: "seller_id"

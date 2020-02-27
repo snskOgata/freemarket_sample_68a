@@ -8,7 +8,7 @@ class Sale < ApplicationRecord
   validate :check_categories
   validate :check_photos
 
-  enum status: { on_sale: 0, soldout: 1 }
+  enum status: { on_sale: 0, shipping: 1, soldout: 2}
 
   has_many :category_sales, dependent: :destroy
   has_many :categories, through: :category_sales
@@ -21,6 +21,7 @@ class Sale < ApplicationRecord
   belongs_to_active_hash :prep_days
 
   belongs_to :seller, class_name: 'User', foreign_key: 'seller_id'
+  has_one :order 
 
   def check_categories
     errors.add(:categories, "は1つ以上指定して下さい") if categories.size < 1

@@ -4,6 +4,7 @@ ja:
     sale:
       status:
         on_sale: "販売中"
+        shipping: "発送中"
         soldout: "売り切れ"
   activerecord:
     errors:

@@ -50,22 +50,49 @@
         = @sale.price
       %span.item-tax
         (税込)
-    - if user_signed_in? && current_user.id == @sale.seller_id
-      .sales-show__contents__discription
-        = @sale.detail
-      .sales-show__contents__edit
-        = link_to('商品の編集', edit_sale_path, class: 'edit-btn')
-      %span.or or
-      .sales-show__contents__destroy
-        = link_to('この商品を削除する', sale_path(@sale.id), "data-method": :delete, class: 'destroy-btn', data:{confirm: "本当に削除しますか？"})
-    - elsif user_signed_in?
-      .sales-show__contents__purchase
-        = link_to('購入画面に進む', new_sale_order_path(@sale.id),  class: 'purchase-btn')
-      .sales-show__contents__discription
-        = @sale.detail
-    - else
-      .sales-show__contents__discription
-        = @sale.detail
+    .sales-show__contents__discription
+      = @sale.detail
+    - case @sale.status
+    - when "on_sale"
+      - if user_signed_in? && current_user.id == @sale.seller_id
+        .sales-show__contents__edit
+          = link_to('商品の編集', edit_sale_path, class: 'edit-btn')
+        %span.or or
+        .sales-show__contents__edit
+          = link_to('この商品を削除する', sale_path(@sale.id), "data-method": :delete, class: 'edit-btn', data:{confirm: "本当に削除しますか？"})
+      - elsif user_signed_in?
+        .sales-show__contents__edit
+          = link_to('購入画面に進む', new_sale_order_path(@sale.id),  class: 'edit-btn')
+      - else
+        .sales-show__contents__edit
+          = link_to('サインインする', new_user_session_path, class: 'edit-btn')
+    - when "shipping"
+      - if user_signed_in? && current_user.id == @sale.seller_id
+        .sales-show__contents__inactive
+          .edit-btn 
+            商品を発送してください
+      - elsif user_signed_in? && current_user.id == @sale.order.buyer_id
+        商品を発送中です。商品を確認したら速やかに下のボタンを押してください。
+        .sales-show__contents__inactive
+          .edit-btn 
+            商品受け取り完了
+      - else 
+        .sales-show__contents__inactive
+          .edit-btn 
+            = @sale.status_i18n
+    - when "soldout"
+      - if user_signed_in? && current_user.id == @sale.seller_id
+        .sales-show__contents__inactive
+          .edit-btn 
+            購入者が商品を確認しました
+      - elsif user_signed_in? && current_user.id == @sale.order.buyer_id
+        .sales-show__contents__inactive
+          .edit-btn 
+            商品受け取り完了済み
+      - else 
+        .sales-show__contents__inactive
+          .edit-btn 
+            = @sale.status_i18n
   .prev_and_next
     .prev
       - if @prev_sale.present? 

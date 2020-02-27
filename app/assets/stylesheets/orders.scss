@@ -42,9 +42,9 @@
       border-top:solid 1px grey;
       border-bottom:solid 1px grey;
       .item-photo{
-        background-color: green;
-        width: 50%;
-        height: 150px;
+        background-color: lawngreen;
+        width: 200px;
+        height: 200px;
         margin: auto 10px;
       }
         
@@ -52,7 +52,7 @@
         // background-color: yellow;
         width: 50%;
         height: 150px;
-        margin: auto 10px;
+        margin: auto 30px;
         position: relative;
         &__name{
           background-color: white;
@@ -60,6 +60,13 @@
           font-size:22px;
           position: absolute;
           top:10px;
+        }
+        &__detail{
+          background-color: white;
+          margin:2px;
+          font-size:22px;
+          position: absolute;
+          top:30px;
         }
         &__price{
           background-color: white;
@@ -112,9 +119,9 @@
           background-color: paleturquoise;
           height: 100px;
           width:400px;
-          line-height: 100px;
+          line-height: 50px;
           text-align: center;
-          font-size: 30px;
+          font-size: 20px;
           border-bottom: solid 2px grey;
         }
         &__send-label{

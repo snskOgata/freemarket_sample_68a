@@ -20,6 +20,9 @@ Rails.application.routes.draw do
     get "logout"
   end
   resources :cards, only: [:new, :index, :destroy, :create]
+
+  get '*anything', to: 'errors#error_page'
+  get 'error', to: 'errors#error_page'
 end
 
 

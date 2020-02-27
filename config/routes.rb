@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   end
   resources :cards, only: [:new, :index, :destroy, :create]
 
-  get '*anything', to: 'errors#error_page'
+  get '*anything', to: 'errors#error_page' if Rails.env.production?
 end
 
 

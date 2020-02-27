@@ -1,7 +1,8 @@
+= render "shared/main-header"
 .error_page{style: "max-width: 800px; margin: 100px auto; text-align: center"}
   = link_to root_path do
     = image_tag 'logo_icon.png', alt: 'ロゴ', size: '200x200', class: 'logo_icon'
-  .error-messages{style: "margin-top: 20px"}
+  .error-messages
     %h2.message{style: "font-size: 32px; color: #3CCACE"}
       ページが見つかりません
     .error-type{style: "font-size: 32px; color: #3CCACE"}
@@ -11,3 +12,5 @@
       削除された可能性があります。
 
     = link_to 'TOPページに戻る', root_path, style: "background-color: #3CCACE;padding: 10px 40px; display: inline-block; margin-top: 20px; color: white"
+= render "shared/appBanner"
+= render "shared/main-footer"

@@ -1,12 +1,12 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
-  rescue_from ActiveRecord::RecordNotFound, with: :render_error if Rails.env.production?
-  rescue_from ActionController::RoutingError, with: :render_error if Rails.env.production?
+
+  rescue_from ActiveRecord::RecordNotFound, with: :render_error 
+  rescue_from ActionController::RoutingError, with: :render_error 
 
   def render_error
-    render template: 'errors/error_page', status: 404, layout: 'application', content_type: 'text/html'
+    redirect_to error_path
   end
 
   private

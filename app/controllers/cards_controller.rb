@@ -6,6 +6,7 @@ class CardsController < ApplicationController
     if @card.present?
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
+      # 以下はカードのブランドロゴの表示のためのもの　ビューの実装の際に使用する
       # @card_brand = @card_information.brand
       # case @card_brand
       # when "Visa"
@@ -20,7 +21,7 @@ class CardsController < ApplicationController
       #   @card_src = "diner.gif"
       # when "Discover"
       #   @card_src = "discover.gif"
-      end
+      # end
     end
   end
 

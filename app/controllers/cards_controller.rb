@@ -4,6 +4,7 @@ class CardsController < ApplicationController
 
   def index
     if @card.present?
+      Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
       # 以下はカードのブランドロゴの表示のためのもの　ビューの実装の際に使用する

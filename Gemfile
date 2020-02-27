@@ -82,7 +82,6 @@ gem 'mini_magick'
 gem 'font-awesome-sass'
 gem 'enum_help'
 gem 'payjp'
-gem 'dotenv-rails'
 gem "jquery-rails"
 gem 'fog-aws'
 gem 'bxslider-rails'

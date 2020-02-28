@@ -16,6 +16,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @profile = @user.build_profile
     render :new_profile
+
+    
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super
+    
+
   end
 
   def create_profile

@@ -1,4 +1,6 @@
 =link_to sale_path(sale.id), class: 'sale-item' do
+  .soldout-badge
+    SOLD
   = image_tag sale.photos[0].image.url,size: '188x188', class: 'sale-item__image'
   .sale-item__body
     %h3.sale-item__body__name

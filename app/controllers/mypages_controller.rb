@@ -1,5 +1,5 @@
 class MypagesController < ApplicationController
-  def index
+  def show
     @main_categories = Category.where(id: 1..13)
   end
 

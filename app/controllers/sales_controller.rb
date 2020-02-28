@@ -45,6 +45,17 @@ class SalesController < ApplicationController
     end
   end
 
+  def shipped
+    @sale = Sale.find(params[:sale_id]) 
+    if @sale.seller_id == current_user.id && @sale.status == "shipping"
+      @sale.update(status:"soldout")
+      redirect_to root_path, notice: '出品完了を受理しました'
+    else
+      flash.now[:alert] = 'データの更新に失敗しました'
+      render "show"
+    end
+  end
+
   private 
     def sale_params
       params.require(:sale).permit(:name, :detail, :condition_id, :delivery_payer_id, :prefecture_id, :prep_days_id, :price, category_ids: [], photos_attributes: [:image]).merge(seller_id: current_user.id)

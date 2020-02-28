@@ -17,13 +17,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @profile = @user.build_profile
     render :new_profile
     
-    if params[:sns_auth] == 'true'
-      pass = Devise.friendly_token
-      params[:user][:password] = pass
-      params[:user][:password_confirmation] = pass
-    end
-    super
-
   end
 
   def create_profile
@@ -50,6 +43,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user.save
     sign_in(:user, @user)
     redirect_to root_path
+  end
+
+  def create_acount
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super
   end
 
   protected

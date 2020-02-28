@@ -68,9 +68,9 @@
           = link_to('サインインする', new_user_session_path, class: 'edit-btn')
     - when "shipping"
       - if user_signed_in? && current_user.id == @sale.seller_id
-        .sales-show__contents__inactive
-          .edit-btn 
-            商品を発送してください
+        .sales-show__contents__edit
+          =link_to sale_shipped_path(@sale.id), method: :post, class: "edit-btn" do
+            商品の発送をしたので、取引を完了する
       - elsif user_signed_in? && current_user.id == @sale.order.buyer_id
         商品を発送中です。商品を確認したら速やかに下のボタンを押してください。
         .sales-show__contents__inactive
@@ -84,7 +84,7 @@
       - if user_signed_in? && current_user.id == @sale.seller_id
         .sales-show__contents__inactive
           .edit-btn 
-            購入者が商品を確認しました
+            取引は完了しました
       - elsif user_signed_in? && current_user.id == @sale.order.buyer_id
         .sales-show__contents__inactive
           .edit-btn 

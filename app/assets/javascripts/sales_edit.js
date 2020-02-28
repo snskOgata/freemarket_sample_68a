@@ -4,8 +4,6 @@ $(function () {
     const html = 
     `<div class="js-file_group" data-index="${num}">
       <input class="js-file" type="file" name="sale[photos_attributes][${num}][src]" id="sale_photos_attributes_${num}_src">
-      <br>
-      <span class="js-remove">削除</span>
      </div>`;
 
     return html;
@@ -23,31 +21,30 @@ $(function () {
 
   $('.hidden-destroy').hide();
 
-  $('#image-box').on('change', '.js-file', function(e) {
+  $('.image-box').on('change', '.js-file', function(e) {
     const targetIndex = $(this).parent().data('index');
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
 
     // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      console.log(targetIndex);
       img.setAttribute('src', blobUrl);
 
     } else {  // 新規画像追加の処理
       const html = buildImg(targetIndex, blobUrl)
-
-      $('#previews').append(html);
+      $('.previews').append(html);
 
       // fileIndexの先頭の数字を使ってinputを作る
       const inputHTML = buildFileField(fileIndex[0])
-      $('#image-box').append(inputHTML);
+      $('.dropzone-box')[0].htmlFor = `sale_photos_attributes_${fileIndex[0]}_src`
+      $('.image-box').append(inputHTML);
       fileIndex.shift();
       // 末尾の数に1足した数を追加する
       fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
     }
   });
 
-  $('#image-box').on('click', '.js-remove', function() {
+  $('.image-box').on('click', '.js-remove', function() {
     const targetIndex = $(this).parent().data('index');
     // 該当indexを振られているチェックボックスを取得する
     const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
@@ -58,6 +55,6 @@ $(function () {
     $(`img[data-index="${targetIndex}"]`).remove();
 
     // 画像入力欄が0個にならないようにしておく
-    if ($('.js-file').length == 0) $('#image-box').append(buildFileField(fileIndex[0]));
+    if ($('.js-file').length == 0) $('.image-box').append(buildFileField(fileIndex[0]));
   });
 });

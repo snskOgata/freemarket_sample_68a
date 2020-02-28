@@ -3,25 +3,31 @@
   .container
     %h2 商品の情報を入力
     = form_with model: @sale, local: true do |f| 
-      #image-box
-        #previews
+      .image-box
+        .previews
           - if @sale.persisted?
-            - @sale.photos.each_with_index do |photo, i|
-              = image_tag photo.image.url, data: { index: i }, width: "100", height: '100'
-        = f.fields_for :photos do |image|
-          .js-file_group{"data-index" => "#{image.index}"}
-            = image.file_field :src, class: 'js-file'
-            %br/
-            %span.js-remove 削除
-          - if @sale.persisted?
-            = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+            -# - @sale.photos.each_with_index do |photo, i|
+            -#   = image_tag photo.image.url, data: { index: i }, width: "100", height: '100'
+          = f.fields_for :photos do |image|
+            .js-file_group{"data-index" => "#{image.index}"}
+              = image.file_field :src, class: 'js-file'
+              = image_tag @sale.photos[image.index].image.url, data: { index: image.index }, width: "100", height: '100', display:'block'
+              %label{for:"sale_photos_attributes_#{image.index}_src"} 編集
+              %span.js-remove 削除
+            - if @sale.persisted?
+              = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
 
         -# 新規画像の追加 
         - if @sale.persisted?
           .js-file_group{"data-index" => "#{@sale.photos.count}"}
-            = file_field_tag :image, name: 'sale[photos_attributes][0][image]', id: "sale_photos_attributes_0_image", class: "upload-image js-file", 'data-image': 0
+            = file_field_tag :image, name: 'sale[photos_attributes][0][image]', id: "sale_photos_attributes_0_image", class: "js-file", 'data-image': 0
+            -# 編集は画像を追加したら表示されるようにする
+            -# %label{for:"sale_photos_attributes_0_image"} 編集
+            -# 削除は画像を追加したら表示されるようにする
             .js-remove 削除
-      = f.submit
+
+            -# 新規追加のIDを取得するにはどうしたらよいか
+            %label.dropzone-box{for:"sale_photos_attributes_0_image"} ここをクリックしてください
 
       .sale-content
         .main-content

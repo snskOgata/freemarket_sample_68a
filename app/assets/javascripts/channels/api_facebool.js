@@ -19,3 +19,17 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 </script>
+
+FB.getLoginStatus(function(response) {
+  statusChangeCallback(response);
+});
+
+{
+  status: 'connected',
+  authResponse: {
+      accessToken: '...',
+      expiresIn:'...',
+      signedRequest:'...',
+      userID:'...'
+  }
+}

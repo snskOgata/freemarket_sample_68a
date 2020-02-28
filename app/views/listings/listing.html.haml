@@ -7,13 +7,13 @@
       %h2.tab-header 出品した商品
       %ul.listing-tabs
         %li{class: "#{@status == 0 ? 'active' : ''}"}
-          = link_to "#", class: "link" do
+          = link_to listings_listing_path, class: "link" do
             出品中
         %li{class: "#{@status == 1 ? 'active' : ''}"}
-          = link_to "#", class: "link" do
+          = link_to listings_in_progress_path, class: "link" do
             取引中
         %li{class: "#{@status == 2 ? 'active' : ''}"}
-          = link_to "#", class: "link" do
+          = link_to listings_completed_path, class: "link" do
             売却済み
       .tab-content
         %ul.item-list

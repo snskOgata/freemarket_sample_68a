@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'listings/listing'
-  get 'listings/in_progress'
-  get 'listings/completed'
   # ユーザ関連
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
@@ -24,6 +21,11 @@ Rails.application.routes.draw do
   resource :mypage, only: [:show]
   scope :mypage do
     resources :cards, only: [:new, :index, :destroy, :create]
+    namespace :listings do
+      get 'listing'
+      get 'in_progress'
+      get 'completed'
+    end
   end
 
   get '*anything', to: 'errors#error_page'

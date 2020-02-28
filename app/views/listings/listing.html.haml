@@ -1,0 +1,36 @@
+= render "shared/main-header"
+.listing-page
+  .main
+    .main__left
+      = render "shared/mypage-left-side"
+    .tab-container
+      %h2.tab-header 出品した商品
+      %ul.listing-tabs
+        %li{class: "#{@status == 0 ? 'active' : ''}"}
+          = link_to listings_listing_path, class: "link" do
+            出品中
+        %li{class: "#{@status == 1 ? 'active' : ''}"}
+          = link_to listings_in_progress_path, class: "link" do
+            取引中
+        %li{class: "#{@status == 2 ? 'active' : ''}"}
+          = link_to listings_completed_path, class: "link" do
+            売却済み
+      .tab-content
+        %ul.item-list
+          - if @sales.present?
+            - @sales.each do |sale|
+              = link_to sale_path(sale) do
+                %li.item
+                  .item__left
+                    = image_tag sale.photos[0].image.url, size: "50x50"
+                    .item__left__name
+                      = sale.name
+                  %i.icon-chevron-right
+                  = icon('fas', 'chevron-right', class: 'icon')
+          - else
+            %li.no-item
+              = image_tag 'logo_icon.png', alt: 'ロゴ', size: '120x120', class: 'logo_icon'
+              .description
+                該当の商品がありません
+= render "shared/appBanner"
+= render "shared/main-footer"

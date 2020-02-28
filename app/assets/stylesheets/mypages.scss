@@ -56,7 +56,7 @@
           list-style: none;
           li{
             border-top: 1px solid #eee;
-            .mypage-nav-list-item{
+            .link{
               color: black;
               font-size: 14px;
               text-decoration: none;
@@ -65,29 +65,18 @@
               padding: 16px;
               background: #fff;
               cursor: pointer;
-              .link{
-                color: black;
-                font-size: 14px;
-                text-decoration: none;
-              }
               .icon{
-                position: absolute;
-                right: 16px;
-                color: #eee;
-                // transition: all 0.3s ease 0s;
+              position: absolute;
+              right: 16px;
+              color: #eee;
               }
-              .icon:hover{
-                transition: all 0.3s ease 0s;
-                transform: translate(5px,0px);
-                color: black;
-              }
-            }
-            .link{
-              position: relative;
-            }
-            .mypage-nav-list-item{
-              :hover{
-              background-color: #ccc;
+              &:hover {
+                background-color: #ddd;
+                .icon {
+                  transition: all 0.3s ease 0s;
+                  transform: translate(3px,0px);
+                  color: black;
+                }
               }
             }
           }

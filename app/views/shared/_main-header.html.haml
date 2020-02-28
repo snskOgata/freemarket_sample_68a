@@ -13,7 +13,7 @@
           %button{type: "submit"}/
           .searchBox__icon
             = image_tag 'icon/icon-search.png', alt: 'icon-search', size: "20x20", class: 'icon-search'
-        %input{type: "hidden", name: "authenticity_token", value: ""}/
+        %input{type: "hidden", name: "", value: ""}/
       %ul.resultLists
 
 
@@ -60,7 +60,7 @@
             = link_to destroy_user_session_path, method: :delete do
               ログアウト
           %li.listsRight__item.listsRight__item--new
-            = link_to mypages_index_path do
+            = link_to mypage_path do
               マイページ
         -else
           %li.listsRight__item.listsRight__item--login

@@ -6,13 +6,13 @@
     .tab-container
       %h2.tab-header 出品した商品
       %ul.listing-tabs
-        %li.active
+        %li{class: "#{@status == 0 ? 'active' : ''}"}
           = link_to "#", class: "link" do
             出品中
-        %li 
+        %li{class: "#{@status == 1 ? 'active' : ''}"}
           = link_to "#", class: "link" do
             取引中
-        %li
+        %li{class: "#{@status == 2 ? 'active' : ''}"}
           = link_to "#", class: "link" do
             売却済み
       .tab-content

@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'listings/listing'
+  get 'listings/in_progress'
+  get 'listings/completed'
   # ユーザ関連
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'

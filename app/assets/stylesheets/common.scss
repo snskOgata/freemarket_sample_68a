@@ -7,8 +7,21 @@
     height: 246px;
     text-decoration: none;
     margin: 0 20px 20px 0;
+    position: relative;
+    overflow: hidden;
     &:hover {
       border: 0.5px solid $blue_green;
+    }
+    .soldout-badge {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $blue_green;
+      color: white;
+      font-size: 20px;
+      padding: 30px 50px 10px;
+      transform: rotate(-45deg) translate(-35px, -45px);
+      text-align: center;
     }
 
     &__body {

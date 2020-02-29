@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # ユーザ関連
   devise_for :users, :controllers => {
     :registrations => 'users/registrations'
   }
@@ -8,18 +9,28 @@ Rails.application.routes.draw do
     get 'addresses', to: 'users/registrations#new_address'
     post 'addresses', to: 'users/registrations#create_address'
   end
+  get "logout", to: "mypages#logout"
+
+  # 商品関連
   root to: 'sales#index'
-  resources :sales do
+  resources :sales, only: [:new, :show, :create, :edit, :destroy] do
+    post "shipped", to: "shipped"
     resources :orders, only: [:new, :create]
   end
-
   resources :category, controller: :categories, only: [:index, :show]
-  namespace :mypages do
-    get "index"
-    get "new"
-    get "logout"
+
+  resource :mypage, only: [:show]
+  scope :mypage do
+    resources :cards, only: [:new, :index, :destroy, :create]
+    namespace :listings do
+      get 'listing'
+      get 'in_progress'
+      get 'completed'
+    end
   end
-  resources :cards, only: [:new, :index, :destroy, :create]
+
+  get '*anything', to: 'errors#error_page'
+  get 'error', to: 'errors#error_page'
 end
 
 

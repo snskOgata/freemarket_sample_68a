@@ -1,0 +1,25 @@
+= render "shared/main-header"
+.mypage
+  .mypage__contents.clearfix
+    = render "shared/mypage-left-side"
+    .mypage__contents__main
+      .mypage-user-info
+        .mypage-user-info__content
+          .mypage-user-info__content--icon
+            = image_tag 'member_photo_noimage_thumb.png', alt: 'logo', class: 'user-logo'
+          .mypage-user-info__content--detail
+            %div 
+              = current_user.nickname
+            .mypage-number
+              %span
+                出品数
+                %span.bold 
+                  = current_user.sales.count
+
+= render "shared/appBanner"
+= render "shared/main-footer"
+
+
+
+
+

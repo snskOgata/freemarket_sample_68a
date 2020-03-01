@@ -1,5 +1,10 @@
 $(function () {
 
+  // 商品情報を入れる
+  sale_id = location.pathname.replace(/[^0-9]/g, '');
+  sale_photos = []
+  sale_categories = []
+
   // カテゴリ一覧を保持する変数
   var categories = []
   // 大中小カテゴリごとの順番を保持
@@ -7,6 +12,14 @@ $(function () {
   var second_num = -1
   var third_num = -1
 
+  // 商品情報を取得
+  $.getJSON(
+    `/sales/${sale_id}`,
+    function (data) {
+      sale_photos = data.photos
+      sale_categories = data.categories
+    }
+  )
   // ページ遷移後にカテゴリ一覧を取得
   $.getJSON(
     '/category',
@@ -19,6 +32,22 @@ $(function () {
         op.dataset.num = i
         $("#category-first").append(op);
       }
+
+      // 対象の大カテゴリを選択、中カテゴリを作成
+      $.each($("#category-first").children(), function (i, opt) {
+        if (opt.value == sale_categories[0].id) {
+          opt.selected = true
+        }
+      })
+      first_num = $("#category-first option:selected").data("num");
+      for (var i = 0; i < categories[first_num].sub.length; i++) {
+        var op = document.createElement("option");
+        op.value = categories[first_num].sub[i].id;
+        op.text = categories[first_num].sub[i].name;
+        op.dataset.num = [i];
+        $('#category-second').append(op);
+      }
+
     }
   );
 

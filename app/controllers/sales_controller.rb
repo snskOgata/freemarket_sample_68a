@@ -18,6 +18,13 @@ class SalesController < ApplicationController
     @main_categories = Category.where(id: 1..13)
     @prev_sale = Sale.where("id < ?", @sale.id).order('id DESC').limit(1)[0]
     @next_sale = Sale.where("id > ?", @sale.id).limit(1)[0]
+    respond_to do |format|
+      format.html
+      format.json {render json: {
+        photos: @sale.photos,
+        categories: @sale.categories
+      }}
+    end
   end
 
 

@@ -48,6 +48,24 @@ $(function () {
         $('#category-second').append(op);
       }
 
+      $.each($("#category-second").children(), function (i, opt) {
+        if (opt.value == sale_categories[1].id) {
+          opt.selected = true
+        }
+      })
+      second_num = $("#category-second option:selected").data("num");
+      for (var i = 0; i < categories[first_num].sub[second_num].sub.length; i++) {
+        var op = document.createElement("option");
+        op.value = categories[first_num].sub[second_num].sub[i].id;
+        op.text = categories[first_num].sub[second_num].sub[i].name;
+        $('#category-third').append(op);
+      }
+
+      $.each($("#category-third").children(), function (i, opt) {
+        if (opt.value == sale_categories[2].id) {
+          opt.selected = true
+        }
+      })
     }
   );
 

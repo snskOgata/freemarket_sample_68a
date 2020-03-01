@@ -6,8 +6,6 @@
       .image-box
         .previews
           - if @sale.persisted?
-            -# - @sale.photos.each_with_index do |photo, i|
-            -#   = image_tag photo.image.url, data: { index: i }, width: "100", height: '100'
           = f.fields_for :photos do |image|
             .js-file_group{"data-index" => "#{image.index}"}
               = image.file_field :src, class: 'js-file'
@@ -21,12 +19,7 @@
         - if @sale.persisted?
           .js-file_group{"data-index" => "#{@sale.photos.count}"}
             = file_field_tag :image, name: 'sale[photos_attributes][0][image]', id: "sale_photos_attributes_0_image", class: "js-file", 'data-image': 0
-            -# 編集は画像を追加したら表示されるようにする
-            -# %label{for:"sale_photos_attributes_0_image"} 編集
-            -# 削除は画像を追加したら表示されるようにする
-            .js-remove 削除
 
-            -# 新規追加のIDを取得するにはどうしたらよいか
             %label.dropzone-box{for:"sale_photos_attributes_0_image"} ここをクリックしてください
 
       .sale-content

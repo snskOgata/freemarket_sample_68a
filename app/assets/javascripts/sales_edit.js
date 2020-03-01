@@ -4,6 +4,8 @@ $(function () {
     const html = 
     `<div class="js-file_group" data-index="${num}">
       <input class="js-file" type="file" name="sale[photos_attributes][${num}][src]" id="sale_photos_attributes_${num}_src">
+      <div class="js-edit">編集</div>
+      <div class="js-remove">削除</div>
      </div>`;
 
     return html;

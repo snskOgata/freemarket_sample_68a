@@ -27,7 +27,20 @@ $(function () {
       `/sales/${sale_id}`,
       function (data) {
         sale_photos = data.photos
+        // 画像表示と各種操作のための準備
+        $.each(sale_photos, function (i, photo) {
+          var img = $(`<div class= "img_view" data-image= ${i}><div class="img_box"><img></div></div>`);
+          var btn_wrapper = $('<div class="btn_wrapper"><div class="delete-img-btn">削除</div></div>');
+          img.append(btn_wrapper)
+          img.find('img').attr({
+            src: photo.image.url
+          })
+          images.push(img)
+        })
         sale_categories = data.categories
+        $("#loading").hide()
+        $(".please_click").show()
+        redrawImages()
       }
     )
     // ページ遷移後にカテゴリ一覧を取得
@@ -203,5 +216,75 @@ $(function () {
       // 画像入力欄が0個にならないようにしておく
       if ($('.js-file').length == 0) $('.image-box').append(buildFileField(fileIndex[0]));
     });
+
+    // 投稿画像たちを再描画するメソッド
+    function redrawImages() {
+      if (images.length <= 4) {
+        $('#preview').empty();
+        $.each(images, function (index, image) {
+          image.data('image', index);
+          preview.append(image);
+        })
+        dropzone.css({
+          display: "block",
+          width: `calc(100% - (20% * ${images.length}))`
+
+        })
+        dropzone2.css({
+          display: "none"
+        });
+        // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
+      } else if (images.length == 5) {
+        $("#preview").empty();
+        $.each(images, function (index, image) {
+          image.data("image", index);
+          preview.append(image);
+        });
+        dropzone2.css({
+          display: "block",
+          width: '100%'
+        });
+        dropzone.css({
+          display: "none"
+        });
+        preview2.empty();
+
+        // 画像が６枚以上のとき
+      } else if (images.length >= 6) {
+        // １〜５枚目の画像を抽出
+        var pickup_images1 = images.slice(0, 5);
+
+        // １〜５枚目を１段目に表示
+        $('#preview').empty();
+        $.each(pickup_images1, function (index, image) {
+          image.data('image', index);
+          preview.append(image);
+        })
+
+        // ６枚目以降の画像を抽出
+        var pickup_images2 = images.slice(5);
+
+        // ６枚目以降を２段目に表示
+        $.each(pickup_images2, function (index, image) {
+          image.data('image', index + 5);
+          preview2.append(image);
+        })
+
+        dropzone.css({
+          'display': 'none'
+        })
+        dropzone2.css({
+          'display': 'block',
+          'width': `calc(100% - (20% * ${images.length - 5}))`
+        })
+
+        // 画像が１０枚になったら枠を消す
+        if (images.length == 10) {
+          dropzone2.css({
+            display: "none"
+          });
+        }
+      }
+    }
   }
 });

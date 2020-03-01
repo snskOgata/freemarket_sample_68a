@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # 商品関連
   root to: 'sales#index'
-  resources :sales, only: [:new, :show, :create, :edit, :destroy] do
+  resources :sales, only: [:new, :show, :create, :edit, :update, :destroy] do
     post "shipped", to: "shipped"
     resources :orders, only: [:new, :create]
   end
@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get '*anything', to: 'errors#error_page'
+  get '*anything', to: 'errors#error_page' if Rails.env.production?
   get 'error', to: 'errors#error_page'
 end
 

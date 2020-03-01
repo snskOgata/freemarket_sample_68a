@@ -1,6 +1,6 @@
 class SalesController < ApplicationController
 
-  before_action :set_sale, only: [:edit, :show, :destroy]
+  before_action :set_sale, only: [:edit, :update, :show, :destroy]
 
   def index
     @main_categories = Category.where(id: 1..13)
@@ -43,6 +43,13 @@ class SalesController < ApplicationController
   end
 
   def update
+    redirect_to new_user_session_path unless user_signed_in?
+    if !params[:sale][:category_ids].include?(0) && @sale.update(sale_params)
+      redirect_to root_path
+    else
+      @sale.photos.build
+      render :edit
+    end
   end
 
 
@@ -70,7 +77,7 @@ class SalesController < ApplicationController
 
   private 
     def sale_params
-      params.require(:sale).permit(:name, :detail, :condition_id, :delivery_payer_id, :prefecture_id, :prep_days_id, :price, category_ids: [], photos_attributes: [:image]).merge(seller_id: current_user.id)
+      params.require(:sale).permit(:name, :detail, :condition_id, :delivery_payer_id, :prefecture_id, :prep_days_id, :price, category_ids: [], photos_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
     end
 
   def set_sale

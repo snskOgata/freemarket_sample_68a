@@ -8,12 +8,13 @@
           - if @sale.persisted?
             = f.fields_for :photos do |image|
               .js-file_group{"data-index" => "#{image.index}"}
-                = image.file_field :src, class: 'js-file'
-                = image_tag @sale.photos[image.index].image.url, data: { index: image.index }, width: "100", height: '100'
-                %label{for:"sale_photos_attributes_#{image.index}_src"} 編集
-                %span.js-remove 削除
-                - if @sale.persisted?
-                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                = image.file_field :image, class: 'js-file'
+                = image_tag @sale.photos[image.index].image.url, data: { index: image.index }, width: "100", height: '100', class: "image-file"
+                .btn_wrapper
+                  %label.edit-img-btn{for:"sale_photos_attributes_#{image.index}_src"} 編集
+                  %span.js-remove.delete-img-btn 削除
+                  - if @sale.persisted?
+                    = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
 
         -# 新規画像の追加 
         - if @sale.persisted?

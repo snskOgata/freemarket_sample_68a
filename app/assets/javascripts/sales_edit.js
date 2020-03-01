@@ -13,6 +13,15 @@ $(function () {
     var second_num = -1
     var third_num = -1
 
+    // 画像編集・保存に用いる変数
+    var dropzone = $('.dropzone-area');
+    var dropzone2 = $('.dropzone-area2');
+    var images = []; //画像ひとつひとつを表示するためのdiv要素を保持
+    var inputs = [];
+    var input_area = $('.input_area');
+    var preview = $('#preview');
+    var preview2 = $('#preview2');
+
     // 商品情報を取得
     $.getJSON(
       `/sales/${sale_id}`,

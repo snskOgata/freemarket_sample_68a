@@ -16,34 +16,11 @@
       font-size: 14px;
       margin: 0;
     }
-
-    .previews{
-      display: flex;
-      width: 620px;
-      margin: 0 auto;
-    }
-    .js-file{
-      display: none;
-    }
-
-    .dropzone-box {
-      display: block;
-      border: 1px dashed #ccc;
-      position: relative;
-      background: #f5f5f5;
-      width: 620px;
-      height: 162px;
-      cursor: pointer;
-      text-align: center;
-      line-height: 162px;
-      margin: 0 auto;
-    }
-
     label {
       font-weight: 600;
       font-size: 14px;
     }
-    .image-box{
+    .sale-image-box{
       padding: 40px;
       border: 1px solid #f6f6f6;
       p {
@@ -86,12 +63,6 @@
       .form-group {
         width: 400px;
         margin-bottom: 40px;
-        #category-first {
-        }
-        #category-second {
-        }
-        #category-third {
-        }
         select {
           display: block;
           position: relative;
@@ -156,7 +127,7 @@
   }
 
   .form-require {
-    background-color:$blue_green;
+    background-color: $blue_green;
     color: white;
     margin: 0 0 0 8px;
     padding: 2px 4px;
@@ -196,5 +167,134 @@
   display: block;
   margin: 16px auto 0;
   display: flex;
+
+  //プレビュー表示欄のCSS
+  #preview , #preview2{
+    display: flex;
+
+    .img_view {
+      height: 162px;
+      width: 112px;
+      margin: 0 15px 10px 0;
+      position: relative;
+        .img_box{
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          img{
+            height: 132px;
+            width: auto;
+          }
+        }
+      }
+
+      .btn_wrapper {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        .delete-img-btn {
+          position: absolute;
+          bottom: 0;
+          color: #00b0ff;
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+          border: 1px solid #eee;
+          background: #f5f5f5;
+          cursor: pointer;
+        }
+      }
+    }
+
+  //投稿クリックエリアのCSS
+  .dropzone-area {
+    margin-bottom: 10px;
+    width: 620px;
+
+    .dropzone-box {
+      display: block;
+      border: 1px dashed #ccc;
+      position: relative;
+      background: #f5f5f5;
+      width: 100%;
+      height: 162px;
+      cursor: pointer;
+
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: bold;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      p {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: bold;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .input_area {
+        display: none;
+      }
+    }
   }
+  //投稿クリックエリアのCSS
+  .dropzone-area2{
+    display: none;
+    margin-bottom: 10px;
+    width: 620px;
+
+    .dropzone-box {
+      display: block;
+      border: 1px dashed #ccc;
+      position: relative;
+      background: #f5f5f5;
+      width: 100%;
+      height: 162px;
+      cursor: pointer;
+      p {
+        position: absolute;
+        top: 50%;
+        left: 16px;
+        right: 16px;
+        text-align: center;
+        font-size: 14px;
+        line-height: 1.5;
+        font-weight: bold;
+        -webkit-transform: translate(0, -50%);
+        transform: translate(0, -50%);
+        pointer-events: none;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      .fa {
+        text-align: center;
+        line-height: 162px;
+      }
+      .input_area {
+        display: none;
+      }
+    }
+  }
+}
 }

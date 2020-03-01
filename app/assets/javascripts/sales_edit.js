@@ -41,6 +41,13 @@ $(function () {
         $("#loading").hide()
         $(".please_click").show()
         redrawImages()
+
+        // 新しいインプットフィールドを追加
+        var new_image = $(`<input name="sale[photos_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="sale_photos_attributes_${images.length}_image">`);
+        input_area.append(new_image);
+        $.each($(".dropzone-box"), function (index, elem) {
+          elem.htmlFor = `sale_photos_attributes_${images.length}_image`
+        })
       }
     )
     // ページ遷移後にカテゴリ一覧を取得

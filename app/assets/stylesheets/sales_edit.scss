@@ -47,6 +47,9 @@
           flex-direction: column;
         }
       }
+      .input_area {
+        display: none;
+      }
     }
     .sale-content { 
       padding: 40px;
@@ -252,9 +255,6 @@
         pointer-events: none;
         white-space: pre-wrap;
         word-wrap: break-word;
-      }
-      .input_area {
-        display: none;
       }
     }
   }

@@ -29,6 +29,7 @@ $(function () {
         sale_photos = data.photos
         // 画像表示と各種操作のための準備
         $.each(sale_photos, function (i, photo) {
+          // 表示用の要素を追加
           var img = $(`<div class= "img_view" data-image= ${i}><div class="img_box"><img></div></div>`);
           var btn_wrapper = $('<div class="btn_wrapper"><div class="delete-img-btn">削除</div></div>');
           img.append(btn_wrapper)
@@ -36,6 +37,11 @@ $(function () {
             src: photo.image.url
           })
           images.push(img)
+          // 送信データ用の要素を追加
+          var input = `<input name="sale[photos_attributes][${i}][image]" class="upload-image" data-image="${i}" type="file" id="sale_photos_attributes_${i}_image" >`
+          var checkbox = `<input type="checkbox" name="product[images_attributes][${i}][_destroy]" class="hidden-destroy" data-image="${i}" type="hidden">`
+          input_area.append(input)
+          input_area.append(checkbox)
         })
         sale_categories = data.categories
         $("#loading").hide()

@@ -17,6 +17,7 @@ $(function () {
     var dropzone = $('.dropzone-area');
     var dropzone2 = $('.dropzone-area2');
     var images = []; //画像ひとつひとつを表示するためのdiv要素を保持
+    var saved_img_num = 0 //保存されている画像の数
     var input_area = $('.input_area');
     var preview = $('#preview');
     var preview2 = $('#preview2');
@@ -26,6 +27,7 @@ $(function () {
       `/sales/${sale_id}`,
       function (data) {
         sale_photos = data.photos
+        saved_img_num = sale_photos.length
         // 画像表示と各種操作のための準備
         $.each(sale_photos, function (i, photo) {
           // 表示用の要素を追加
@@ -43,7 +45,7 @@ $(function () {
         redrawImages()
 
         // 新しいインプットフィールドを追加
-        var new_image = $(`<input name="sale[photos_attributes][${images.length}][image]" class="upload-image" data-image= ${images.length} type="file" id="sale_photos_attributes_${images.length}_image">`);
+        var new_image = $(`<input name="sale[photos_attributes][${images.length}][image]" class="upload-image js-file" data-image= ${images.length} type="file" id="sale_photos_attributes_${images.length}_image">`);
         input_area.append(new_image);
         $.each($(".dropzone-box"), function (index, elem) {
           elem.htmlFor = `sale_photos_attributes_${images.length}_image`
@@ -172,24 +174,23 @@ $(function () {
         })
       }
       reader.readAsDataURL(file);
-      images[targetIndex] = img;
+
+      // 既存画像の変更なら入れ替え
+      if (targetIndex < images.length) {
+        images[targetIndex] = img;
+      }
+      // 新規画像なら追加
+      else {
+        images.push(img);
+        // 新しいインプットフィールドを追加
+        var new_image = $(`<input name="sale[photos_attributes][${images.length}][image]" class="upload-image js-file" data-image= ${images.length} type="file" id="sale_photos_attributes_${images.length}_image">`);
+        input_area.append(new_image);
+        $.each($(".dropzone-box"), function (index, elem) {
+          elem.htmlFor = `sale_photos_attributes_${images.length}_image`
+        })
+
+      }
       redrawImages();
-      // // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
-      // if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-      //   img.setAttribute('src', blobUrl);
-
-      // } else {  // 新規画像追加の処理
-      //   const html = buildImg(targetIndex, blobUrl)
-      //   $('.previews').append(html);
-
-      //   // fileIndexの先頭の数字を使ってinputを作る
-      //   const inputHTML = buildFileField(fileIndex[0])
-      //   $('.dropzone-box')[0].htmlFor = `sale_photos_attributes_${fileIndex[0]}_src`
-      //   $('.image-box').append(inputHTML);
-      //   fileIndex.shift();
-      //   // 末尾の数に1足した数を追加する
-      //   fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
-      // }
     });
 
     $(document).on('click', '.delete-img-btn', function () {

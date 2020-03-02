@@ -301,5 +301,6 @@ Devise.setup do |config|
     Rails.application.credentials[:facebook][:client_secret]
   config.omniauth :google_oauth2,
     Rails.application.credentials[:google][:client_id],
-    Rails.application.credentials[:google][:client_secret]
+    Rails.application.credentials[:google][:client_secret],
+    skip_jwt: true
 end

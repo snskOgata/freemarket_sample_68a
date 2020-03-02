@@ -1,33 +1,41 @@
-.new-order-page
-  = render "shared/user-header"
+= render "shared/user-header"
+.order-section
   .contents
     .page-title 
       %h2 購入内容の確認
     .item-contents
       .item-photo
-        = image_tag @sale.photos[0].image.url,size: '188x188', class: 'sale-item__image'
+        = image_tag @sale.photos[0].image.url,size: '188x188', class: 'item-photo__image'
       .item-detail
         %p.item-detail__name
           = @sale.name
-        %p.item-detail__detail
-          = @sale.detail 
         %p.item-detail__price
-          = @sale.price
-          %span (税込)送料込み
+          %span.item-detail__price--yen_mark
+            ¥
+            %span
+            = @sale.price
+          %span.item-detail__price--tax
+            (税込)送料込み
     .buy-contents
       = form_with(model: [@sale, @order], local: true )do |f|
         .field
           .field__price-label
             = f.label :支払い金額
           .field__item-price
+            %span.item-detail__price--yen_mark
+              ¥
             = @sale.price
         .field
           .field__credit-label
             = f.label :支払い方法
           - if @card_infomation.present?
-            .field__credit-registration
+            .field__credit-information
+              %span.field__credit-information--label
+                カード番号
               = "**** **** **** " + @card_infomation.last4
               %br
+              %span.field__credit-information--label
+                有効期限 月/年
               - exp_month = @card_infomation.exp_month.to_s
               - exp_year = @card_infomation.exp_year.to_s.slice(2,3)
               = exp_month + " / " + exp_year
@@ -38,7 +46,7 @@
         .field
           .field__send-label
             = f.label :発送先
-          .field__send-method
+          .field__send-address
             = current_user.address.postal_code
             = current_user.address.prefecture.name
             = current_user.address.city
@@ -48,14 +56,10 @@
             = link_to "#" do
               発送先住所の変更
         .order-btn
-          = f.submit "購入する", class: 'btn'
-        .field
-          .field__notice-text
-            アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
-        .field
-          .field__app-icons
-            = link_to "#" do
-              = image_tag 'AppStore.png', alt: 'AppStore', size: "150x50", class: 'aBtn'
-            = link_to "#" do
-              = image_tag 'GooglePlayBadge.png', alt: 'GooglePlay', size: "180x75", class: 'gBtn'
-  = render "shared/user-footer"
+          - if @card_infomation.present?
+            = f.submit "購入する", class: 'order-btn--active'
+          - else
+            .order-btn--inactive
+              = f.label :クレジットカードを登録してください
+= render "shared/appBanner"
+= render "shared/main-footer"

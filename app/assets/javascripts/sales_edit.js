@@ -17,7 +17,6 @@ $(function () {
     var dropzone = $('.dropzone-area');
     var dropzone2 = $('.dropzone-area2');
     var images = []; //画像ひとつひとつを表示するためのdiv要素を保持
-    var inputs = [];
     var input_area = $('.input_area');
     var preview = $('#preview');
     var preview2 = $('#preview2');
@@ -37,11 +36,6 @@ $(function () {
             src: photo.image.url
           })
           images.push(img)
-          // 送信データ用の要素を追加
-          var input = `<input name="sale[photos_attributes][${i}][image]" class="upload-image" data-image="${i}" type="file" id="sale_photos_attributes_${i}_image" >`
-          var checkbox = `<input type="checkbox" name="product[images_attributes][${i}][_destroy]" class="hidden-destroy" data-image="${i}" type="hidden">`
-          input_area.append(input)
-          input_area.append(checkbox)
         })
         sale_categories = data.categories
         $("#loading").hide()

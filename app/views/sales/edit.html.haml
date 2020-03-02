@@ -9,6 +9,9 @@
           %span.form-require  必須
         %p 最大10枚までアップロードできます
         .input_area
+          = f.fields_for :photos do |photo|
+            = photo.file_field :src, class: 'js-file'
+            = photo.check_box :_destroy, data:{ index: photo.index }, class: 'hidden-destroy', hidden: true
         .dropzone-container
           #preview
           .dropzone-area

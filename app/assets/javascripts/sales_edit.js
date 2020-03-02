@@ -181,23 +181,18 @@ $(function () {
       }
     });
 
-    $('.image-box').on('click', '.js-remove', function () {
-      const targetIndex = $(this).parent().data('index');
+    $(document).on('click', '.delete-img-btn', function () {
+      const targetIndex = $(this).parent().parent().data('image');
       // 該当indexを振られているチェックボックスを取得する
-      const hiddenCheck = $(`input[data-index="${targetIndex}"].hidden-destroy`);
+      const hiddenCheck = $(`input[data-image="${targetIndex}"].hidden-destroy`);
       // もしチェックボックスが存在すればチェックを入れる
+      console.log(hiddenCheck)
       if (hiddenCheck) {
         hiddenCheck.prop('checked', true);
       }
-      // 条件分岐が必要 該当イメージがある場合のみ消す
-      isExistImage = $(`img[data-index="${targetIndex}"]`).length;
-      if (isExistImage == 1) {
-        $(this).parent().remove();
-        $(`img[data-index="${targetIndex}"]`).remove();
-      }
-
-      // 画像入力欄が0個にならないようにしておく
-      if ($('.js-file').length == 0) $('.image-box').append(buildFileField(fileIndex[0]));
+      console.log(hiddenCheck)
+      images.splice(targetIndex, 1)
+      redrawImages();
     });
 
     // 投稿画像たちを再描画するメソッド

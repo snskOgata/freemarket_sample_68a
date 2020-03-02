@@ -11,7 +11,7 @@
         .input_area
           = f.fields_for :photos do |photo|
             = photo.file_field :image, class: 'js-file'
-            = photo.check_box :_destroy, data:{ index: photo.index }, class: 'hidden-destroy', hidden: true
+            = photo.check_box :_destroy, data:{ image: photo.index }, class: 'hidden-destroy', hidden: true
         .dropzone-container
           #preview
           .dropzone-area

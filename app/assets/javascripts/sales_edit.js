@@ -30,7 +30,7 @@ $(function () {
         $.each(sale_photos, function (i, photo) {
           // 表示用の要素を追加
           var img = $(`<div class= "img_view" data-image= ${i}><div class="img_box"><img></div></div>`);
-          var btn_wrapper = $('<div class="btn_wrapper"><div class="edit-img-btn img-btn">変更</div><div class="delete-img-btn img-btn">削除</div></div>');
+          var btn_wrapper = $(`<div class="btn_wrapper"><label class="edit-img-btn img-btn" for="sale_photos_attributes_${i}_image">変更</label><div class="delete-img-btn img-btn">削除</div></div>`);
           img.append(btn_wrapper)
           img.find('img').attr({
             src: photo.image.url
@@ -157,30 +157,6 @@ $(function () {
       third_num = $("#category-third option:selected").data("num");
     })
 
-
-    // 画像用のinputを生成する関数
-    function buildFileField(num) {
-      const html =
-        `<div class="js-file_group" data-index="${num}">
-        <input class="js-file" type="file" name="sale[photos_attributes][${num}][src]" id="sale_photos_attributes_${num}_src">
-        <div class="js-edit">編集</div>
-        <div class="js-remove">削除</div>
-      </div>`;
-
-      return html;
-    }
-    // プレビュー用のimgタグを生成する関数
-    function buildImg(index, url) {
-      const html = `<img data-index="${index}" width="100" height="100" src="${url}" />`;
-      return html;
-    }
-
-    let fileIndex = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    lastIndex = $('.js-file_group:last').data('index');
-
-    fileIndex.splice(0, lastIndex);
-
-    $('.hidden-destroy').hide();
 
     $('.image-box').on('change', '.js-file', function (e) {
       const targetIndex = $(this).parent().data('index');

@@ -158,27 +158,38 @@ $(function () {
     })
 
 
-    $('.image-box').on('change', '.js-file', function (e) {
-      const targetIndex = $(this).parent().data('index');
+    $(document).on('change', '.js-file', function (e) {
+      const targetIndex = $(this).data('image');
       const file = e.target.files[0];
-      const blobUrl = window.URL.createObjectURL(file);
-
-      // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
-      if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
-        img.setAttribute('src', blobUrl);
-
-      } else {  // 新規画像追加の処理
-        const html = buildImg(targetIndex, blobUrl)
-        $('.previews').append(html);
-
-        // fileIndexの先頭の数字を使ってinputを作る
-        const inputHTML = buildFileField(fileIndex[0])
-        $('.dropzone-box')[0].htmlFor = `sale_photos_attributes_${fileIndex[0]}_src`
-        $('.image-box').append(inputHTML);
-        fileIndex.shift();
-        // 末尾の数に1足した数を追加する
-        fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+      var reader = new FileReader();
+      var img = $(`<div class= "img_view" data-image= ${images.length}><div class="img_box"><img></div></div>`);
+      // 画像読み込みが終わったら、画像のプレビューを表示
+      reader.onload = function (e) {
+        var btn_wrapper = $(`<div class="btn_wrapper"><label class="edit-img-btn img-btn" for="sale_photos_attributes_${targetIndex}_image">変更</label><div class="delete-img-btn img-btn">削除</div></div>`);
+        img.append(btn_wrapper);
+        img.find('img').attr({
+          src: e.target.result
+        })
       }
+      reader.readAsDataURL(file);
+      images[targetIndex] = img;
+      redrawImages();
+      // // 該当indexを持つimgがあれば取得して変数imgに入れる(画像変更の処理)
+      // if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
+      //   img.setAttribute('src', blobUrl);
+
+      // } else {  // 新規画像追加の処理
+      //   const html = buildImg(targetIndex, blobUrl)
+      //   $('.previews').append(html);
+
+      //   // fileIndexの先頭の数字を使ってinputを作る
+      //   const inputHTML = buildFileField(fileIndex[0])
+      //   $('.dropzone-box')[0].htmlFor = `sale_photos_attributes_${fileIndex[0]}_src`
+      //   $('.image-box').append(inputHTML);
+      //   fileIndex.shift();
+      //   // 末尾の数に1足した数を追加する
+      //   fileIndex.push(fileIndex[fileIndex.length - 1] + 1);
+      // }
     });
 
     $(document).on('click', '.delete-img-btn', function () {

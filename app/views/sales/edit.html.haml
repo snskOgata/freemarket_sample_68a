@@ -1,0 +1,85 @@
+.edit-sale-page
+  = render "shared/user-header"
+  .container
+    %h2 商品の情報を入力
+    = form_with model: @sale, local: true do |f| 
+      .sale-image-box
+        .sale-image-box__head 
+          %label 出品画像
+          %span.form-require  必須
+        %p 最大10枚までアップロードできます
+        .input_area
+          = f.fields_for :photos do |photo|
+            = photo.file_field :image, class: 'js-file', data:{ image: photo.index }
+            = photo.check_box :_destroy, data:{ image: photo.index }, class: 'hidden-destroy', hidden: true
+        .dropzone-container
+          #preview
+          .dropzone-area
+            %label.dropzone-box
+              #loading
+                画像を読み込み中です...
+              .please_click
+                %p ここをクリックしてください
+        .dropzone-container
+          #preview2
+          .dropzone-area2
+            %label.dropzone-box
+              .please_click
+                %p ここをクリックしてください
+
+      .sale-content
+        .main-content
+          .main-form-group
+            = label_tag :name_form do
+              商品名
+              %span.form-require  必須
+            = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "input-default", id: 'name_form'
+          .main-form-group
+            = label_tag :detail_form do
+              商品の説明
+              %span.form-require  必須
+            = f.text_area :detail, class: "textarea-default", rows: '5', id: 'detail_form', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
+      .sale-content
+        %h3 商品の詳細
+        .sale-content__form
+          .form-group
+            %label カテゴリー
+            %span.form-require  必須
+            = f.fields_for :category_ids do |cat|
+              = cat.select '', options_for_select([@sale.categories[0]].map{|c|[c[:name], c[:id]]}), {}, id: "category-first"
+              = cat.select '', options_for_select([@sale.categories[1]].map{|c|[c[:name], c[:id]]}), {}, id: "category-second"
+              = cat.select '', options_for_select([@sale.categories[2]].map{|c|[c[:name], c[:id]]}), {}, id: "category-third"
+          .form-group
+            %label{for: "sale_condition_id" } 商品の状態
+            %span.form-require  必須
+            = f.collection_select :condition_id, Condition.all, :id, :type
+      .sale-content
+        %h3 配送について
+        .sale-content__form
+          .form-group
+            %label{for: "sale_delivery_payer_id" } 配送料の負担
+            %span.form-require  必須
+            = f.collection_select :delivery_payer_id, DeliveryPayer.all, :id, :type
+          .form-group
+            %label{for: "sale_prefecture_id" } 配送元の地域
+            %span.form-require  必須
+            = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+          .form-group
+            %label{for: "sale_prep_days_id" } 配送までの日数
+            %span.form-require  必須
+            = f.collection_select :prep_days_id, PrepDays.all, :id, :type
+      .sale-content
+        %h3 価格（¥300〜9,999,999）
+        .sale-content__form
+          .form-group
+            .input-box
+              .input-box__left
+                %label{for: "price_form"} 販売価格
+                %span.form-require  必須
+              .input-box__right
+                ¥
+                = f.text_field :price, type: "number", placeholder: '例）300 ', id: "price_form", min: "300", max: "9999999"
+      .sell-btn-box
+        = f.submit "変更する", class: "sell-btn", id: "submit-sale"
+        = link_to "キャンセル", sale_path(@sale.id), class: "back-btn"
+  = render "shared/user-footer"

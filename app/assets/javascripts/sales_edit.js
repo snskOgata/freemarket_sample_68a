@@ -18,6 +18,7 @@ $(function () {
     var dropzone2 = $('.dropzone-area2');
     var images = []; //画像ひとつひとつを表示するためのdiv要素を保持
     var saved_img_num = 0 //保存されている画像の数
+    var current_img_num = 0 //新規画像用のインプットフィールド用のナンバリング
     var input_area = $('.input_area');
     var preview = $('#preview');
     var preview2 = $('#preview2');
@@ -28,6 +29,7 @@ $(function () {
       function (data) {
         sale_photos = data.photos
         saved_img_num = sale_photos.length
+        current_img_num = sale_photos.length
         // 画像表示と各種操作のための準備
         $.each(sale_photos, function (i, photo) {
           // 表示用の要素を追加
@@ -45,10 +47,10 @@ $(function () {
         redrawImages()
 
         // 新しいインプットフィールドを追加
-        var new_image = $(`<input name="sale[photos_attributes][${images.length}][image]" class="upload-image js-file" data-image= ${images.length} type="file" id="sale_photos_attributes_${images.length}_image">`);
+        var new_image = $(`<input name="sale[photos_attributes][${current_img_num}][image]" class="upload-image js-file" data-image= ${current_img_num} type="file" id="sale_photos_attributes_${current_img_num}_image">`);
         input_area.append(new_image);
         $.each($(".dropzone-box"), function (index, elem) {
-          elem.htmlFor = `sale_photos_attributes_${images.length}_image`
+          elem.htmlFor = `sale_photos_attributes_${current_img_num}_image`
         })
       }
     )
@@ -164,7 +166,7 @@ $(function () {
       const targetIndex = $(this).data('image');
       const file = e.target.files[0];
       var reader = new FileReader();
-      var img = $(`<div class= "img_view" data-image= ${images.length}><div class="img_box"><img></div></div>`);
+      var img = $(`<div class= "img_view" data-image= ${targetIndex}><div class="img_box"><img></div></div>`);
       // 画像読み込みが終わったら、画像のプレビューを表示
       reader.onload = function (e) {
         var btn_wrapper = $(`<div class="btn_wrapper"><label class="edit-img-btn img-btn" for="sale_photos_attributes_${targetIndex}_image">変更</label><div class="delete-img-btn img-btn">削除</div></div>`);
@@ -194,23 +196,39 @@ $(function () {
     });
 
     $(document).on('click', '.delete-img-btn', function () {
+      // data-imageの番号を取得
       const targetIndex = $(this).parent().parent().data('image');
       // 該当indexを振られているチェックボックスを取得する
       const hiddenCheck = $(`input[data-image="${targetIndex}"].hidden-destroy`);
       // もしチェックボックスが存在すればチェックを入れる
-      console.log(hiddenCheck)
-      if (hiddenCheck) {
+      if (hiddenCheck.length > 0) {
         hiddenCheck.prop('checked', true);
       }
-      console.log(hiddenCheck)
-      images.splice(targetIndex, 1)
+      // チェックボックスがないなら新規画像なので、inputフォームを消す
+      else {
+        $(`input[data-image="${targetIndex}"].js-file`)[0].remove()
+      }
+      //data-imageが一致するものをimagesから削除
+      console.log({ images })
+      var image_index = -1
+      $.each(images, function (i, elem) {
+        if (elem.data("image") == targetIndex) {
+          image_index = i
+        }
+      })
+      if (image_index === -1) {
+        alert("エラーが発生しました、画面のリロードを行ってください")
+      }
+      images.splice(image_index, 1)
+      console.log({ images })
       redrawImages();
     });
 
     // 投稿画像たちを再描画するメソッド
     function redrawImages() {
+      $('#preview').empty();
+      $('#preview2').empty();
       if (images.length <= 4) {
-        $('#preview').empty();
         $.each(images, function (index, image) {
           image.data('image', index);
           preview.append(image);
@@ -225,7 +243,6 @@ $(function () {
         });
         // 画像が５枚のとき１段目の枠を消し、２段目の枠を出す
       } else if (images.length == 5) {
-        $("#preview").empty();
         $.each(images, function (index, image) {
           image.data("image", index);
           preview.append(image);
@@ -245,7 +262,6 @@ $(function () {
         var pickup_images1 = images.slice(0, 5);
 
         // １〜５枚目を１段目に表示
-        $('#preview').empty();
         $.each(pickup_images1, function (index, image) {
           image.data('image', index);
           preview.append(image);

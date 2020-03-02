@@ -30,13 +30,13 @@
       .sale-content
         .main-content
           .main-form-group
-            = label_tag :name do
+            = label_tag :name_form do
               商品名
               %span.form-require  必須
             = f.text_field :name, placeholder: "商品名(必須40文字まで)", class: "input-default", id: 'name_form'
           .main-form-group
-            = label_tag :detail do
-              %label 商品の説明
+            = label_tag :detail_form do
+              商品の説明
               %span.form-require  必須
             = f.text_area :detail, class: "textarea-default", rows: '5', id: 'detail_form', placeholder: '商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。'
       .sale-content
@@ -49,22 +49,22 @@
             %select#category-second{name: "sale[category_ids][]"}
             %select#category-third{name: "sale[category_ids][]"}
           .form-group
-            %label 商品の状態
+            %label{for: "sale_condition_id" } 商品の状態
             %span.form-require  必須
             = f.collection_select :condition_id, Condition.all, :id, :type
       .sale-content
         %h3 配送について
         .sale-content__form
           .form-group
-            %label 配送料の負担
+            %label{for: "sale_delivery_payer_id" } 配送料の負担
             %span.form-require  必須
             = f.collection_select :delivery_payer_id, DeliveryPayer.all, :id, :type
           .form-group
-            %label 配送元の地域
+            %label{for: "sale_prefecture_id" } 配送元の地域
             %span.form-require  必須
             = f.collection_select :prefecture_id, Prefecture.all, :id, :name
           .form-group
-            %label 配送までの日数
+            %label{for: "sale_prep_days_id" } 配送までの日数
             %span.form-require  必須
             = f.collection_select :prep_days_id, PrepDays.all, :id, :type
       .sale-content
@@ -73,7 +73,7 @@
           .form-group
             .input-box
               .input-box__left
-                %label 販売価格
+                %label{for: "price_form"} 販売価格
                 %span.form-require  必須
               .input-box__right
                 ¥

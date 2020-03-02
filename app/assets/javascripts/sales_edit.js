@@ -17,7 +17,6 @@ $(function () {
     var dropzone = $('.dropzone-area');
     var dropzone2 = $('.dropzone-area2');
     var images = []; //画像ひとつひとつを表示するためのdiv要素を保持
-    var saved_img_num = 0 //保存されている画像の数
     var current_img_num = 0 //新規画像用のインプットフィールド用のナンバリング
     var input_area = $('.input_area');
     var preview = $('#preview');
@@ -28,7 +27,6 @@ $(function () {
       `/sales/${sale_id}`,
       function (data) {
         sale_photos = data.photos
-        saved_img_num = sale_photos.length
         current_img_num = sale_photos.length
         // 画像表示と各種操作のための準備
         $.each(sale_photos, function (i, photo) {
@@ -177,39 +175,46 @@ $(function () {
       }
       reader.readAsDataURL(file);
 
-      // 既存画像の変更なら入れ替え
-      if (targetIndex < images.length) {
-        images[targetIndex] = img;
+      // imagesの何番目に含まれているかをチェックする
+      var image_index = -1
+      $.each(images, function (i, elem) {
+        if (elem.data("image") == targetIndex) {
+          image_index = i
+        }
+      })
+      // indexが-1でないなら、既存画像なので入れ替え
+      if (image_index > -1) {
+        images[image_index] = img;
       }
       // 新規画像なら追加
       else {
         images.push(img);
         // 新しいインプットフィールドを追加
-        var new_image = $(`<input name="sale[photos_attributes][${images.length}][image]" class="upload-image js-file" data-image= ${images.length} type="file" id="sale_photos_attributes_${images.length}_image">`);
+        current_img_num++
+        var new_image = $(`<input name="sale[photos_attributes][${current_img_num}][image]" class="upload-image js-file" data-image= ${current_img_num} type="file" id="sale_photos_attributes_${current_img_num}_image">`);
         input_area.append(new_image);
         $.each($(".dropzone-box"), function (index, elem) {
-          elem.htmlFor = `sale_photos_attributes_${images.length}_image`
+          elem.htmlFor = `sale_photos_attributes_${current_img_num}_image`
         })
-
       }
       redrawImages();
     });
 
-    $(document).on('click', '.delete-img-btn', function () {
+    $(document).on('click', '.delete-img-btn', function (e) {
       // data-imageの番号を取得
-      const targetIndex = $(this).parent().parent().data('image');
+      // $(this)だと適切な要素を取得できなかったため、このような記述となった
+      var targetIndex = e.target.parentNode.parentNode.dataset.image
       // 該当indexを振られているチェックボックスを取得する
-      const hiddenCheck = $(`input[data-image="${targetIndex}"].hidden-destroy`);
+      var hiddenCheck = $(`input[data-image="${targetIndex}"].hidden-destroy`);
       // もしチェックボックスが存在すればチェックを入れる
       if (hiddenCheck.length > 0) {
-        hiddenCheck.prop('checked', true);
+        hiddenCheck[0].checked = true;
       }
       // チェックボックスがないなら新規画像なので、inputフォームを消す
       else {
         $(`input[data-image="${targetIndex}"].js-file`)[0].remove()
       }
       //data-imageが一致するものをimagesから削除
-      console.log({ images })
       var image_index = -1
       $.each(images, function (i, elem) {
         if (elem.data("image") == targetIndex) {
@@ -220,7 +225,6 @@ $(function () {
         alert("エラーが発生しました、画面のリロードを行ってください")
       }
       images.splice(image_index, 1)
-      console.log({ images })
       redrawImages();
     });
 

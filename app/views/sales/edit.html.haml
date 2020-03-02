@@ -80,5 +80,5 @@
                 = f.text_field :price, type: "number", placeholder: '例）300 ', id: "price_form", min: "300", max: "9999999"
       .sell-btn-box
         = f.submit "変更する", class: "sell-btn", id: "submit-sale"
-        = link_to "キャンセル", "#", class: "back-btn"
+        = link_to "キャンセル", sale_path(@sale.id), class: "back-btn"
   = render "shared/user-footer"

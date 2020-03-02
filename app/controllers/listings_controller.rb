@@ -18,6 +18,12 @@ class ListingsController < ApplicationController
     render 'listing'
   end
 
+  def purchase
+  end
+
+  def purchased
+  end
+
   private
     def set_categories
       @main_categories = Category.where(id: 1..13)

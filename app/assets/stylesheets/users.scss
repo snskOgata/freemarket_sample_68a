@@ -1,3 +1,7 @@
+body {
+  background-color: #f6f6f6;
+}
+
 .account-page {
   background-color:#f6f6f6;
   &__header{
@@ -20,20 +24,38 @@
   &__contents{
     background-color: #f6f6f6;
     &__title{
-      width: 456px;
+      width: 700px;
       background-color:white;
       margin: 0 auto;
       text-align: center;
-      font-size: 25px;
       border-bottom: solid 1px  #f6f6f6;
       position: relative;
+      &--top {
+        padding: 32px;
+        font-size: 21px;
+        border-bottom: 1px solid #f6f6f6;
+      }
+      &--register {
+        padding: 24px 16px 40px;
+        .new_user {
+          text-align: center;
+          width: 343px;
+          margin: 0 auto;
+        }
+        .new_profile {
+          margin: 0 auto;
+          width: 343px;
+          
+        }
+      }
       .login-acount {
         padding: 40px 64px;
         text-align: center;
         font-size: 14px;
         .registration-btn{
+          width: 343px;
+          margin: 10px auto;
           display: block;
-          margin: 8px 0 0;
           border: 1px solid #0099e8;
           background: #0099e8;
           color: #fff;
@@ -45,7 +67,7 @@
         border-top: 1px solid #eee;
         .facebook-btn {
           line-height: 40px;
-          width: 100%;
+          width: 343px;
           font-size: 14px;
           background-color: #385185;
           color: white;
@@ -56,7 +78,8 @@
           .fab {
             position: absolute;
             bottom: 8px;
-            left: 20px;
+            left: 128px;
+            font-size: 25px;
           }
         }
         .google-btn {
@@ -65,20 +88,23 @@
           color: #333;
           font-size: 14px;
           display: inline-block;
-          width: 100%;
+          width: 343px;
           margin: 16px 0 0;
           position: relative;
         }
         .google-icon {
           position: absolute;
-          left: 81px;
-          top: 241px;
+          left: 189px;
+          top: 253px;
         }
       }
     }
-    
     .login-inner {
       padding: 24px 64px 32px;
+    }
+
+    .field {
+      margin-bottom: 10px;
     }
     .field-label {
       padding: 10px 0;
@@ -86,8 +112,13 @@
       font-size: 14px;
       font-weight: 200;
     }
+    
+    input {
+      width: 343px;
+    }
     .field-input {
       input {
+        width: 343px;
         height: 48px;
         padding: 10px 90px;
         border-radius: 4px;
@@ -104,6 +135,39 @@
         margin: 5px 0;
       }
     }
+    .field-fullname {
+      input {
+        width: 343px;
+        height: 48px;
+        margin: 8px 0 0;
+        font-size: 14px;
+        padding-left: 10px;
+      }
+    }
+    .field-birth-info {
+      .year {
+        width: 76px;
+        height: 48px;
+      }
+      .month {
+        width: 76px;
+        height: 48px;
+      }
+      .day {
+        width: 76px;
+        height: 48px;
+      }
+    }
+    #address_prefecture_id {
+      width: 100px;
+      height: 48px;
+      font-size: 14px;
+    }
+    .actions {
+      input {
+        width: 343px;
+      }
+    }
     .btn{
       background-color: #3CCACE;
       border: 1px solid #3CCACE;
@@ -115,7 +179,6 @@
     }
     
   }
-
   
   
   &__footer{

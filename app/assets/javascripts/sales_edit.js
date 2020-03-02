@@ -30,7 +30,7 @@ $(function () {
         $.each(sale_photos, function (i, photo) {
           // 表示用の要素を追加
           var img = $(`<div class= "img_view" data-image= ${i}><div class="img_box"><img></div></div>`);
-          var btn_wrapper = $('<div class="btn_wrapper"><div class="delete-img-btn">削除</div></div>');
+          var btn_wrapper = $('<div class="btn_wrapper"><div class="edit-img-btn img-btn">変更</div><div class="delete-img-btn img-btn">削除</div></div>');
           img.append(btn_wrapper)
           img.find('img').attr({
             src: photo.image.url

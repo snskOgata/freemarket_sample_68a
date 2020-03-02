@@ -27,7 +27,6 @@
       font-size: 25px;
       border-bottom: solid 1px  #f6f6f6;
       position: relative;
-      
       .login-acount {
         padding: 40px 64px;
         text-align: center;
@@ -51,6 +50,14 @@
           background-color: #385185;
           color: white;
           display: inline-block;
+        }
+        .icon {
+          position: relative;
+          .fab {
+            position: absolute;
+            bottom: 8px;
+            left: 20px;
+          }
         }
         .google-btn {
           line-height: 40px;
@@ -103,6 +110,8 @@
     }
     
   }
+
+  
   
   &__footer{
     width: 456px;

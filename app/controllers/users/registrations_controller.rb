@@ -9,13 +9,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def create
     @user = User.new(sign_up_params)
-    # unless @user.valid?
-    #   render :new and return
-    # end
+    unless @user.valid?
+      render :new and return
+    end
     session["devise.regist_data"] = {user: @user.attributes}
     session["devise.regist_data"][:user]["password"] = params[:user][:password]
     @profile = @user.build_profile
     render :new_profile
+
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super
     
   end
 
@@ -45,14 +52,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     redirect_to root_path
   end
 
-  def create_acount
-    if params[:sns_auth] == 'true'
-      pass = Devise.friendly_token
-      params[:user][:password] = pass
-      params[:user][:password_confirmation] = pass
-    end
-    super
-  end
 
   protected
   def configure_sign_up_params

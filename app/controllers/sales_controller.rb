@@ -44,7 +44,8 @@ class SalesController < ApplicationController
 
   def update
     redirect_to new_user_session_path unless user_signed_in?
-    if !params[:sale][:category_ids].include?(0) && @sale.update(sale_params)
+    # ユーザが出品者で、カテゴリに不適切なidが含まれておらず、バリデーションを通過した時のみ保存
+    if @sale.seller.id == current_user.id && !params[:sale][:category_ids].include?(0) && @sale.update(sale_params)
       redirect_to root_path
     else
       @sale.photos.build

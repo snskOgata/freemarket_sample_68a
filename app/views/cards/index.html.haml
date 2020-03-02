@@ -1,20 +1,31 @@
-.content__title
-  %h2 支払い方法
-.content__credit-cards
-  %h3 クレジットカード一覧
-  - if @card.present?
-    %ul.content__credit-cards__list
-      %li
-        = form_with url: card_path(@card.id), method: :delete, local: true, id: 'charge-form' do |f|
-          %figure
-            -# = image_tag @card_src, width: '26', height: '20', alt: @card_brand, id: "card_image"
-          .content__credit-cards__list--pay-num
-            = "**** **** **** " + @card_information.last4
-          .content__credit-cards__list--pay-num
-            - exp_month = @card_information.exp_month.to_s
-            - exp_year = @card_information.exp_year.to_s.slice(2,3)
-            = exp_month + " / " + exp_year
-          %input{type: "hidden", name: "card_id", value: ""}
-          = f.submit "削除する", {class: "content__credit-cards__list__remove"}
-  = link_to new_card_path do
-    クレジットカードの追加
+= render "shared/user-header"
+.mypage
+  .mypage__contents.clearfix
+    = render "shared/mypage-left-side"
+    .mypage__contents__main
+      .add-credit-card
+        .add-credit-card__header
+          クレジットカード登録情報
+        .add-credit-card__content
+          - if @card.present?
+            .add-credit-card__content__list
+              = form_with url: card_path(@card.id), method: :delete, local: true, id: 'charge-form' do |f|
+                %figure
+                  = image_tag @card_src, width: '65', height: '50', alt: @card_brand, id: "card_image"
+                .add-credit-card__content__list--number
+                  %span.label
+                    カード番号
+                  = "**** **** **** " + @card_information.last4
+                .add-credit-card__content__list--information
+                  %span.label
+                    有効期限 月/年
+                  - exp_month = @card_information.exp_month.to_s
+                  - exp_year = @card_information.exp_year.to_s.slice(2,3)
+                  = exp_month + " / " + exp_year
+                = f.submit "削除する", {class: "add-credit-card__content__list--btn"}
+          - else
+            = link_to new_card_path do
+              .add-credit-card__content__list--btn
+                クレジットカードの追加
+= render "shared/appBanner"
+= render "shared/main-footer"

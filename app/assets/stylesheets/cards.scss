@@ -13,6 +13,7 @@
     background-color:white;
     width:343px;
     margin: 10px auto;
+    padding: 10px 0;
     .registers{
       width: 343px;
       margin: 0 auto;
@@ -103,6 +104,32 @@
     .add-card{
       padding: 10px 0;
       .submit-btn{
+        text-align: center;
+        width: 100%;
+        margin: 0 auto;
+        border: solid #3CCACE;
+        line-height: 48px;
+        font-size: 14px;
+        color: white;
+        background-color: #3CCACE;
+      }
+    }
+    &__list{
+      width:343px;
+      text-align: center;
+      &--number{
+        font-size: 25px;
+        span.label{
+          margin-right:10px;
+        }
+      }
+      &--information{
+        font-size: 25px;
+        span.label{
+          margin-right:100px;
+        }
+      }
+      &--btn{
         text-align: center;
         width: 100%;
         margin: 0 auto;

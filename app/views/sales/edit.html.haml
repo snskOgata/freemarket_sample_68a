@@ -45,9 +45,10 @@
           .form-group
             %label カテゴリー
             %span.form-require  必須
-            %select#category-first{name: "sale[category_ids][]"}
-            %select#category-second{name: "sale[category_ids][]"}
-            %select#category-third{name: "sale[category_ids][]"}
+            = f.fields_for :category_ids do |cat|
+              = cat.select '', options_for_select([@sale.categories[0]].map{|c|[c[:name], c[:id]]}), {}, id: "category-first"
+              = cat.select '', options_for_select([@sale.categories[1]].map{|c|[c[:name], c[:id]]}), {}, id: "category-second"
+              = cat.select '', options_for_select([@sale.categories[2]].map{|c|[c[:name], c[:id]]}), {}, id: "category-third"
           .form-group
             %label{for: "sale_condition_id" } 商品の状態
             %span.form-require  必須

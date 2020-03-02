@@ -182,11 +182,8 @@ $(function () {
 
       // imagesの何番目に含まれているかをチェックする
       var image_index = -1
-      console.log(targetIndex)
       $.each(images, function (i, elem) {
-        console.log("elem", elem.attr('data-image'))
         if (elem.attr('data-image') == targetIndex) {
-          console.log(elem.attr('data-image'))
           image_index = i
         }
       })
@@ -212,7 +209,6 @@ $(function () {
       // data-imageの番号を取得
       // $(this)だと適切な要素を取得できなかったため、このような記述となった
       var targetIndex = e.target.parentNode.parentNode.dataset.image
-      console.log(targetIndex)
       // 該当indexを振られているチェックボックスを取得する
       var hiddenCheck = $(`input[data-image="${targetIndex}"].hidden-destroy`);
       // もしチェックボックスが存在すればチェックを入れる

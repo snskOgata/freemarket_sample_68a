@@ -214,15 +214,15 @@ $(function () {
       else {
         $(`input[data-image="${targetIndex}"].js-file`)[0].remove()
       }
-      //data-imageが一致するものをimagesから削除
+      //data-imageが一致するものがimages内の何番目か取得
       var image_index = -1
       $.each(images, function (i, elem) {
-        if (elem.data("image") == targetIndex) {
+        if (elem.attr('data-image') == targetIndex) {
           image_index = i
         }
       })
       if (image_index === -1) {
-        alert("エラーが発生しました、画面のリロードを行ってください")
+        alert("エラーが発生しました、正しく処理がなされない場合があります")
       }
       images.splice(image_index, 1)
       redrawImages();

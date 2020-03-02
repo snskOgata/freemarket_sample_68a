@@ -68,6 +68,7 @@ $(function () {
         // 対象の大カテゴリを選択、中カテゴリを作成
         $.each($("#category-first").children(), function (i, opt) {
           if (opt.value == sale_categories[0].id) {
+            first_num = i
             opt.selected = true
           }
         })
@@ -82,6 +83,7 @@ $(function () {
 
         $.each($("#category-second").children(), function (i, opt) {
           if (opt.value == sale_categories[1].id) {
+            second_num = i
             opt.selected = true
           }
         })
@@ -90,11 +92,13 @@ $(function () {
           var op = document.createElement("option");
           op.value = categories[first_num].sub[second_num].sub[i].id;
           op.text = categories[first_num].sub[second_num].sub[i].name;
+          op.dataset.num = [i];
           $('#category-third').append(op);
         }
 
         $.each($("#category-third").children(), function (i, opt) {
           if (opt.value == sale_categories[2].id) {
+            third_num = i
             opt.selected = true
           }
         })
@@ -143,6 +147,7 @@ $(function () {
         var op = document.createElement("option");
         op.value = categories[first_num].sub[second_num].sub[i].id;
         op.text = categories[first_num].sub[second_num].sub[i].name;
+        op.dataset.num = [i];
         third.append(op);
       }
       // 小カテゴリの表示・非表示
@@ -296,5 +301,45 @@ $(function () {
         }
       }
     }
+
+
+    // 変更するのボタンを押した時に、必要な情報が入力されていないとアラートを表示
+    $('#submit-sale').on("click", function (e) {
+      var has_error = false;
+      var error_message = "";
+      var name_form = $('#name_form');
+      var detail_form = $('#detail_form');
+      var price_form = $('#price_form');
+      var price = price_form.val();
+      // 画像が0枚
+      if (images.length < 1 || images.length > 10) {
+        error_message += "画像は1枚以上10枚以下が必要となります\n";
+        has_error = true;
+      }
+      // 名前が空
+      if (name_form.val().replace(/\s+/g, "").length == 0) {
+        error_message += "商品名を入力してください\n";
+        has_error = true;
+      }
+      // 説明が空
+      if (detail_form.val().replace(/\s+/g, "").length == 0) {
+        error_message += "商品の説明を入力してください\n";
+        has_error = true;
+      }
+      // カテゴリがひとつでも選択されていない
+      if ((first_num < 1) || (second_num < 1) || (third_num < 1)) {
+        error_message += "カテゴリは全て入力してください\n";
+        has_error = true;
+      }
+      // 金額が空、もしくは範囲外の
+      if ((price_form.val().replace(/\s+/g, "").length == 0) || (price < 300) || (price > 9999999)) {
+        error_message += "販売価格は¥300〜¥9999999で入力してください\n";
+        has_error = true;
+      }
+      if (has_error) {
+        e.preventDefault();
+        alert(error_message);
+      }
+    })
   }
 });

@@ -1,0 +1,78 @@
+.listing-page{
+  background-color: $white-gray;
+  .main {
+    margin: 0 auto ;
+    padding: 20px 0 20px;
+    width: 1020px;
+    min-height: 660px;
+    display: flex;
+    background-color: $white-gray;
+    .tab-container {
+      background-color: transparent;
+      margin-left: 20px;
+      width: calc(100% - 360px);
+      .tab-header {
+        padding: 0 16px;
+        background-color: white;
+        font-size: 16px;
+        line-height: 72px;
+      }
+      .listing-tabs {
+        display: flex;
+        li {
+          width: calc(100%/3);
+          background-color: #eaeaea;
+          .link {
+            width: 100%;
+            text-align: center;
+            line-height: 72px;
+            display: block;
+          }
+        }
+        .active {
+          background-color: white;
+          border-top: 2px solid $blue-green;
+        }
+      }
+      .tab-content {
+        .item-list {
+          .item {
+            padding: 0 20px;
+            background-color: white;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            &__left {
+              display: flex;
+              &__name {
+                line-height: 60px;
+                padding-left: 10px;
+                overflow: hidden;
+              }
+            }
+            .icon {
+              line-height: 60px;
+              color: #ddd;
+            }
+            &:hover {
+              background-color: #ddd;
+              .icon {
+                transition: all 0.3s ease 0s;
+                transform: translate(3px,0px);
+                color: black;
+              }
+            }
+          }
+          .no-item {
+            text-align: center;
+            padding: 40px 0;
+            background-color: white;
+            .logo_icon {
+              margin-bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

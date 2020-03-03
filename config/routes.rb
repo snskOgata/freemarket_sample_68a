@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 
   # 商品関連
   root to: 'sales#index'
-  resources :sales, only: [:new, :show, :create, :edit, :destroy] do
+  resources :sales, only: [:new, :show, :create, :edit, :update, :destroy] do
+    post "shipped", to: "shipped"
     resources :orders, only: [:new, :create]
   end
   resources :category, controller: :categories, only: [:index, :show]
@@ -21,9 +22,14 @@ Rails.application.routes.draw do
   resource :mypage, only: [:show]
   scope :mypage do
     resources :cards, only: [:new, :index, :destroy, :create]
+    namespace :listings do
+      get 'listing'
+      get 'in_progress'
+      get 'completed'
+    end
   end
 
-  get '*anything', to: 'errors#error_page'
+  get '*anything', to: 'errors#error_page' if Rails.env.production?
   get 'error', to: 'errors#error_page'
 end
 

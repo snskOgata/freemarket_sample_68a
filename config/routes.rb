@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   # 商品関連
   root to: 'sales#index'
-  resources :sales, only: [:new, :show, :create, :edit, :destroy] do
+  resources :sales, only: [:new, :show, :create, :edit, :update, :destroy] do
     post "shipped", to: "shipped"
     resources :orders, only: [:new, :create]
   end

@@ -34,6 +34,23 @@
           border-top: 2px solid $blue-green;
         }
       }
+      .purchase-listing-tabs{
+        display: flex;
+        li {
+          width: calc(100%/2);
+          background-color: #eaeaea;
+          .link {
+            width: 100%;
+            text-align: center;
+            line-height: 72px;
+            display: block;
+          }
+        }
+        .active {
+          background-color: white;
+          border-top: 2px solid $blue-green;
+        }
+      }
       .tab-content {
         .item-list {
           .item {

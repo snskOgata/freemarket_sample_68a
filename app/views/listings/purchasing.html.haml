@@ -6,15 +6,12 @@
     .tab-container
       %h2.tab-header 購入した商品
       %ul.purchase-listing-tabs
-        -# %li{class: "#{@status == 0 ? 'active' : ''}"}
-        -#   = link_to listings_listing_path, class: "link" do
-        -#     出品中
         %li{class: "#{@status == 1 ? 'active' : ''}"}
-          = link_to listings_purchase_path, class: "link" do
+          = link_to listings_purchasing_path, class: "link" do
             取引中
         %li{class: "#{@status == 2 ? 'active' : ''}"}
           = link_to listings_purchased_path, class: "link" do
-            過去の商品
+            過去の取引
       .tab-content
         %ul.item-list
           - if @sales.present?

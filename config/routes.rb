@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       get 'listing'
       get 'in_progress'
       get 'completed'
-      get 'purchase'
+      get 'purchasing'
       get 'purchased'
     end
   end

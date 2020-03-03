@@ -18,10 +18,25 @@ class ListingsController < ApplicationController
     render 'listing'
   end
 
-  def purchase
+  def purchasing
+    @status = 1
+    orders = current_user.orders
+    @sales =[]
+    orders.each do |order|
+      sale = Sale.where(id: order.sale_id, status: @status)[0]
+      @sales << sale if sale.present?
+    end
   end
 
   def purchased
+    @status = 2
+    orders = current_user.orders
+    @sales =[]
+    orders.each do |order|
+      sale = Sale.where(id: order.sale_id, status: @status)[0]
+      @sales << sale if sale.present?
+    end
+    render 'purchasing'
   end
 
   private

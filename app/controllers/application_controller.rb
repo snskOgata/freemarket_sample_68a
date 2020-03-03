@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery exept: [:facebook, :google_oauth2]
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -21,10 +22,10 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up, keys: [:firstname, :lastname])
+    end
+
   protected
-    
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname])
-  end
 
 end

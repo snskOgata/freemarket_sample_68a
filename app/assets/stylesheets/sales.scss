@@ -103,7 +103,6 @@ header {
   .nav {
     font-size: 14px;
     display: flex;
-    // padding-bottom: 10px;
     line-height: 38px;
     color: #333;
     .listsLeft {
@@ -217,12 +216,6 @@ header {
         color: $dark_gray;
         line-height: 38px;
         padding: 0 0 0 16px;
-        &--login {
-
-        }
-        &--new {
-
-        }
       }
     }
 }

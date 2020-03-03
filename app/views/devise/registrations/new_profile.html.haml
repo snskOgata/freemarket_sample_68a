@@ -2,41 +2,42 @@
   = render "shared/user-header"
   .account-page__contents
     .account-page__contents__title
-      お客様 詳細情報
-    .account-page__contents__register
-      = form_for @profile do |f|
-        .field
-          .field-label
-            = f.label :お名前
-            %span.form-require 必須
-          .field-fullname
-            .field-inputs-last
-              = f.text_field :lastname, autofocus: true, placeholder: '(例)山田'
-              - show_errors(@profile, :lastname).each do |error|
-                = error
-            .field-inputs-first
-              = f.text_field :firstname, autofocus: true, placeholder: '(例)太郎'
-              - show_errors(@profile, :firstname).each do |error|
-                = error
-        .field
-          .field-label
-            = f.label :お名前カナ
-            %span.form-require 必須
-          .field-fullname
-            .field-inputs-last
-              = f.text_field :lastname_kana, autofocus: true, placeholder: '(例)ヤマダ'
-              - show_errors(@profile, :lastname_kana).each do |error|
-                = error
-            .field-inputs-first
-              = f.text_field :firstname_kana, autofocus: true, placeholder: '(例)タロウ'
-              - show_errors(@profile, :firstname_kana).each do |error|
-                = error
-        .field
-          .field-label
-            = f.label :生年月日
-            %span.form-require 必須
-          .field-birth-info
-            != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'field-input-birth__year', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
-        .actions
-          = f.submit "次へ", class: 'btn'
+      .account-page__contents__title--top
+        お客様 詳細情報
+      .account-page__contents__title--register
+        = form_for @profile do |f|
+          .field
+            .field-label
+              = f.label :お名前, autofocus: true
+              %span.form-require 必須
+            .field-fullname
+              .field-fullname__last
+                = f.text_field :lastname, autofocus: true, placeholder: '(例)山田'
+                - show_errors(@profile, :lastname).each do |error|
+                  = error
+              .field-fullname__first
+                = f.text_field :firstname, autofocus: true, placeholder: '(例)太郎'
+                - show_errors(@profile, :firstname).each do |error|
+                  = error
+          .field
+            .field-label
+              = f.label :お名前カナ
+              %span.form-require 必須
+            .field-fullname
+              .field-inputs-last
+                = f.text_field :lastname_kana, autofocus: true, placeholder: '(例)ヤマダ'
+                - show_errors(@profile, :lastname_kana).each do |error|
+                  = error
+              .field-inputs-first
+                = f.text_field :firstname_kana, autofocus: true, placeholder: '(例)タロウ'
+                - show_errors(@profile, :firstname_kana).each do |error|
+                  = error
+          .field
+            .field-label
+              = f.label :生年月日
+              %span.form-require 必須
+            .field-birth-info
+              != sprintf(f.date_select(:birthday, prefix:'birthday',with_css_classes:'field-input-birth__year', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+          .actions
+            = f.submit "次へ", class: 'btn'
 = render "shared/user-footer"

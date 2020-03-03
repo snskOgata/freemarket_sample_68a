@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery exept: [:facebook, :google_oauth2]
   before_action :basic_auth, if: :production?
   before_action :configure_permitted_parameters, if: :devise_controller?
 

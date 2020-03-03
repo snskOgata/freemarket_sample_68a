@@ -19,8 +19,16 @@
             = f.label :メールアドレス
           .field-input
             = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
-          .field-label
-            = f.label :パスワード
+            - if @sns_id.present?
+              = hidden_field_tag :sns_auth, true
+            - else
+              .field-label
+                = f.label :パスワード
+                - if @minimum_password_length
+                  %em
+                    (#{@minimum_password_length} characters minimum)
+                %br/
+                = f.password_field :password, autocomplete: "new-password"
           .field-input
             = f.password_field :password, autocomplete: "off", placeholder: '7文字以上の半角英数字'
           .actions

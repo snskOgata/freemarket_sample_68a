@@ -7,22 +7,21 @@ class CardsController < ApplicationController
       Payjp.api_key = Rails.application.credentials[:payjp][:private_key]
       customer = Payjp::Customer.retrieve(@card.customer_id)
       @card_information = customer.cards.retrieve(@card.card_id)
-      # 以下はカードのブランドロゴの表示のためのもの　ビューの実装の際に使用する
-      # @card_brand = @card_information.brand
-      # case @card_brand
-      # when "Visa"
-      #   @card_src = "visa.gif"
-      # when "JCB"
-      #   @card_src = "jcb.gif"
-      # when "MasterCard"
-      #   @card_src = "master.gif"
-      # when "American Express"
-      #   @card_src = "amex.gif"
-      # when "Diners Club"
-      #   @card_src = "diner.gif"
-      # when "Discover"
-      #   @card_src = "discover.gif"
-      # end
+      @card_brand = @card_information.brand
+      case @card_brand
+      when "Visa"
+        @card_src = "visa.gif"
+      when "JCB"
+        @card_src = "jcb.gif"
+      when "MasterCard"
+        @card_src = "master.gif"
+      when "American Express"
+        @card_src = "amex.gif"
+      when "Diners Club"
+        @card_src = "diner.gif"
+      when "Discover"
+        @card_src = "discover.gif"
+      end
     end
   end
 

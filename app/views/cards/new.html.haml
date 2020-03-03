@@ -1,26 +1,30 @@
-.content__title
-  .content__title__name
-    支払い情報
-  .content__title__credit-card
-    .content__title__credit-card__inner
-      = form_with url: cards_path, method: :post, html: { name: "inputForm" } do |f|
-        = f.label :カード番号, class: 'label'
-        %span.necessary 必須
-        = f.text_field :card_number, type: 'text', class: 'input-number', placeholder: '半角数字のみ', maxlength: "16"
-        .cards-expire
-          = f.label :有効期限, class: 'label'
-          %span.necessary 必須
-          %br
-          .cards-expire__wrap
-            = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'input-expire'
-            %span.expire-month 月
-            %br
-          .cards-expire__wrap
-            = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'input-expire'
-            %span.expire-year 年
-        .cards-expire
-          = f.label :セキュリティコード, class: 'label'
-          %span.necessary 必須
-          = f.text_field :cvc, type: 'text', class: 'input-number', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
-        .content__title-bottom#card_token
-          = f.submit '追加する', class: 'content__title-bottom--add-btn', id: 'token_submit'
+= render "shared/user-header"
+.mypage
+  .mypage__contents.clearfix
+    = render "shared/mypage-left-side"
+    .mypage__contents__main
+      .add-credit-card
+        .add-credit-card__header
+          クレジットカード情報入力
+        .add-credit-card__content
+          = form_with url: cards_path, method: :post, html: { name: "inputForm" ,class: "registers" } do |f|
+            .registers__card-num
+              %span.heading カード番号
+              %span.form-require 必須
+              = f.text_field :card_number, type: 'text', class: 'card-num-box', placeholder: '半角数字のみ', maxlength: "16"
+            .registers__exp-date
+              %span.heading 有効期限
+              %span.form-require 必須
+              .expire
+                = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'exp-box'
+                %span.expire-month 月
+                = f.select :exp_year, [["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'exp-box'
+                %span.expire-year 年
+            .registers__security-num
+              %span.heading セキュリティコード
+              %span.form-require 必須
+              = f.text_field :cvc, type: 'text', class: 'security-num-box', placeholder: 'カード背面4桁もしくは3桁の番号', maxlength: "4"
+            .add-card#card_token
+              = f.submit '追加する', class: 'submit-btn', id: 'token_submit'
+= render "shared/appBanner"
+= render "shared/main-footer"

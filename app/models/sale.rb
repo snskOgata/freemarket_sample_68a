@@ -28,6 +28,6 @@ class Sale < ApplicationRecord
   end
 
   def check_photos
-    errors.add(:photos, "は1枚以上10枚以下が必須です") if photos.size < 1 || photos.size > 10
+    errors.add(:photos, "は1枚以上10枚以下が必須です") if photos.size < 1
   end
 end

@@ -244,126 +244,6 @@
           }
         }
       }
-
-      // クレカ情報入力
-      .add-credit-card{
-        background-color: lightpink;
-        margin-top: 30px;
-        &__header{
-          font-size: 24px;
-          padding: 8px 24px;
-          background-color: white;
-          text-align: center;
-          border-bottom: solid 1px #eee;
-          
-        }
-        &__content{
-          background-color:white;
-          padding: 40px 40px 64px;
-          .registers{
-            width: 340px;
-            margin: 0 auto;
-            &__card-num{
-              height: 100px;
-              .heading{
-                width: 70px;
-                font-weight: 600;
-                font-size: 14px;
-              }
-              .form-require{
-                background: #3CCACE;
-                margin: 0 0 0 8px;
-                padding: 2px 4px;
-                border-radius: 2px;
-                color: #fff;
-                font-size: 12px;
-                vertical-align: top;
-              }  
-              .card-num-box{
-                display: block;
-                width: 328px;
-                border: 1px solid #ccc;
-                height: 50px;
-                font-size: 16px;
-                padding-left: 10px;
-                border-radius: 4px;
-                margin-top: 8px;
-              }
-            }
-            &__exp-date{
-              height: 100px;
-              .heading{
-                width: 70px;
-                font-weight: 600;
-                font-size: 14px;
-              }
-              .form-require{
-                background: #3CCACE;
-                margin: 0 0 0 8px;
-                padding: 2px 4px;
-                border-radius: 2px;
-                color: #fff;
-                font-size: 12px;
-                vertical-align: top;
-              }   
-              .expire{
-                .exp-month-box, .exp-year-box{
-                  width: 30%;
-                  border: 1px solid #ccc;
-                  height: 50px;
-                  font-size: 16px;
-                  padding-left: 10px;
-                  border-radius: 4px;
-                  margin-top: 8px;
-                } 
-              }
-            }
-            &__security-num{
-              height: 100px;
-              .heading{
-                width: 70px;
-                font-weight: 600;
-                font-size: 14px;
-              }
-              .form-require{
-                background: #3CCACE;
-                margin: 0 0 0 8px;
-                padding: 2px 4px;
-                border-radius: 2px;
-                color: #fff;
-                font-size: 12px;
-                vertical-align: top;
-              }     
-              .security-num-box{
-                display: block;
-                width: 328px;
-                border: 1px solid #ccc;
-                height: 50px;
-                font-size: 16px;
-                padding-left: 10px;
-                border-radius: 4px;
-                margin-top: 8px;
-              }
-            }
-
-            .add-card{
-              padding: 24px 0;
-              &__click{
-                .submit-btn{
-                  text-align: center;
-                  width: 100%;
-                  margin: 0 auto;
-                  border: solid #3CCACE;
-                  line-height: 48px;
-                  font-size: 14px;
-                  color: white;
-                  background-color: #3CCACE;
-                }
-              }
-            }
-          }
-        }
-      }
     }
     &:after{
       clear: both;
@@ -371,7 +251,6 @@
       display: block;
     }
   }
-
 }
 
 .credit-card{

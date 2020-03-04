@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
   require "payjp"
   before_action :set_card
+  before_action :set_shipping_item, only: [:index, :new]
 
   def index
     if @card.present?
@@ -63,4 +64,10 @@ class CardsController < ApplicationController
     @card = Card.where(user: current_user).first if Card.where(user: current_user).present?
   end
   
+  def set_shipping_item
+      @shipping_item = nil
+      if user_signed_in?
+        @shipping_item = current_user.sales.where(status: 1)
+      end
+    end
 end

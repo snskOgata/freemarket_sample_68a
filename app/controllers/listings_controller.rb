@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :set_categories
+  before_action :set_data
   def listing
     @status = 0
     @sales = current_user.sales.where(status: @status)
@@ -40,7 +40,11 @@ class ListingsController < ApplicationController
   end
 
   private
-    def set_categories
+    def set_data
       @main_categories = Category.where(id: 1..13)
+      @shipping_item = nil
+      if user_signed_in?
+        @shipping_item = current_user.sales.where(status: 1)
+      end
     end
 end

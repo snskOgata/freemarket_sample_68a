@@ -10,13 +10,13 @@
     position: relative;
     overflow: hidden;
     &:hover {
-      border: 0.5px solid $blue_green;
+      border: 0.5px solid  #3CCACE;
     }
     .soldout-badge {
       position: absolute;
       top: 0;
       left: 0;
-      background-color: $blue_green;
+      background-color:  #3CCACE;
       color: white;
       font-size: 20px;
       padding: 30px 50px 10px;

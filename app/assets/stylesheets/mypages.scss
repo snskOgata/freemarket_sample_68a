@@ -209,17 +209,14 @@
         
         &__form{
           line-height: 48px;
-          
           text-align: center;
-          &__click{
-            font-size: 14px;
-            background-color: #3CCACE;
-            width: 340px;
-            margin: 0 auto;
-            cursor: pointer;
-            a {
-              color: white;
-            }
+          font-size: 14px;
+          background-color: #3CCACE;
+          width: 340px;
+          margin: 0 auto;
+          cursor: pointer;
+          a {
+            color: white;
           }
         }
       }    

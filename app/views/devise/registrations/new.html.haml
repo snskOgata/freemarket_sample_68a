@@ -24,6 +24,7 @@
             .error-message 
               - show_errors(@user, :email).each do |error|
                 = error
+                %br
 
           .field
             .field-label
@@ -35,6 +36,7 @@
             .error-message
               - show_errors(@user, :password).each do |error|
                 = error
+                %br
           .field
             .field-label
               = f.label :パスワード再入力
@@ -44,6 +46,7 @@
             .error-message
               - show_errors(@user, :password_confirmation).each do |error|
                 = error
+                %br
           .actions
             = f.submit "次へ", class: 'btn'
 = render "shared/user-footer"

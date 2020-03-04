@@ -6,7 +6,7 @@
       .log-out  
         .log-out__form
           .log-out__form__click
-            =link_to("ログアウト", destroy_user_session_path, class: "log-out-link") 
+            =link_to("ログアウト", destroy_user_session_path, method: :delete, class: "log-out-link") 
 
 = render "shared/appBanner"
 

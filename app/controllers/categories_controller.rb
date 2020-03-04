@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
+  before_action :set_data
   def index
     # htmlなら早期リターン
-    @main_categories = Category.where(id: 1..13)
     respond_to do |format|
       format.html
       
@@ -29,7 +29,6 @@ class CategoriesController < ApplicationController
 
   def show
     @sales = Sale.joins(:categories).where(categories: {id: params[:id]})
-    @main_categories = Category.where(id: 1..13)
     @category = Category.find(params[:id])
     @children = @category.children
     @parent = @category.parent
@@ -38,4 +37,13 @@ class CategoriesController < ApplicationController
       @parent = @parent.parent.present? ? @parent.parent : @parent
     end
   end
+
+  private
+    def set_data
+      @main_categories = Category.where(id: 1..13)
+      @shipping_item = nil
+      if user_signed_in?
+        @shipping_item = current_user.sales.where(status: 1)
+      end
+    end
 end

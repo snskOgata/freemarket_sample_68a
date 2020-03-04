@@ -54,6 +54,9 @@
           %li.listsRight__item.listsRight__item--new
             = link_to mypage_path do
               マイページ
+            - if @shipping_item.present?
+              .header-badge
+                = @shipping_item.length
         -else
           %li.listsRight__item.listsRight__item--login
             = link_to new_user_session_path do

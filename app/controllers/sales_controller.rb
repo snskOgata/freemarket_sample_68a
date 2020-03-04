@@ -1,9 +1,9 @@
 class SalesController < ApplicationController
 
   before_action :set_sale, only: [:edit, :update, :show, :destroy]
+  before_action :set_data, only: [:index, :show]  
 
   def index
-    @main_categories = Category.where(id: 1..13)
     @sales = Sale.order(created_at: :desc).limit(3)
   end
 
@@ -15,7 +15,6 @@ class SalesController < ApplicationController
   
   def show
     @sale = Sale.find(params[:id])
-    @main_categories = Category.where(id: 1..13)
     @prev_sale = Sale.where("id < ?", @sale.id).order('id DESC').limit(1)[0]
     @next_sale = Sale.where("id > ?", @sale.id).limit(1)[0]
     respond_to do |format|
@@ -81,9 +80,17 @@ class SalesController < ApplicationController
       params.require(:sale).permit(:name, :detail, :condition_id, :delivery_payer_id, :prefecture_id, :prep_days_id, :price, category_ids: [], photos_attributes: [:image, :_destroy, :id]).merge(seller_id: current_user.id)
     end
 
-  def set_sale
-    @sale = Sale.find(params[:id]) 
-  end
+    def set_sale
+      @sale = Sale.find(params[:id]) 
+    end
+
+    def set_data
+      @main_categories = Category.where(id: 1..13)
+      @shipping_item = nil
+      if user_signed_in?
+        @shipping_item = current_user.sales.where(status: 1)
+      end
+    end
 end
 
 

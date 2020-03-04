@@ -216,6 +216,22 @@ header {
         color: $dark_gray;
         line-height: 38px;
         padding: 0 0 0 16px;
+        position: relative;
+        .header-badge {
+          height: 20px;
+          min-width: 20px;
+          padding: 0 5px;
+          position: absolute;
+          top: 0;
+          right: -20px;
+          color: white;
+          font-weight: bold;
+          border-radius: 10px;
+          font-size: 15px;
+          line-height: 20px;
+          text-align: center;
+          background-color: $blue_green;
+        }
       }
     }
 }

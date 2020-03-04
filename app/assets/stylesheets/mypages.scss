@@ -65,6 +65,21 @@
               padding: 16px;
               background: #fff;
               cursor: pointer;
+              .mypage-badge {
+                    position: absolute;
+                    top: 50%;
+                    right: 32px;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    background: $blue_green;
+                    text-align: center;
+                    line-height: 24px;
+                    font-weight: bold;
+                    color: white;
+                    -webkit-transform: translate(0, -50%);
+                    transform: translate(0, -50%);
+              }
               .icon{
               position: absolute;
               right: 16px;

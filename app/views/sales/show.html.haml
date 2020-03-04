@@ -56,16 +56,20 @@
     - when "on_sale"
       - if user_signed_in? && current_user.id == @sale.seller_id
         .sales-show__contents__edit
-          = link_to('商品の編集', edit_sale_path, class: 'edit-btn')
+          = link_to(edit_sale_path, class: 'edit-btn')  do
+            商品の編集
         %span.or or
         .sales-show__contents__edit
-          = link_to('この商品を削除する', sale_path(@sale.id), "data-method": :delete, class: 'edit-btn', data:{confirm: "本当に削除しますか？"})
+          = link_to(sale_path(@sale.id), "data-method": :delete, class: 'edit-btn', data:{confirm: "本当に削除しますか？"}) do
+            この商品を削除する
       - elsif user_signed_in?
         .sales-show__contents__edit
-          = link_to('購入画面に進む', new_sale_order_path(@sale.id),  class: 'edit-btn')
+          = link_to(new_sale_order_path(@sale.id),  class: 'edit-btn')  do
+            購入画面に進む
       - else
         .sales-show__contents__edit
-          = link_to('サインインする', new_user_session_path, class: 'edit-btn')
+          = link_to( new_user_session_path, class: 'edit-btn')  do
+            サインインする
     - when "shipping"
       - if user_signed_in? && current_user.id == @sale.seller_id
         .sales-show__contents__edit
@@ -106,3 +110,5 @@
           %i.fas.fa-angle-right
 = render "shared/appBanner"
 = render "shared/main-footer"
+-# =link_to(cards_path, class: "link")  do
+-#   支払い方法

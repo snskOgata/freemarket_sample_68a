@@ -53,8 +53,7 @@
             = current_user.address.block_number
             = current_user.address.building
             %br
-            = link_to "#" do
-              発送先住所の変更
+           
         .order-btn
           - if @card_infomation.present?
             = f.submit "購入する", class: 'order-btn--active'

@@ -144,11 +144,12 @@
           border: 1px solid #3CCACE;
           color: #fff;
           display: block;
-          width: 500px;
+          width: 70%;
           height: 50px;
           line-height: 50px;
-          font-size: 14px;
+          font-size: 24px;
           margin: 20px auto;
+          cursor:pointer;
         }
         &--inactive{
           text-align: center;

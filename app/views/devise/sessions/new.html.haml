@@ -10,7 +10,7 @@
         .icon
           = icon 'fab', 'facebook-square', class: 'facebook-icon', class: "fa-inverse"
         = link_to 'Googleでログイン', user_google_oauth2_omniauth_authorize_path, method: :post, class: 'google-btn'
-        = image_tag 'google-icon', class: 'google-icon', alt: 'google-icon', size: "25x25"
+        = image_tag 'google-icon.png', class: 'google-icon', alt: 'google-icon', size: "25x25"
         
       .login-inner
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

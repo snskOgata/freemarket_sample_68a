@@ -20,6 +20,9 @@
       %li     
         =link_to(listings_in_progress_path, class: "link")  do
           出品した商品 - 取引中
+          - if @shipping_item.present?
+            .mypage-badge
+              = @shipping_item.length
           %i.icon-chevron-right
           = icon('fas', 'chevron-right', class: 'icon')
       %li     

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  # ユーザ関連
-  devise_for :users, :controllers => {
-    :registrations => 'users/registrations'
+  devise_for :users, controllers: {
+    omniauth_callbacks: 'users/omniauth_callbacks',
+    registrations: 'users/registrations'
   }
   devise_scope :user do
     get 'profiles', to: 'users/registrations#new_profile'

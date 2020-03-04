@@ -47,6 +47,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
   gem 'faker'
 end
 
@@ -86,3 +87,8 @@ gem 'payjp'
 gem "jquery-rails"
 gem 'fog-aws'
 gem 'bxslider-rails'
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth'

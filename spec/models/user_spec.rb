@@ -86,5 +86,4 @@ describe User do
       expect(user.errors[:nickname]).to include("は20文字以内で入力してください")
     end
   end
-
 end

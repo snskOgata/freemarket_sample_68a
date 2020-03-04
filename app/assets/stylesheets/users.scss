@@ -127,6 +127,9 @@ body {
         line-height: 1.5;
         font-size: 14px;
         text-align: center;
+        .error-message{
+          color: red;
+        }
       }
       i{
         display: block;
@@ -169,13 +172,24 @@ body {
       }
     }
     .btn{
-      background-color: #3CCACE;
-      border: 1px solid #3CCACE;
+      background-color: $blue_green;
+      border: 1px solid $blue_green;
       color: #fff;
       line-height: 40px;
       font-size: 14px;
       margin-top: 20px;
       width: 100%;
+    }
+    .form-require{
+      background-color:$blue_green;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .error-message{
+      color: red;
+      font-size: 12px;
+      margin-top: 3px;
     }
     
   }

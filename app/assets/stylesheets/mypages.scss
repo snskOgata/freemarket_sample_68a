@@ -217,8 +217,9 @@
             width: 340px;
             margin: 0 auto;
             cursor: pointer;
-            a {
+            .log-out-link{
               color: white;
+              display: block;
             }
           }
         }

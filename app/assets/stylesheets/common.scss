@@ -1,3 +1,12 @@
+// メインヘッダーのリンク
+.header_link{
+  font-weight: bold;
+  &:hover {
+    color: #ffb340;
+  }
+}
+
+// 通常サイズの商品一覧表示
 .sale-items{
   display: flex;
   flex-wrap: wrap;

@@ -23,8 +23,9 @@
     .nav
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
-          = link_to category_index_path, id: "catBtn" do
-            カテゴリー
+          = link_to category_index_path, id: "catBtn", class: "header_link" do
+            %i.fas.fa-bars{style: "color: #3CCACE; padding-right:2px;"}
+            カテゴリーから探す
           .tree.displayNone
 
             %ul#menu-content
@@ -49,18 +50,18 @@
       %ul.listsRight
         -if user_signed_in?
           %li.listsRight__item.listsRight__item--login
-            = link_to destroy_user_session_path, method: :delete do
+            = link_to destroy_user_session_path, method: :delete,data: {confirm: "ログアウトしますか？"}, class: "header_link" do
               ログアウト
           %li.listsRight__item.listsRight__item--new
-            = link_to mypage_path do
+            = link_to mypage_path, class: "header_link" do
               マイページ
             - if @shipping_item.present?
               .header-badge
                 = @shipping_item.length
         -else
           %li.listsRight__item.listsRight__item--login
-            = link_to new_user_session_path do
+            = link_to new_user_session_path, class: "header_link" do
               ログイン
           %li.listsRight__item.listsRight__item--new
-            = link_to new_user_registration_path do
+            = link_to new_user_registration_path, class: "header_link" do
               新規会員登録

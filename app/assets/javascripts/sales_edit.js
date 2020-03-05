@@ -53,57 +53,60 @@ $(function () {
       }
     )
     // ページ遷移後にカテゴリ一覧を取得
-    $.getJSON(
-      '/category',
-      function (data) {
-        categories = data
-        for (var i = 0; i < categories.length; i++) {
-          var op = document.createElement("option");
-          op.value = categories[i].id;
-          op.text = categories[i].name;
-          op.dataset.num = i
-          $("#category-first").append(op);
-        }
-
-        // 対象の大カテゴリを選択、中カテゴリを作成
-        $.each($("#category-first").children(), function (i, opt) {
-          if (opt.value == sale_categories[0].id) {
-            first_num = i
-            opt.selected = true
+    // 処理の順位を下げるために、setTimeout(処理, 0)と記述
+    setTimeout(function () {
+      $.getJSON(
+        '/category',
+        function (data) {
+          categories = data
+          for (var i = 0; i < categories.length; i++) {
+            var op = document.createElement("option");
+            op.value = categories[i].id;
+            op.text = categories[i].name;
+            op.dataset.num = i
+            $("#category-first").append(op);
           }
-        })
-        first_num = $("#category-first option:selected").data("num");
-        for (var i = 0; i < categories[first_num].sub.length; i++) {
-          var op = document.createElement("option");
-          op.value = categories[first_num].sub[i].id;
-          op.text = categories[first_num].sub[i].name;
-          op.dataset.num = [i];
-          $('#category-second').append(op);
-        }
 
-        $.each($("#category-second").children(), function (i, opt) {
-          if (opt.value == sale_categories[1].id) {
-            second_num = i
-            opt.selected = true
+          // 対象の大カテゴリを選択、中カテゴリを作成
+          $.each($("#category-first").children(), function (i, opt) {
+            if (opt.value == sale_categories[0].id) {
+              first_num = i
+              opt.selected = true
+            }
+          })
+          first_num = $("#category-first option:selected").data("num");
+          for (var i = 0; i < categories[first_num].sub.length; i++) {
+            var op = document.createElement("option");
+            op.value = categories[first_num].sub[i].id;
+            op.text = categories[first_num].sub[i].name;
+            op.dataset.num = [i];
+            $('#category-second').append(op);
           }
-        })
-        second_num = $("#category-second option:selected").data("num");
-        for (var i = 0; i < categories[first_num].sub[second_num].sub.length; i++) {
-          var op = document.createElement("option");
-          op.value = categories[first_num].sub[second_num].sub[i].id;
-          op.text = categories[first_num].sub[second_num].sub[i].name;
-          op.dataset.num = [i];
-          $('#category-third').append(op);
-        }
 
-        $.each($("#category-third").children(), function (i, opt) {
-          if (opt.value == sale_categories[2].id) {
-            third_num = i
-            opt.selected = true
+          $.each($("#category-second").children(), function (i, opt) {
+            if (opt.value == sale_categories[1].id) {
+              second_num = i
+              opt.selected = true
+            }
+          })
+          second_num = $("#category-second option:selected").data("num");
+          for (var i = 0; i < categories[first_num].sub[second_num].sub.length; i++) {
+            var op = document.createElement("option");
+            op.value = categories[first_num].sub[second_num].sub[i].id;
+            op.text = categories[first_num].sub[second_num].sub[i].name;
+            op.dataset.num = [i];
+            $('#category-third').append(op);
           }
-        })
-      }
-    );
+
+          $.each($("#category-third").children(), function (i, opt) {
+            if (opt.value == sale_categories[2].id) {
+              third_num = i
+              opt.selected = true
+            }
+          })
+        }
+      );
+    }, 0);
 
     // 大カテゴリに変更があれば発火
     $('#category-first').change(function () {

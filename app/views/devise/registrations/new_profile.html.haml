@@ -13,12 +13,16 @@
             .field-fullname
               .field-fullname__last
                 = f.text_field :lastname, autofocus: true, placeholder: '(例)山田'
+              .error-message
                 - show_errors(@profile, :lastname).each do |error|
                   = error
+                  %br
               .field-fullname__first
                 = f.text_field :firstname, autofocus: true, placeholder: '(例)太郎'
+              .error-message
                 - show_errors(@profile, :firstname).each do |error|
                   = error
+                  %br
           .field
             .field-label
               = f.label :お名前カナ
@@ -26,12 +30,16 @@
             .field-fullname
               .field-inputs-last
                 = f.text_field :lastname_kana, autofocus: true, placeholder: '(例)ヤマダ'
+              .error-message
                 - show_errors(@profile, :lastname_kana).each do |error|
                   = error
+                  %br
               .field-inputs-first
                 = f.text_field :firstname_kana, autofocus: true, placeholder: '(例)タロウ'
+              .error-message
                 - show_errors(@profile, :firstname_kana).each do |error|
                   = error
+                  %br
           .field
             .field-label
               = f.label :生年月日

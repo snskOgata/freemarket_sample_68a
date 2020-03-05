@@ -16,19 +16,13 @@
         = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
           = devise_error_messages!
           .field-label
-            = f.label :メールアドレス
+            = f.label :email, "メールアドレス"
           .field-input
             = f.email_field :email, placeholder: 'PC・携帯どちらでも可'
             - if @sns_id.present?
               = hidden_field_tag :sns_auth, true
-            - else
-              .field-label
-                = f.label :パスワード
-                - if @minimum_password_length
-                  %em
-                    (#{@minimum_password_length} characters minimum)
-                %br/
-                = f.password_field :password, autocomplete: "new-password"
+          .field-label
+            = f.label :password, "パスワード"
           .field-input
             = f.password_field :password, autocomplete: "off", placeholder: '7文字以上の半角英数字'
           .actions

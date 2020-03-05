@@ -24,7 +24,8 @@
       %ul.listsLeft
         %li.listsLeft__item.listsLeft__item--first
           = link_to category_index_path, id: "catBtn", class: "header_link" do
-            カテゴリー
+            %i.fas.fa-bars{style: "color: #3CCACE"}
+            カテゴリーから探す
           .tree.displayNone
 
             %ul#menu-content

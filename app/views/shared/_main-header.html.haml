@@ -49,7 +49,7 @@
       %ul.listsRight
         -if user_signed_in?
           %li.listsRight__item.listsRight__item--login
-            = link_to destroy_user_session_path, method: :delete, class: "header_link" do
+            = link_to destroy_user_session_path, method: :delete,data: {confirm: "ログアウトしますか？"}, class: "header_link" do
               ログアウト
           %li.listsRight__item.listsRight__item--new
             = link_to mypage_path, class: "header_link" do

@@ -1,5 +1,6 @@
 class ListingsController < ApplicationController
   before_action :set_data
+  before_action :need_login
   def listing
     @status = 0
     @sales = current_user.sales.where(status: @status)
@@ -46,5 +47,9 @@ class ListingsController < ApplicationController
       if user_signed_in?
         @shipping_item = current_user.sales.where(status: 1)
       end
+    end
+
+    def need_login
+      redirect_to new_user_session_path unless user_signed_in?
     end
 end
